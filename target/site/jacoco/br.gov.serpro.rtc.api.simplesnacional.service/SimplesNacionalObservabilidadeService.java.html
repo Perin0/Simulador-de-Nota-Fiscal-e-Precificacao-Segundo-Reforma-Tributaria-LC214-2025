@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SimplesNacionalObservabilidadeService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.simplesnacional.service</a> &gt; <span class="el_source">SimplesNacionalObservabilidadeService.java</span></div><h1>SimplesNacionalObservabilidadeService.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.simplesnacional.service;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import org.springframework.stereotype.Service;
+
+import br.gov.serpro.rtc.api.atividadesimples.entity.AtividadeSimplesNacional;
+import br.gov.serpro.rtc.api.simplesnacional.collector.ItemCollectorSimples;
+import br.gov.serpro.rtc.api.simplesnacional.entity.ClassificacaoTributariaSimples;
+import br.gov.serpro.rtc.api.simplesnacional.entity.RegimeApuracaoSimples;
+import br.gov.serpro.rtc.api.simplesnacional.entity.TipoReceitaBrutaSimples;
+import br.gov.serpro.rtc.api.simplesnacional.enumeration.RegimeCalculoSimplesEnum;
+import br.gov.serpro.rtc.shared.exceptionhandler.ErrosCalculoException;
+import br.gov.serpro.rtc.shared.exceptionhandler.dto.ErroDetalhe;
+import br.gov.serpro.rtc.api.simplesnacional.exceptionhandler.enumeration.CodigoValidacaoSimples;
+import br.gov.serpro.rtc.api.simplesnacional.model.input.ItemSimplesInput;
+import br.gov.serpro.rtc.api.simplesnacional.model.input.OperacaoSimplesInput;
+import br.gov.serpro.rtc.api.simplesnacional.model.output.ObjetoSimplesDomain;
+import br.gov.serpro.rtc.api.simplesnacional.model.output.ObservabilidadeSimplesDomain;
+import br.gov.serpro.rtc.api.simplesnacional.model.output.OperacaoSimplesDomain;
+import br.gov.serpro.rtc.api.simplesnacional.model.output.TotalSimplesDomain;
+import br.gov.serpro.rtc.api.simplesnacional.repository.AtividadeSimplesCalculoRepository;
+import br.gov.serpro.rtc.api.simplesnacional.repository.ClassificacaoTributariaSimplesRepository;
+import br.gov.serpro.rtc.api.simplesnacional.service.SimplesNacionalCalculoService.InsumoCalculoSimples;
+import br.gov.serpro.rtc.api.simplesnacional.service.SimplesNacionalCalculoService.ResultadoCalculoSimples;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ *
+ * Serviço de observabilidade do Simples Nacional (NT 2026.005).
+ * &lt;p&gt;
+ * Duplicado deliberadamente do análogo {@code ObservabilidadeService} do antigo
+ * regime geral (removido do projeto) para
+ * preservar o isolamento entre os pacotes. Responsabilidades:
+ * &lt;ul&gt;
+ * &lt;li&gt;validação global de escopo (tpDoc, CRT, tpRegimeIBSCBS, tpEnteGov) — HTTP
+ * 422; o tpEnteGov é global porque o grupo {@code gCompraGov} pertence à
+ * identificação da nota (grupo B/ide do leiaute do DF-e);&lt;/li&gt;
+ * &lt;li&gt;verificação PRIORITÁRIA, por item, de cClassTrib ainda não implementado
+ * na Calculadora — primeira consulta de banco do item; indicador de ajuste do
+ * tratamento tributário vigente ({@code TRTR_IN_POSSUI_AJUSTE}) → estado
+ * {@code NAO_IMPLEMENTADO} (VSN-027), sem outras validações nem cálculo;&lt;/li&gt;
+ * &lt;li&gt;resolução, por item, do tipo de receita bruta pelo cClassTrib e validação
+ * do código de atividade (cAtivSN);&lt;/li&gt;
+ * &lt;li&gt;exigência condicional das alíquotas efetivas (apenas quando o cálculo as usa);&lt;/li&gt;
+ * &lt;li&gt;resolução dos parâmetros de cálculo em banco (via
+ * {@link ParametroCalculoSimplesService}) e entrega de insumos prontos ao
+ * serviço de cálculo, que é puro;&lt;/li&gt;
+ * &lt;li&gt;processamento paralelo com virtual threads;&lt;/li&gt;
+ * &lt;li&gt;acúmulo de erros RFC 7807 por item;&lt;/li&gt;
+ * &lt;li&gt;totalização: itens {@code CALCULADO} em todos os totais;
+ * {@code NAO_CALCULADO} apenas em {@code vRBSNtot}; itens com erro ou
+ * {@code NAO_IMPLEMENTADO} em nada.&lt;/li&gt;
+ * &lt;/ul&gt;
+ * Não reutiliza código do regime geral; a única leitura de tabela de parâmetro
+ * do regime geral é o indicador de ajuste (ver
+ * {@link ClassificacaoTributariaSimplesRepository#contarTratamentosNaoImplementados}).
+ *
+ */
+<span class="fc" id="L69">@Slf4j</span>
+@RequiredArgsConstructor
+@Service
+public class SimplesNacionalObservabilidadeService {
+
+    /** Nomes de campos do contrato usados em JSON Pointers e mensagens. */
+    private static final String CAMPO_CCLASSTRIB = &quot;cClassTrib&quot;;
+    private static final String CAMPO_TPREGIMEIBSCBS = &quot;tpRegimeIBSCBS&quot;;
+    private static final String CAMPO_CRT = &quot;CRT&quot;;
+    private static final String CAMPO_TPENTEGOV = &quot;tpEnteGov&quot;;
+
+    private final SimplesNacionalCalculoService calculoService;
+    private final ParametroCalculoSimplesService parametroService;
+    private final ClassificacaoTributariaSimplesRepository classificacaoTributariaRepository;
+    private final AtividadeSimplesCalculoRepository atividadeCalculoRepository;
+
+    /**
+     * Dados globais da operação já validados e convertidos, incluindo a linha
+     * vigente da matriz de regime ({@code REGIME_APURACAO_SIMPLES_NACIONAL}) e
+     * os parâmetros de compra governamental — {@code tpEnteGov} (nível de
+     * operação, como o grupo {@code gCompraGov} do DF-e) e o fator de transição
+     * já resolvido pela vigência da data ({@code null} quando não se aplica).
+     */
+<span class="fc" id="L92">    private record ContextoOperacaoSimples(LocalDate data, int tpDoc, RegimeApuracaoSimples regime,</span>
+            Integer tpEnteGov, BigDecimal fatorTransicaoCompraGov) {
+    }
+
+    public ObservabilidadeSimplesDomain processarOperacao(OperacaoSimplesInput operacao, String baseURL) {
+        // 1. Validar campos globais e escopo — se falhar, lança exceção (HTTP 422).
+<span class="fc" id="L98">        List&lt;ErroDetalhe&gt; errosGlobais = validarCamposGlobais(operacao, baseURL);</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        if (!errosGlobais.isEmpty()) {</span>
+<span class="fc" id="L100">            throw new ErrosCalculoException(errosGlobais);</span>
+        }
+
+<span class="fc" id="L103">        final LocalDate data = LocalDate.parse(operacao.data().trim());</span>
+
+        // 2. Resolver a linha vigente da matriz de regime. Combinação aprovada
+        // pela validação de escopo mas sem linha vigente na tabela é falha de
+        // parametrização (VSN-026), global porque o regime vale para a operação
+        // inteira.
+<span class="fc" id="L109">        final RegimeApuracaoSimples regime = parametroService</span>
+<span class="fc" id="L110">                .buscarRegimeApuracao(resolverRegime(operacao), data)</span>
+<span class="fc" id="L111">                .orElseThrow(() -&gt; new ErrosCalculoException(List.of(buildErroGlobal(</span>
+                        CodigoValidacaoSimples.PARAMETRIZACAO_INDISPONIVEL, CAMPO_CRT,
+<span class="fc" id="L113">                        String.format(&quot;Não há parametrização de regime de apuração do Simples Nacional vigente &quot;</span>
+                                + &quot;para CRT=%s e tpRegimeIBSCBS=%s na data '%s'.&quot;,
+<span class="fc" id="L115">                                operacao.CRT(), operacao.tpRegimeIBSCBS(), data),</span>
+                        baseURL))));
+
+        // 3. Resolver o fator de transição de compra governamental — global,
+        // como o tpEnteGov (a validação de domínio já ocorreu no passo 1).
+        // Exigido apenas para ente estadual/distrital/municipal (2, 3 ou 4); a
+        // União (1) tem regra estrutural sem parâmetro temporal. Data sem
+        // vigência na tabela de transição é falha de parametrização (VSN-025) —
+        // nunca assumir fator zero implícito.
+<span class="fc" id="L124">        final Integer tpEnteGov = parseInteiro(operacao.tpEnteGov());</span>
+<span class="fc" id="L125">        BigDecimal fatorTransicao = null;</span>
+<span class="fc bfc" id="L126" title="All 4 branches covered.">        if (tpEnteGov != null &amp;&amp; tpEnteGov != 1) {</span>
+<span class="fc" id="L127">            fatorTransicao = parametroService.buscarFatorTransicaoCompraGov(data)</span>
+<span class="fc" id="L128">                    .orElseThrow(() -&gt; new ErrosCalculoException(List.of(buildErroGlobal(</span>
+                            CodigoValidacaoSimples.COMPRA_GOV_SEM_VIGENCIA, CAMPO_TPENTEGOV,
+<span class="fc" id="L130">                            String.format(&quot;Não há parametrização de transição de compra governamental vigente &quot;</span>
+                                    + &quot;para a data '%s'.&quot;, data),
+                            baseURL))));
+        }
+
+<span class="fc" id="L135">        final ContextoOperacaoSimples contexto = new ContextoOperacaoSimples(</span>
+<span class="fc" id="L136">                data, Integer.parseInt(operacao.tpDoc().trim()), regime, tpEnteGov, fatorTransicao);</span>
+<span class="fc" id="L137">        final List&lt;ItemSimplesInput&gt; itens = operacao.itens();</span>
+
+        // 4. Processar itens em paralelo com virtual threads.
+<span class="fc" id="L140">        try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {</span>
+<span class="fc" id="L141">            List&lt;CompletableFuture&lt;ObjetoSimplesDomain&gt;&gt; futures = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L143" title="All 2 branches covered.">            for (int i = 0; i &lt; itens.size(); i++) {</span>
+<span class="fc" id="L144">                final int index = i;</span>
+<span class="fc" id="L145">                final ItemSimplesInput item = itens.get(index);</span>
+<span class="fc" id="L146">                futures.add(CompletableFuture.supplyAsync(</span>
+<span class="fc" id="L147">                        () -&gt; processarItem(item, index, contexto, baseURL), executor));</span>
+            }
+
+<span class="fc" id="L150">            List&lt;ObjetoSimplesDomain&gt; resultados = futures.stream()</span>
+<span class="fc" id="L151">                    .map(CompletableFuture::join)</span>
+<span class="fc" id="L152">                    .sorted(Comparator.comparing(ObjetoSimplesDomain::nObj,</span>
+<span class="fc" id="L153">                            Comparator.nullsFirst(Comparator.naturalOrder())))</span>
+<span class="fc" id="L154">                    .toList();</span>
+
+            // 5. Totalizar: CALCULADO e NAO_CALCULADO possuem tribCalc (o segundo
+            // contribui apenas para vRBSNtot); itens com erro ou NAO_IMPLEMENTADO
+            // não contribuem.
+<span class="fc" id="L159">            List&lt;ObjetoSimplesDomain&gt; comTribCalc = resultados.stream()</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">                    .filter(r -&gt; r.tribCalc() != null)</span>
+<span class="fc" id="L161">                    .toList();</span>
+
+<span class="fc bfc" id="L163" title="All 2 branches covered.">            TotalSimplesDomain total = comTribCalc.isEmpty() ? null : TotalSimplesDomain.create(comTribCalc);</span>
+
+<span class="fc" id="L165">            return new ObservabilidadeSimplesDomain(</span>
+<span class="fc" id="L166">                    new OperacaoSimplesDomain(operacao.data(), operacao.tpDoc(), operacao.CRT(),</span>
+<span class="fc" id="L167">                            operacao.tpRegimeIBSCBS(), operacao.tpEnteGov()),</span>
+                    resultados,
+                    total);
+        }
+    }
+
+    // ─── Processamento por item ────────────────────────────────────────────────
+
+    private ObjetoSimplesDomain processarItem(ItemSimplesInput item, int index,
+            ContextoOperacaoSimples contexto, String baseURL) {
+<span class="fc" id="L177">        ItemCollectorSimples collector = new ItemCollectorSimples(index, baseURL);</span>
+
+<span class="fc" id="L179">        Integer nObj = item.numero();</span>
+<span class="fc bfc" id="L180" title="All 2 branches covered.">        if (nObj == null) {</span>
+<span class="fc" id="L181">            collector.addErroValidacao(CodigoValidacaoSimples.NUMERO_AUSENTE, &quot;numero&quot;,</span>
+                    &quot;O número do item é obrigatório.&quot;);
+        }
+
+        // 0. PRIORIDADE MÁXIMA — primeira consulta de banco do item: cClassTrib
+        // vinculado, na data do fato gerador, a tratamento tributário marcado
+        // como &quot;sem implementação&quot; (indicador de ajuste, TRTR_IN_POSSUI_AJUSTE).
+        // Encerra o processamento do item: nada mais é validado nem calculado;
+        // o item sai NAO_IMPLEMENTADO (VSN-027), sem tribCalc e fora dos totais.
+<span class="fc bfc" id="L190" title="All 2 branches covered.">        if (cClassTribNaoImplementado(item.cClassTrib(), contexto, collector)) {</span>
+<span class="fc bfc" id="L191" title="All 2 branches covered.">            return new ObjetoSimplesDomain(nObj != null ? nObj : index + 1, collector.getEstado(),</span>
+<span class="fc" id="L192">                    null, collector.getErros());</span>
+        }
+
+        // 1. Validar e converter os insumos monetários do item.
+<span class="fc" id="L196">        BigDecimal baseCalculo = validarDecimal(item.baseCalculo(), collector, &quot;baseCalculo&quot;,</span>
+                CodigoValidacaoSimples.BASE_AUSENTE, CodigoValidacaoSimples.BASE_INVALIDA);
+<span class="fc" id="L198">        BigDecimal valorIs = validarDecimal(item.valorImpostoSeletivo(), collector, &quot;valorImpostoSeletivo&quot;,</span>
+                CodigoValidacaoSimples.IS_INVALIDO, CodigoValidacaoSimples.IS_INVALIDO);
+
+        // 2. Resolver o tipo de receita bruta do item: o código tpRBSN vem do
+        // cClassTrib (vigente na data, admissível para o tpDoc) e o EFEITO do
+        // código vem da tabela de tipos de receita bruta.
+<span class="fc" id="L204">        TipoReceitaBrutaSimples tipoReceita = resolverTipoReceitaBruta(item.cClassTrib(), contexto, collector);</span>
+
+        // 3. Validar o código de atividade (cAtivSN). Código inválido NÃO é erro:
+        // leva ao estado NAO_CALCULADO.
+<span class="fc" id="L208">        boolean cAtivSNValido = validarCAtivSN(item.cAtivSN(), tipoReceita, contexto, collector);</span>
+
+        // 4. Alíquotas obrigatórias condicionais: exigidas apenas quando o
+        // cálculo as usa — cAtivSN válido, tipo de receita bruta que exige
+        // alíquota (parametrizado na tabela de tipos) e regime que gera o
+        // tributo (para regime que não gera IBS, como o CRT=2, pIBSSN nunca é
+        // exigida: é apenas insumo da transformação de compra governamental,
+        // quando informada).
+<span class="fc bfc" id="L216" title="All 4 branches covered.">        boolean aliquotasExigidas = cAtivSNValido &amp;&amp; tipoReceita != null</span>
+<span class="fc bfc" id="L217" title="All 2 branches covered.">                &amp;&amp; Boolean.TRUE.equals(tipoReceita.getExigeAliquota());</span>
+<span class="fc bfc" id="L218" title="All 4 branches covered.">        boolean pIbsExigida = aliquotasExigidas &amp;&amp; Boolean.TRUE.equals(contexto.regime().getGeraIbs());</span>
+
+<span class="fc" id="L220">        BigDecimal pCbs = validarAliquota(item.pCBSSN(), aliquotasExigidas, collector, &quot;pCBSSN&quot;,</span>
+                CodigoValidacaoSimples.ALIQUOTA_CBS_AUSENTE, CodigoValidacaoSimples.ALIQUOTA_CBS_INVALIDA);
+<span class="fc" id="L222">        BigDecimal pIbs = validarAliquota(item.pIBSSN(), pIbsExigida, collector, &quot;pIBSSN&quot;,</span>
+                CodigoValidacaoSimples.ALIQUOTA_IBS_AUSENTE, CodigoValidacaoSimples.ALIQUOTA_IBS_INVALIDA);
+
+        // 5. Se houver erros de validação, não calcula.
+<span class="fc bfc" id="L226" title="All 2 branches covered.">        if (collector.hasErros()) {</span>
+<span class="pc bpc" id="L227" title="1 of 2 branches missed.">            return new ObjetoSimplesDomain(nObj != null ? nObj : index + 1, collector.getEstado(),</span>
+<span class="fc" id="L228">                    null, collector.getErros());</span>
+        }
+
+        // 6. Calcular, com todos os parâmetros já resolvidos (o serviço de
+        // cálculo é puro, sem acesso a banco). A compra governamental
+        // (tpEnteGov e fator de transição) vem do contexto da operação — nível
+        // de nota, como no grupo gCompraGov do DF-e — e é aplicada às alíquotas
+        // deste item.
+        try {
+<span class="fc" id="L237">            InsumoCalculoSimples insumo = new InsumoCalculoSimples(</span>
+<span class="fc" id="L238">                    contexto.regime(), tipoReceita, cAtivSNValido,</span>
+                    baseCalculo, valorIs, pIbs, pCbs,
+<span class="fc" id="L240">                    contexto.tpEnteGov(), contexto.fatorTransicaoCompraGov());</span>
+
+<span class="fc" id="L242">            ResultadoCalculoSimples resultado = calculoService.calcularItem(insumo);</span>
+
+<span class="fc" id="L244">            return new ObjetoSimplesDomain(nObj, resultado.estadoItem(), resultado.tribCalc(), null);</span>
+<span class="nc" id="L245">        } catch (Exception ex) {</span>
+<span class="nc" id="L246">            log.debug(&quot;Erro ao processar item {} (índice {}): {}&quot;,</span>
+<span class="nc bnc" id="L247" title="All 2 branches missed.">                    nObj != null ? nObj : index + 1, index, ex.getMessage());</span>
+<span class="nc" id="L248">            collector.addFalhaTecnica(ex);</span>
+<span class="nc bnc" id="L249" title="All 2 branches missed.">            return new ObjetoSimplesDomain(nObj != null ? nObj : index + 1, collector.getEstado(),</span>
+<span class="nc" id="L250">                    null, collector.getErros());</span>
+        }
+    }
+
+    /**
+     *
+     * Verificação PRIORITÁRIA de implementação do cClassTrib — a primeira
+     * consulta de banco executada para o item, antes de qualquer outra
+     * validação (base, tpRBSN, admissibilidade no tpDoc, cAtivSN, alíquotas).
+     *
+     * &lt;p&gt;Espelha o regime geral ({@code CalculoCbsIbsService}), que lança
+     * {@code ErroFaltaImplementacaoException} (CAL-007, estado
+     * {@code NAO_IMPLEMENTADO}) quando o tratamento tributário vigente da
+     * classificação possui o indicador de ajuste ({@code TRTR_IN_POSSUI_AJUSTE}):
+     * na Calculadora, esse indicador marca a classificação cujo tratamento ainda
+     * não foi implementado. Aqui a consequência é a mesma — estado
+     * {@code NAO_IMPLEMENTADO}, erro VSN-027 apontando {@code cClassTrib} — sem
+     * exceção, pelo coletor de erros do item.
+     *
+     * &lt;p&gt;A consulta restringe ao grupo da CBS (tributo 2) e filtra as três
+     * tabelas pela data do fato gerador. cClassTrib ausente não é verificado
+     * (segue para VSN-020); código desconhecido ou fora de vigência conta zero
+     * (segue para VSN-021).
+     *
+     * @return {@code true} quando o item foi marcado como {@code NAO_IMPLEMENTADO}
+     *         (o chamador deve encerrar o processamento do item)
+     *
+     */
+    private boolean cClassTribNaoImplementado(String cClassTrib, ContextoOperacaoSimples contexto,
+            ItemCollectorSimples collector) {
+<span class="fc bfc" id="L280" title="All 4 branches covered.">        if (cClassTrib == null || cClassTrib.isBlank()) {</span>
+<span class="fc" id="L281">            return false;</span>
+        }
+<span class="fc" id="L283">        String codigo = cClassTrib.trim();</span>
+
+<span class="fc bfc" id="L285" title="All 2 branches covered.">        if (classificacaoTributariaRepository.contarTratamentosNaoImplementados(codigo, contexto.data()) == 0) {</span>
+<span class="fc" id="L286">            return false;</span>
+        }
+
+<span class="fc" id="L289">        collector.addNaoImplementado(CodigoValidacaoSimples.CCLASSTRIB_NAO_IMPLEMENTADO, CAMPO_CCLASSTRIB,</span>
+<span class="fc" id="L290">                String.format(&quot;A classificação tributária '%s' ainda não possui tratamento implementado no &quot;</span>
+                        + &quot;cálculo do Simples Nacional na data '%s'. Essa funcionalidade está prevista no &quot;
+<span class="fc" id="L292">                        + &quot;roadmap e será disponibilizada em versão futura.&quot;, codigo, contexto.data()));</span>
+<span class="fc" id="L293">        return true;</span>
+    }
+
+    /**
+     *
+     * Resolve o tipo de receita bruta do item em dois passos:
+     * &lt;ol&gt;
+     * &lt;li&gt;o código tpRBSN vem do cClassTrib informado, vigente na data do fato
+     * gerador e admissível para o tpDoc da operação (via
+     * {@code TIPO_DFE_CLASSIFICACAO});&lt;/li&gt;
+     * &lt;li&gt;o efeito do código (descrição, fator de receita, exigência de
+     * alíquota, etc.) vem da tabela {@code TIPO_RECEITA_BRUTA_SIMPLES_NACIONAL},
+     * também pela vigência da data.&lt;/li&gt;
+     * &lt;/ol&gt;
+     *
+     * &lt;p&gt;Como {@code CLTR_CD} não é único (os grupos do Imposto Seletivo e da
+     * CBS colidem em códigos), a resolução do passo 1 é restrita ao grupo da
+     * CBS (tributo 2) — o filtro vive nas consultas do repositório.
+     *
+     * &lt;p&gt;Erros de item acumulados: cClassTrib ausente (VSN-020), desconhecido ou
+     * fora de vigência (VSN-021), incompatível com o tpDoc (VSN-022) e código de
+     * tpRBSN sem parametrização de efeito vigente (VSN-026).
+     *
+     * @return a linha vigente do tipo de receita bruta, ou {@code null} com o
+     *         erro adequado acumulado
+     *
+     */
+    private TipoReceitaBrutaSimples resolverTipoReceitaBruta(String cClassTrib,
+            ContextoOperacaoSimples contexto, ItemCollectorSimples collector) {
+<span class="fc bfc" id="L322" title="All 4 branches covered.">        if (cClassTrib == null || cClassTrib.isBlank()) {</span>
+<span class="fc" id="L323">            collector.addErroValidacao(CodigoValidacaoSimples.CCLASSTRIB_AUSENTE, CAMPO_CCLASSTRIB,</span>
+                    &quot;O código de classificação tributária (cClassTrib) é obrigatório e não foi informado.&quot;);
+<span class="fc" id="L325">            return null;</span>
+        }
+<span class="fc" id="L327">        String codigo = cClassTrib.trim();</span>
+
+<span class="fc" id="L329">        List&lt;ClassificacaoTributariaSimples&gt; vigentes =</span>
+<span class="fc" id="L330">                classificacaoTributariaRepository.buscarVigentes(codigo, contexto.data());</span>
+<span class="fc bfc" id="L331" title="All 2 branches covered.">        if (vigentes.isEmpty()) {</span>
+<span class="fc" id="L332">            collector.addErroValidacao(CodigoValidacaoSimples.CCLASSTRIB_DESCONHECIDO, CAMPO_CCLASSTRIB,</span>
+<span class="fc" id="L333">                    String.format(&quot;O cClassTrib '%s' não existe ou não está vigente na data '%s': &quot;</span>
+<span class="fc" id="L334">                            + &quot;o tpRBSN não pôde ser determinado.&quot;, codigo, contexto.data()));</span>
+<span class="fc" id="L335">            return null;</span>
+        }
+
+<span class="fc bfc" id="L338" title="All 2 branches covered.">        if (classificacaoTributariaRepository.contarVinculosComTpDoc(codigo, contexto.tpDoc(),</span>
+<span class="fc" id="L339">                contexto.data()) == 0) {</span>
+<span class="fc" id="L340">            collector.addErroValidacao(CodigoValidacaoSimples.CCLASSTRIB_INCOMPATIVEL_TPDOC, CAMPO_CCLASSTRIB,</span>
+<span class="fc" id="L341">                    String.format(&quot;O cClassTrib '%s' não é admissível para o tipo de documento fiscal %d.&quot;,</span>
+<span class="fc" id="L342">                            codigo, contexto.tpDoc()));</span>
+<span class="fc" id="L343">            return null;</span>
+        }
+
+<span class="fc" id="L346">        int tpRBSN = vigentes.get(0).getTpRBSN();</span>
+<span class="fc" id="L347">        TipoReceitaBrutaSimples tipoReceita =</span>
+<span class="fc" id="L348">                parametroService.buscarTipoReceitaBruta(tpRBSN, contexto.data()).orElse(null);</span>
+<span class="fc bfc" id="L349" title="All 2 branches covered.">        if (tipoReceita == null) {</span>
+<span class="fc" id="L350">            collector.addErroValidacao(CodigoValidacaoSimples.PARAMETRIZACAO_INDISPONIVEL, CAMPO_CCLASSTRIB,</span>
+<span class="fc" id="L351">                    String.format(&quot;Não há parametrização de efeito vigente para o tipo de receita bruta &quot;</span>
+<span class="fc" id="L352">                            + &quot;tpRBSN=%d na data '%s'.&quot;, tpRBSN, contexto.data()));</span>
+        }
+<span class="fc" id="L354">        return tipoReceita;</span>
+    }
+
+    /**
+     *
+     * Valida o código de atividade do Simples Nacional (cAtivSN).
+     *
+     * &lt;p&gt;Ausente, desconhecido, fora de vigência ou inadmissível para o tpDoc
+     * NÃO é erro: retorna {@code false} e o item segue para o estado
+     * {@code NAO_CALCULADO}, reportando apenas a receita bruta e o tipo de
+     * receita (NT 2026.005, seção 5.3.4, Observação 2).
+     *
+     * &lt;p&gt;A admissibilidade por documento é POR ATIVIDADE, via associativa
+     * {@code TIPO_DFE_ATIVIDADE_SIMPLES_NACIONAL}, com semântica de WHITELIST
+     * (mundo fechado): a atividade é admissível no tpDoc da operação se e
+     * somente se existe vínculo vigente na data entre a atividade e o tpDoc;
+     * sem vínculo vigente algum, a atividade não é admissível em documento
+     * nenhum. A admissibilidade é um fato afirmativo publicado por NT —
+     * ausência de publicação significa ausência de permissão. A associativa
+     * não substitui a whitelist global de tpDoc
+     * ({@code TIPO_DFE_CALCULO_SIMPLES_NACIONAL}) — são camadas distintas.
+     *
+     * &lt;p&gt;A única exceção que É erro (VSN-023, espelho da regra UB14-90 da NT,
+     * msg 1277): atividade marcada como de operações não tributáveis (coluna
+     * {@code ATSN_IN_NAO_TRIBUTAVEL}; hoje, o código '90') combinada com tipo de
+     * receita bruta vedado para não tributáveis (coluna
+     * {@code TRBS_IN_VEDADO_NAO_TRIBUTAVEL}; tpRBSN 1 a 5, que declaram receita)
+     * — contradição entre &quot;não tributável&quot; e um código que declara receita.
+     *
+     * @return {@code true} quando o código é válido para cálculo
+     *
+     */
+    private boolean validarCAtivSN(String cAtivSN, TipoReceitaBrutaSimples tipoReceita,
+            ContextoOperacaoSimples contexto, ItemCollectorSimples collector) {
+<span class="pc bpc" id="L388" title="1 of 4 branches missed.">        if (cAtivSN == null || cAtivSN.isBlank()) {</span>
+<span class="fc" id="L389">            return false;</span>
+        }
+<span class="fc" id="L391">        String codigo = cAtivSN.trim();</span>
+
+<span class="fc" id="L393">        List&lt;AtividadeSimplesNacional&gt; atividades =</span>
+<span class="fc" id="L394">                atividadeCalculoRepository.buscarVigentesPorCAtivSN(codigo, contexto.data());</span>
+<span class="fc bfc" id="L395" title="All 2 branches covered.">        if (atividades.isEmpty()) {</span>
+<span class="fc" id="L396">            return false;</span>
+        }
+<span class="fc" id="L398">        AtividadeSimplesNacional atividade = atividades.get(0);</span>
+
+<span class="fc bfc" id="L400" title="All 2 branches covered.">        if (atividadeCalculoRepository.contarVinculosComTpDoc(atividade.getId(),</span>
+<span class="fc" id="L401">                contexto.tpDoc(), contexto.data()) == 0) {</span>
+<span class="fc" id="L402">            return false;</span>
+        }
+
+<span class="pc bpc" id="L405" title="1 of 4 branches missed.">        if (Boolean.TRUE.equals(atividade.getNaoTributavel()) &amp;&amp; tipoReceita != null</span>
+<span class="fc bfc" id="L406" title="All 2 branches covered.">                &amp;&amp; Boolean.TRUE.equals(tipoReceita.getVedadoNaoTributavel())) {</span>
+<span class="fc" id="L407">            collector.addErroValidacao(CodigoValidacaoSimples.CATIVSN_INCOMPATIVEL_CCLASSTRIB, &quot;cAtivSN&quot;,</span>
+<span class="fc" id="L408">                    String.format(&quot;O código de atividade '%s' (Operações não Tributáveis) é incompatível com &quot;</span>
+<span class="fc" id="L409">                            + &quot;cClassTrib de tpRBSN=%d.&quot;, codigo, tipoReceita.getCodigo()));</span>
+        }
+<span class="fc" id="L411">        return true;</span>
+    }
+
+    /**
+     *
+     * Valida e converte uma alíquota recebida como texto. A ausência só é
+     * erro quando a alíquota é exigida pelo cálculo; valor informado inválido ou
+     * negativo é sempre erro.
+     *
+     * @return o {@link BigDecimal} convertido ou {@code null} quando ausente ou com erro
+     *
+     */
+    private BigDecimal validarAliquota(String valor, boolean exigida, ItemCollectorSimples collector, String campo,
+            CodigoValidacaoSimples codigoAusente, CodigoValidacaoSimples codigoInvalido) {
+<span class="pc bpc" id="L425" title="1 of 4 branches missed.">        if (valor == null || valor.isBlank()) {</span>
+<span class="fc bfc" id="L426" title="All 2 branches covered.">            if (exigida) {</span>
+<span class="fc" id="L427">                collector.addErroValidacao(codigoAusente, campo,</span>
+                        &quot;A alíquota é exigida para o cálculo do item e não foi informada.&quot;);
+            }
+<span class="fc" id="L430">            return null;</span>
+        }
+        try {
+<span class="fc" id="L433">            BigDecimal convertido = new BigDecimal(valor.trim());</span>
+<span class="pc bpc" id="L434" title="1 of 2 branches missed.">            if (convertido.signum() &lt; 0) {</span>
+<span class="nc" id="L435">                collector.addErroValidacao(codigoInvalido, campo,</span>
+<span class="nc" id="L436">                        String.format(&quot;O valor não pode ser negativo, recebido: '%s'.&quot;, valor));</span>
+<span class="nc" id="L437">                return null;</span>
+            }
+<span class="fc" id="L439">            return convertido;</span>
+<span class="nc" id="L440">        } catch (NumberFormatException ex) {</span>
+<span class="nc" id="L441">            collector.addErroValidacao(codigoInvalido, campo,</span>
+<span class="nc" id="L442">                    String.format(&quot;O valor não é um número decimal válido, recebido: '%s'.&quot;, valor));</span>
+<span class="nc" id="L443">            return null;</span>
+        }
+    }
+
+    /**
+     *
+     * Valida e converte um valor decimal obrigatório e não negativo recebido
+     * como texto. Acumula o erro adequado no collector, caso seja ausente
+     * ({@code codigoAusente}), inválido ou negativo ({@code codigoInvalido}).
+     *
+     * @return o {@link BigDecimal} convertido ou {@code null} em caso de erro
+     *
+     */
+    private BigDecimal validarDecimal(String valor, ItemCollectorSimples collector, String campo,
+            CodigoValidacaoSimples codigoAusente, CodigoValidacaoSimples codigoInvalido) {
+<span class="pc bpc" id="L458" title="2 of 4 branches missed.">        if (valor == null || valor.isBlank()) {</span>
+<span class="nc" id="L459">            collector.addErroValidacao(codigoAusente, campo, &quot;O campo é obrigatório e não foi informado.&quot;);</span>
+<span class="nc" id="L460">            return null;</span>
+        }
+        try {
+<span class="fc" id="L463">            BigDecimal convertido = new BigDecimal(valor.trim());</span>
+<span class="fc bfc" id="L464" title="All 2 branches covered.">            if (convertido.signum() &lt; 0) {</span>
+<span class="fc" id="L465">                collector.addErroValidacao(codigoInvalido, campo,</span>
+<span class="fc" id="L466">                        String.format(&quot;O valor não pode ser negativo, recebido: '%s'.&quot;, valor));</span>
+<span class="fc" id="L467">                return null;</span>
+            }
+<span class="fc" id="L469">            return convertido;</span>
+<span class="nc" id="L470">        } catch (NumberFormatException ex) {</span>
+<span class="nc" id="L471">            collector.addErroValidacao(codigoInvalido, campo,</span>
+<span class="nc" id="L472">                    String.format(&quot;O valor não é um número decimal válido, recebido: '%s'.&quot;, valor));</span>
+<span class="nc" id="L473">            return null;</span>
+        }
+    }
+
+    // ─── Validação global da operação ──────────────────────────────────────────
+
+    private List&lt;ErroDetalhe&gt; validarCamposGlobais(OperacaoSimplesInput operacao, String baseURL) {
+<span class="fc" id="L480">        List&lt;ErroDetalhe&gt; erros = new ArrayList&lt;&gt;();</span>
+
+<span class="pc bpc" id="L482" title="2 of 4 branches missed.">        if (operacao.id() == null || operacao.id().isBlank()) {</span>
+<span class="nc" id="L483">            erros.add(buildErroGlobal(CodigoValidacaoSimples.DADO_GLOBAL_AUSENTE, &quot;id&quot;,</span>
+                    &quot;O identificador da operação (id) é obrigatório.&quot;, baseURL));
+        }
+<span class="pc bpc" id="L486" title="2 of 4 branches missed.">        if (operacao.versao() == null || operacao.versao().isBlank()) {</span>
+<span class="nc" id="L487">            erros.add(buildErroGlobal(CodigoValidacaoSimples.DADO_GLOBAL_AUSENTE, &quot;versao&quot;,</span>
+                    &quot;A versão do payload (versao) é obrigatória.&quot;, baseURL));
+        }
+
+        // A data é validada antes do escopo porque a verificação de suporte do
+        // tpDoc é um lookup de vigência que depende dela.
+<span class="fc" id="L493">        LocalDate data = validarData(operacao.data(), erros, baseURL);</span>
+<span class="fc" id="L494">        validarEscopo(operacao, data, erros, baseURL);</span>
+<span class="fc" id="L495">        validarTpEnteGov(operacao.tpEnteGov(), erros, baseURL);</span>
+
+<span class="pc bpc" id="L497" title="1 of 4 branches missed.">        if (operacao.itens() == null || operacao.itens().isEmpty()) {</span>
+<span class="fc" id="L498">            erros.add(buildErroGlobal(CodigoValidacaoSimples.ITENS_VAZIOS, &quot;itens&quot;,</span>
+                    &quot;A lista de itens é obrigatória e não pode estar vazia.&quot;, baseURL));
+        }
+<span class="fc" id="L501">        return erros;</span>
+    }
+
+    /**
+     *
+     * Validação global de escopo do cálculo (NT 2026.005; regras C21a-10/20/30,
+     * msg 1275). Qualquer falha rejeita a operação inteira com HTTP 422.
+     *
+     * &lt;p&gt;Combinações que CALCULAM: CRT=1 (sem tpRegimeIBSCBS), CRT=2 (sem
+     * tpRegimeIBSCBS) e CRT=3 + tpRegimeIBSCBS=2. Todo o resto é rejeitado:
+     * tpDoc ausente/não suportado, CRT ausente/inválido, MEI (CRT=4),
+     * regime regular (tpRegimeIBSCBS=1), regime normal puro (CRT=3 sem
+     * tpRegimeIBSCBS=2) e as incoerências CRT × tpRegimeIBSCBS.
+     *
+     * &lt;p&gt;O suporte do tpDoc é parametrizado na tabela
+     * {@code TIPO_DFE_CALCULO_SIMPLES_NACIONAL}, pela vigência da data do fato
+     * gerador; quando a data é inválida (já reportada como VSN-012), a
+     * verificação de suporte é omitida.
+     *
+     */
+    private void validarEscopo(OperacaoSimplesInput operacao, LocalDate data,
+            List&lt;ErroDetalhe&gt; erros, String baseURL) {
+        // tpDoc: obrigatório e suportado pelo cálculo na data do fato gerador.
+<span class="pc bpc" id="L524" title="1 of 4 branches missed.">        if (operacao.tpDoc() == null || operacao.tpDoc().isBlank()) {</span>
+<span class="fc" id="L525">            erros.add(buildErroGlobal(CodigoValidacaoSimples.TPDOC_AUSENTE, &quot;tpDoc&quot;,</span>
+                    &quot;O tipo de documento fiscal (tpDoc) é obrigatório e não foi informado.&quot;, baseURL));
+        } else {
+<span class="fc" id="L528">            Integer tpDoc = parseInteiro(operacao.tpDoc());</span>
+<span class="pc bpc" id="L529" title="1 of 2 branches missed.">            if (tpDoc == null) {</span>
+<span class="nc" id="L530">                erros.add(buildErroGlobal(CodigoValidacaoSimples.TPDOC_NAO_SUPORTADO, &quot;tpDoc&quot;,</span>
+<span class="nc" id="L531">                        String.format(&quot;Tipo de documento não suportado pelo cálculo do Simples Nacional, &quot;</span>
+<span class="nc" id="L532">                                + &quot;recebido: '%s'.&quot;, operacao.tpDoc()), baseURL));</span>
+<span class="fc bfc" id="L533" title="All 2 branches covered.">            } else if (parametroService.tpDocSemTratamentoCalculadora(tpDoc)) {</span>
+<span class="fc" id="L534">                erros.add(buildErroGlobal(CodigoValidacaoSimples.TPDOC_NAO_SUPORTADO, &quot;tpDoc&quot;,</span>
+<span class="fc" id="L535">                        String.format(&quot;Tipo de documento fiscal (tpDoc) de código %d ainda não possui &quot;</span>
+                                + &quot;tratamento implementado no cálculo do Simples Nacional.&quot;, tpDoc), baseURL));
+<span class="fc bfc" id="L537" title="All 4 branches covered.">            } else if (data != null &amp;&amp; !parametroService.tpDocSuportado(tpDoc, data)) {</span>
+<span class="fc" id="L538">                erros.add(buildErroGlobal(CodigoValidacaoSimples.TPDOC_NAO_SUPORTADO, &quot;tpDoc&quot;,</span>
+<span class="fc" id="L539">                        String.format(&quot;Tipo de documento não suportado pelo cálculo do Simples Nacional, &quot;</span>
+<span class="fc" id="L540">                                + &quot;recebido: '%s'.&quot;, operacao.tpDoc()), baseURL));</span>
+            }
+        }
+
+        // CRT: obrigatório, em {1, 2, 3, 4}.
+<span class="fc" id="L545">        Integer crt = parseInteiro(operacao.CRT());</span>
+<span class="pc bpc" id="L546" title="2 of 6 branches missed.">        if (crt == null || crt &lt; 1 || crt &gt; 4) {</span>
+<span class="fc" id="L547">            erros.add(buildErroGlobal(CodigoValidacaoSimples.CRT_INVALIDO, CAMPO_CRT,</span>
+<span class="fc" id="L548">                    String.format(&quot;O Código de Regime Tributário (CRT) é obrigatório e deve ser 1, 2, 3 ou 4, &quot;</span>
+<span class="fc" id="L549">                            + &quot;recebido: '%s'.&quot;, operacao.CRT()), baseURL));</span>
+<span class="fc" id="L550">            return;</span>
+        }
+
+        // tpRegimeIBSCBS: opcional; quando informado, em {1, 2}.
+<span class="pc bpc" id="L554" title="1 of 4 branches missed.">        boolean tpRegimeInformado = operacao.tpRegimeIBSCBS() != null &amp;&amp; !operacao.tpRegimeIBSCBS().isBlank();</span>
+<span class="fc" id="L555">        Integer tpRegime = null;</span>
+<span class="fc bfc" id="L556" title="All 2 branches covered.">        if (tpRegimeInformado) {</span>
+<span class="fc" id="L557">            tpRegime = parseInteiro(operacao.tpRegimeIBSCBS());</span>
+<span class="pc bpc" id="L558" title="1 of 6 branches missed.">            if (tpRegime == null || (tpRegime != 1 &amp;&amp; tpRegime != 2)) {</span>
+<span class="fc" id="L559">                erros.add(buildErroGlobal(CodigoValidacaoSimples.TPREGIMEIBSCBS_INVALIDO, CAMPO_TPREGIMEIBSCBS,</span>
+<span class="fc" id="L560">                        String.format(&quot;Tipo de regime de apuração do IBS/CBS inválido, recebido: '%s' &quot;</span>
+<span class="fc" id="L561">                                + &quot;(esperado 1 ou 2).&quot;, operacao.tpRegimeIBSCBS()), baseURL));</span>
+<span class="fc" id="L562">                return;</span>
+            }
+        }
+
+        // Incoerências CRT × tpRegimeIBSCBS (regras C21a-10/20/30 da NT, msg 1275).
+<span class="pc bpc" id="L567" title="1 of 4 branches missed.">        if (crt == 4 &amp;&amp; tpRegimeInformado) {</span>
+<span class="nc" id="L568">            erros.add(buildErroGlobal(CodigoValidacaoSimples.TPREGIMEIBSCBS_INCOMPATIVEL, CAMPO_TPREGIMEIBSCBS,</span>
+                    &quot;CRT=4 (MEI) não admite tpRegimeIBSCBS algum (regra C21a-30 da NT 2026.005).&quot;, baseURL));
+<span class="fc bfc" id="L570" title="All 6 branches covered.">        } else if ((crt == 1 || crt == 2) &amp;&amp; Integer.valueOf(2).equals(tpRegime)) {</span>
+<span class="fc" id="L571">            erros.add(buildErroGlobal(CodigoValidacaoSimples.TPREGIMEIBSCBS_INCOMPATIVEL, CAMPO_TPREGIMEIBSCBS,</span>
+<span class="fc" id="L572">                    String.format(&quot;CRT=%d não admite tpRegimeIBSCBS=2 (regra C21a-10 da NT 2026.005).&quot;, crt),</span>
+                    baseURL));
+<span class="pc bpc" id="L574" title="1 of 4 branches missed.">        } else if (crt == 3 &amp;&amp; Integer.valueOf(1).equals(tpRegime)) {</span>
+<span class="nc" id="L575">            erros.add(buildErroGlobal(CodigoValidacaoSimples.TPREGIMEIBSCBS_INCOMPATIVEL, CAMPO_TPREGIMEIBSCBS,</span>
+                    &quot;CRT=3 não admite tpRegimeIBSCBS=1 (regra C21a-20 da NT 2026.005).&quot;, baseURL));
+        }
+
+        // Fora do escopo do cálculo assistido do Simples Nacional.
+<span class="fc bfc" id="L580" title="All 2 branches covered.">        if (crt == 4) {</span>
+<span class="fc" id="L581">            erros.add(buildErroGlobal(CodigoValidacaoSimples.OPERACAO_FORA_ESCOPO, CAMPO_CRT,</span>
+                    &quot;Operação fora do escopo do cálculo assistido do Simples Nacional: MEI (CRT=4) &quot;
+                            + &quot;está fora do Evento de Tributação do Simples Nacional.&quot;, baseURL));
+        }
+<span class="fc bfc" id="L585" title="All 2 branches covered.">        if (Integer.valueOf(1).equals(tpRegime)) {</span>
+<span class="fc" id="L586">            erros.add(buildErroGlobal(CodigoValidacaoSimples.OPERACAO_FORA_ESCOPO, CAMPO_TPREGIMEIBSCBS,</span>
+                    &quot;Operação fora do escopo do cálculo assistido do Simples Nacional: optante pelo regime &quot;
+                            + &quot;regular do IBS/CBS (tpRegimeIBSCBS=1) tem a tributação calculada pelo regime &quot;
+                            + &quot;regular, não por este endpoint.&quot;, baseURL));
+        }
+<span class="pc bpc" id="L591" title="1 of 4 branches missed.">        if (crt == 3 &amp;&amp; !tpRegimeInformado) {</span>
+<span class="fc" id="L592">            erros.add(buildErroGlobal(CodigoValidacaoSimples.OPERACAO_FORA_ESCOPO, CAMPO_CRT,</span>
+                    &quot;Operação fora do escopo do cálculo assistido do Simples Nacional: CRT=3 sem &quot;
+                            + &quot;tpRegimeIBSCBS=2 (regime normal puro) não é Simples Nacional.&quot;, baseURL));
+        }
+<span class="fc" id="L596">    }</span>
+
+    /**
+     * Validação GLOBAL do tipo de ente governamental (compra governamental),
+     * quando informado: deve ser 1 (União), 2 (Estado), 3 (DF) ou 4 (Município).
+     *
+     * &lt;p&gt;O campo é da OPERAÇÃO — espelha a tag {@code gCompraGov/tpEnteGov} da
+     * identificação da nota (grupo B/ide do leiaute do DF-e, NT 2025.002-RTC):
+     * o ente público adquirente é o destinatário do documento e não varia por
+     * item. Valor fora do domínio rejeita a operação inteira (VSN-024,
+     * HTTP 422).
+     */
+    private void validarTpEnteGov(String tpEnteGov, List&lt;ErroDetalhe&gt; erros, String baseURL) {
+<span class="pc bpc" id="L609" title="1 of 4 branches missed.">        if (tpEnteGov == null || tpEnteGov.isBlank()) {</span>
+<span class="fc" id="L610">            return;</span>
+        }
+<span class="fc" id="L612">        Integer valor = parseInteiro(tpEnteGov);</span>
+<span class="pc bpc" id="L613" title="2 of 6 branches missed.">        if (valor == null || valor &lt; 1 || valor &gt; 4) {</span>
+<span class="fc" id="L614">            erros.add(buildErroGlobal(CodigoValidacaoSimples.TPENTEGOV_INVALIDO, CAMPO_TPENTEGOV,</span>
+<span class="fc" id="L615">                    String.format(&quot;Tipo de ente governamental inválido, recebido: '%s' (esperado 1, 2, 3 ou 4).&quot;,</span>
+                            tpEnteGov), baseURL));
+        }
+<span class="fc" id="L618">    }</span>
+
+    /**
+     * Resolve o regime de cálculo a partir de uma operação JÁ APROVADA pela
+     * validação de escopo (as combinações restantes são exatamente as que
+     * calculam). O comportamento do regime vem da tabela
+     * {@code REGIME_APURACAO_SIMPLES_NACIONAL}, resolvida na sequência.
+     */
+    private RegimeCalculoSimplesEnum resolverRegime(OperacaoSimplesInput operacao) {
+<span class="fc" id="L627">        int crt = Integer.parseInt(operacao.CRT().trim());</span>
+<span class="pc bpc" id="L628" title="1 of 3 branches missed.">        return switch (crt) {</span>
+<span class="fc" id="L629">            case 1 -&gt; RegimeCalculoSimplesEnum.CRT_1;</span>
+<span class="fc" id="L630">            case 2 -&gt; RegimeCalculoSimplesEnum.CRT_2;</span>
+<span class="nc" id="L631">            default -&gt; RegimeCalculoSimplesEnum.CRT_3_TPREGIME_2;</span>
+        };
+    }
+
+    /**
+     * Valida a data do fato gerador e a converte.
+     *
+     * @return a data convertida, ou {@code null} (com o erro VSN-012 acumulado)
+     *         quando ausente ou inválida
+     */
+    private LocalDate validarData(String data, List&lt;ErroDetalhe&gt; erros, String baseURL) {
+<span class="pc bpc" id="L642" title="2 of 4 branches missed.">        if (data == null || data.isBlank()) {</span>
+<span class="nc" id="L643">            erros.add(buildErroGlobal(CodigoValidacaoSimples.DATA_INVALIDA, &quot;data&quot;,</span>
+                    &quot;A data do fato gerador é obrigatória.&quot;, baseURL));
+<span class="nc" id="L645">            return null;</span>
+        }
+        try {
+<span class="fc" id="L648">            return LocalDate.parse(data.trim());</span>
+<span class="fc" id="L649">        } catch (DateTimeParseException ex) {</span>
+<span class="fc" id="L650">            erros.add(buildErroGlobal(CodigoValidacaoSimples.DATA_INVALIDA, &quot;data&quot;,</span>
+<span class="fc" id="L651">                    String.format(&quot;Data inválida, recebido: '%s' (esperado YYYY-MM-DD).&quot;, data), baseURL));</span>
+<span class="fc" id="L652">            return null;</span>
+        }
+    }
+
+    /** Converte texto em inteiro de forma tolerante ({@code null} quando inválido). */
+    private Integer parseInteiro(String valor) {
+<span class="pc bpc" id="L658" title="1 of 4 branches missed.">        if (valor == null || valor.isBlank()) {</span>
+<span class="fc" id="L659">            return null;</span>
+        }
+        try {
+<span class="fc" id="L662">            return Integer.valueOf(valor.trim());</span>
+<span class="nc" id="L663">        } catch (NumberFormatException ex) {</span>
+<span class="nc" id="L664">            return null;</span>
+        }
+    }
+
+    private ErroDetalhe buildErroGlobal(CodigoValidacaoSimples codigo, String campo, String detail,
+            String baseURL) {
+<span class="fc" id="L670">        String pointer = &quot;#/&quot; + campo;</span>
+<span class="fc" id="L671">        String type = String.format(</span>
+<span class="fc" id="L672">                &quot;%s/calculadora/observabilidade/simples-nacional/erros?codigo=%s&quot;, baseURL, codigo.getCode());</span>
+<span class="fc" id="L673">        return new ErroDetalhe(type, codigo.getTitulo(), codigo.getCode(), pointer, detail);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

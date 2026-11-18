@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TotalSimplesDomain.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.simplesnacional.model.output</a> &gt; <span class="el_source">TotalSimplesDomain.java</span></div><h1>TotalSimplesDomain.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.simplesnacional.model.output;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Stream;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import br.gov.serpro.rtc.shared.serializer.BigDecimalTDec1302Serializer;
+import br.gov.serpro.rtc.shared.util.ArredondamentoUtils;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
+
+/**
+ *
+ * Total consolidado do Simples Nacional, espelhando o grupo de totais do
+ * Evento de Tributação do Simples Nacional (NT 2026.005).
+ *
+ * &lt;p&gt;Regras de totalização: itens {@code CALCULADO} contribuem para todos os
+ * totais; itens {@code NAO_CALCULADO} contribuem APENAS para {@code vRBSNtot}
+ * (os demais campos ficam ausentes no {@code tribCalc} deles e são ignorados);
+ * itens com erro não contribuem para nada.
+ *
+ * Todas as somas são feitas via {@link ArredondamentoUtils}.
+ *
+ * &lt;p&gt;Record com {@code @Builder} (8 componentes, construção condicional na
+ * fábrica {@link #create(List)}).
+ *
+ */
+@Builder
+@JsonInclude(NON_NULL)
+@JsonPropertyOrder({ &quot;vRBSNtot&quot;, &quot;vBC&quot;, &quot;vIBSSNtot&quot;, &quot;vIBSSNtotPendSusp&quot;, &quot;vCBSSNtot&quot;, &quot;vCBSSNtotPendSusp&quot;, &quot;totalIs&quot;,
+        &quot;totalTributos&quot; })
+<span class="fc" id="L41">public record TotalSimplesDomain(</span>
+
+        @JsonProperty(&quot;vRBSNtot&quot;)
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(name = &quot;vRBSNtot&quot;, description = &quot;Soma de vRBSNitem dos itens CALCULADO e NAO_CALCULADO (NT 2026.005)&quot;)
+        BigDecimal vRBSNtot,
+
+        @JsonProperty(&quot;vBC&quot;)
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(name = &quot;vBC&quot;, description = &quot;Soma de vBC (base de cálculo de IBS/CBS) dos itens CALCULADO. &quot;
+                + &quot;Itens NAO_CALCULADO não têm vBC e ficam fora desta soma; suprimido quando nenhum item o tem&quot;)
+        BigDecimal vBC,
+
+        @JsonProperty(&quot;vIBSSNtot&quot;)
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(name = &quot;vIBSSNtot&quot;, description = &quot;Soma de vIBSSN dos itens calculados. Suprimido quando nenhum item gera IBS (CRT=2)&quot;)
+        BigDecimal vIBSSNtot,
+
+        @JsonProperty(&quot;vIBSSNtotPendSusp&quot;)
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(name = &quot;vIBSSNtotPendSusp&quot;, description = &quot;Soma de vIBSPendSusp dos itens calculados. Suprimido quando nenhum item gera IBS (CRT=2)&quot;)
+        BigDecimal vIBSSNtotPendSusp,
+
+        @JsonProperty(&quot;vCBSSNtot&quot;)
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(name = &quot;vCBSSNtot&quot;, description = &quot;Soma de vCBSSN dos itens calculados&quot;)
+        BigDecimal vCBSSNtot,
+
+        @JsonProperty(&quot;vCBSSNtotPendSusp&quot;)
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(name = &quot;vCBSSNtotPendSusp&quot;, description = &quot;Soma de vCBSPendSusp dos itens calculados&quot;)
+        BigDecimal vCBSSNtotPendSusp,
+
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(description = &quot;Soma de IS.valor dos itens calculados (conveniência do projeto: o IS não integra o evento da NT)&quot;)
+        BigDecimal totalIs,
+
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(description = &quot;vIBSSNtot + vCBSSNtot + totalIs (somente os valores devidos)&quot;)
+        BigDecimal totalTributos) {
+
+    /**
+     *
+     * Consolida os totais a partir dos itens com {@code tribCalc}
+     * ({@code CALCULADO} e {@code NAO_CALCULADO}).
+     *
+     * &lt;p&gt;Cada campo soma apenas os valores presentes nos itens; campo sem
+     * nenhum valor presente fica nulo (suprimido na serialização) — é assim que
+     * os itens {@code NAO_CALCULADO} contribuem apenas para {@code vRBSNtot} e
+     * que os totais de IBS somem para CRT=2.
+     *
+     * Toda totalização passa por {@link ArredondamentoUtils#totalizar(Stream)}.
+     *
+     * @param objetos itens com estado {@code CALCULADO} ou {@code NAO_CALCULADO} (com {@code tribCalc})
+     * @return total consolidado
+     *
+     */
+    public static TotalSimplesDomain create(List&lt;ObjetoSimplesDomain&gt; objetos) {
+<span class="fc" id="L99">        BigDecimal vIBSSNtot = somarPresentes(objetos, TributosSimplesDomain::vIBSSN);</span>
+<span class="fc" id="L100">        BigDecimal vCBSSNtot = somarPresentes(objetos, TributosSimplesDomain::vCBSSN);</span>
+<span class="fc" id="L101">        BigDecimal totalIs = somarPresentes(objetos,</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">                trib -&gt; trib.IS() != null ? trib.IS().valor() : null);</span>
+
+<span class="fc" id="L104">        BigDecimal totalTributos = null;</span>
+<span class="pc bpc" id="L105" title="1 of 6 branches missed.">        if (vIBSSNtot != null || vCBSSNtot != null || totalIs != null) {</span>
+<span class="fc" id="L106">            totalTributos = ArredondamentoUtils.totalizar(</span>
+<span class="fc" id="L107">                    Stream.of(vIBSSNtot, vCBSSNtot, totalIs).filter(Objects::nonNull));</span>
+        }
+
+<span class="fc" id="L110">        return TotalSimplesDomain.builder()</span>
+<span class="fc" id="L111">                .vRBSNtot(somarPresentes(objetos, TributosSimplesDomain::vRBSNitem))</span>
+<span class="fc" id="L112">                .vBC(somarPresentes(objetos, TributosSimplesDomain::vBC))</span>
+<span class="fc" id="L113">                .vIBSSNtot(vIBSSNtot)</span>
+<span class="fc" id="L114">                .vIBSSNtotPendSusp(somarPresentes(objetos, TributosSimplesDomain::vIBSPendSusp))</span>
+<span class="fc" id="L115">                .vCBSSNtot(vCBSSNtot)</span>
+<span class="fc" id="L116">                .vCBSSNtotPendSusp(somarPresentes(objetos, TributosSimplesDomain::vCBSPendSusp))</span>
+<span class="fc" id="L117">                .totalIs(totalIs)</span>
+<span class="fc" id="L118">                .totalTributos(totalTributos)</span>
+<span class="fc" id="L119">                .build();</span>
+    }
+
+    /**
+     * Soma os valores não nulos do campo extraído; retorna {@code null} quando
+     * nenhum item apresenta o campo (para a supressão de tags da NT).
+     */
+    private static BigDecimal somarPresentes(List&lt;ObjetoSimplesDomain&gt; objetos,
+            Function&lt;TributosSimplesDomain, BigDecimal&gt; campo) {
+<span class="fc" id="L128">        List&lt;BigDecimal&gt; valores = objetos.stream()</span>
+<span class="fc" id="L129">                .map(o -&gt; campo.apply(o.tribCalc()))</span>
+<span class="fc" id="L130">                .filter(Objects::nonNull)</span>
+<span class="fc" id="L131">                .toList();</span>
+<span class="fc bfc" id="L132" title="All 2 branches covered.">        return valores.isEmpty() ? null : ArredondamentoUtils.totalizar(valores.stream());</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

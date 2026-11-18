@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CaffeineCacheConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.config.cache</a> &gt; <span class="el_source">CaffeineCacheConfig.java</span></div><h1>CaffeineCacheConfig.java</h1><pre class="source lang-java linenums">/*
+ * Versão de Homologação/Testes
+ */
+package br.gov.serpro.rtc.config.cache;
+
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.caffeine.CaffeineCacheManager;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
+
+import io.micrometer.core.instrument.Gauge;
+import io.micrometer.core.instrument.MeterRegistry;
+
+/**
+ * Configura os caches Caffeine da aplicação e registra métricas de utilização.
+ */
+@EnableCaching
+@EnableConfigurationProperties(CacheSpecs.class)
+@Configuration
+<span class="fc" id="L25">public class CaffeineCacheConfig {</span>
+
+	@Bean
+	CacheManager cacheManager(CacheSpecs cacheSpec, MeterRegistry meterRegistry) {
+<span class="fc" id="L29">	    final CaffeineCacheManager manager = new CaffeineCacheManager();</span>
+<span class="fc" id="L30">        cacheSpec</span>
+<span class="fc" id="L31">                .specs()</span>
+<span class="fc" id="L32">                .parallelStream()</span>
+<span class="fc" id="L33">                .forEach(t -&gt; buildCache(manager, t, meterRegistry));</span>
+<span class="fc" id="L34">        return manager;</span>
+    }
+
+	private static void buildCache(CaffeineCacheManager manager, CacheSpecs.CacheSpec cacheConfig, MeterRegistry meterRegistry) {
+<span class="fc" id="L38">		final Cache&lt;Object, Object&gt; cache = Caffeine.newBuilder()</span>
+<span class="fc" id="L39">				.expireAfterAccess(cacheConfig.expireAfterAccess())</span>
+<span class="fc" id="L40">				.initialCapacity(cacheConfig.initialCapacity())</span>
+<span class="fc" id="L41">				.maximumSize(cacheConfig.maximumSize())</span>
+<span class="fc" id="L42">				.recordStats()</span>
+<span class="fc" id="L43">				.build();</span>
+<span class="fc" id="L44">		manager.registerCustomCache(cacheConfig.name(), cache);</span>
+
+		// Registra a métrica customizada de ocupação percentual
+<span class="fc" id="L47">        Gauge.builder(</span>
+                &quot;cache_occupancy_percent&quot;,
+                cache,
+                c -&gt; {
+<span class="nc" id="L51">                    long size = c.estimatedSize();</span>
+<span class="nc" id="L52">                    long maxSize = cacheConfig.maximumSize();</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">                    return maxSize &gt; 0 ? (size * 100.0) / maxSize : 0.0;</span>
+                })
+<span class="fc" id="L55">			.description(&quot;Percentual de ocupação do cache em relação ao tamanho máximo configurado&quot;)</span>
+<span class="fc" id="L56">			.tag(&quot;cache&quot;, cacheConfig.name())</span>
+<span class="fc" id="L57">			.tag(&quot;cache_manager&quot;, &quot;cacheManager&quot;)</span>
+<span class="fc" id="L58">			.tag(&quot;name&quot;, cacheConfig.name())</span>
+<span class="fc" id="L59">			.register(meterRegistry);</span>
+
+		// Registra a métrica com o tamanho máximo configurado do cache
+<span class="fc" id="L62">		Gauge.builder(</span>
+				&quot;cache_max_size&quot;,
+				cacheConfig,
+				CacheSpecs.CacheSpec::maximumSize)
+<span class="fc" id="L66">			.description(&quot;Tamanho máximo configurado do cache&quot;)</span>
+<span class="fc" id="L67">			.tag(&quot;cache&quot;, cacheConfig.name())</span>
+<span class="fc" id="L68">			.tag(&quot;cache_manager&quot;, &quot;cacheManager&quot;)</span>
+<span class="fc" id="L69">			.tag(&quot;name&quot;, cacheConfig.name())</span>
+<span class="fc" id="L70">			.register(meterRegistry);</span>
+<span class="fc" id="L71">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

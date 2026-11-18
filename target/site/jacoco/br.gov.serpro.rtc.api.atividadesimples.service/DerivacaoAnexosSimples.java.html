@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DerivacaoAnexosSimples.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.atividadesimples.service</a> &gt; <span class="el_source">DerivacaoAnexosSimples.java</span></div><h1>DerivacaoAnexosSimples.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.atividadesimples.service;
+
+import java.util.List;
+import java.util.Set;
+
+import br.gov.serpro.rtc.api.atividadesimples.dto.ModoFatorR;
+
+/**
+ *
+ * Regra pura de derivação da disponibilidade de uma atividade do Simples
+ * Nacional frente à configuração de anexos informada pelo usuário.
+ *
+ * &lt;p&gt;
+ *
+ * ISOLADO.
+ *
+ * Vive sob {@code br.gov.serpro.rtc.api.atividadesimples} e não depende do
+ * pacote {@code simplesnacional} nem do domínio do regime geral. Classe
+ * utilitária sem estado, fácil de testar unitariamente — é o ÚNICO lugar onde
+ * a regra de derivação de {@code disponivel}, {@code anexosFaltantes} e
+ * {@code modoFatorR} existe.
+ *
+ * &lt;p&gt;
+ *
+ * Convenção do parâmetro {@code anexosConfigurados}:
+ * {@code null} = sem filtro (todos os anexos I..V configurados);
+ * conjunto vazio = nenhum anexo configurado.
+ *
+ */
+public final class DerivacaoAnexosSimples {
+
+    /** Anexos válidos do Simples Nacional, na ordem canônica dos romanos. */
+<span class="fc" id="L33">    public static final List&lt;String&gt; ANEXOS_VALIDOS = List.of(&quot;I&quot;, &quot;II&quot;, &quot;III&quot;, &quot;IV&quot;, &quot;V&quot;);</span>
+
+    private DerivacaoAnexosSimples() {
+    }
+
+    /**
+     * Resultado da derivação: os três campos adicionados ao contrato de saída.
+     */
+<span class="fc" id="L41">    public record Derivacao(boolean disponivel, List&lt;String&gt; anexosFaltantes, ModoFatorR modoFatorR) {</span>
+    }
+
+    /**
+     * Deriva {@code disponivel}, {@code anexosFaltantes} e {@code modoFatorR}
+     * para uma atividade cujos anexos são {@code anexoSemFatorR} e
+     * {@code anexoComFatorR} (ambos anuláveis; ambos nulos = atividade sem
+     * anexo — ex.: código 90 —, sempre disponível).
+     *
+     * @throws IllegalStateException se {@code anexoComFatorR != null} com
+     *         {@code anexoSemFatorR == null} — não existe atividade &quot;só com
+     *         Fator R&quot;; dado inconsistente no banco deve falhar cedo.
+     */
+    public static Derivacao derivar(String anexoSemFatorR, String anexoComFatorR, Set&lt;String&gt; anexosConfigurados) {
+<span class="fc bfc" id="L55" title="All 4 branches covered.">        if (anexoComFatorR != null &amp;&amp; anexoSemFatorR == null) {</span>
+<span class="fc" id="L56">            throw new IllegalStateException(</span>
+                    &quot;Atividade inconsistente: anexoComFatorR (&quot; + anexoComFatorR
+                            + &quot;) preenchido sem anexoSemFatorR. Não existe atividade \&quot;só com Fator R\&quot;; corrija o banco.&quot;);
+        }
+
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        Set&lt;String&gt; configurados = anexosConfigurados == null ? Set.copyOf(ANEXOS_VALIDOS) : anexosConfigurados;</span>
+
+<span class="fc" id="L63">        List&lt;String&gt; anexosPossiveis = ANEXOS_VALIDOS.stream()</span>
+<span class="fc bfc" id="L64" title="All 4 branches covered.">                .filter(anexo -&gt; anexo.equals(anexoSemFatorR) || anexo.equals(anexoComFatorR))</span>
+<span class="fc" id="L65">                .toList();</span>
+
+<span class="fc" id="L67">        List&lt;String&gt; anexosFaltantes = anexosPossiveis.stream()</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">                .filter(anexo -&gt; !configurados.contains(anexo))</span>
+<span class="fc" id="L69">                .toList();</span>
+
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        boolean disponivel = anexosPossiveis.isEmpty()</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">                || anexosPossiveis.stream().anyMatch(configurados::contains);</span>
+
+        ModoFatorR modoFatorR;
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        if (anexoComFatorR == null) {</span>
+<span class="fc" id="L76">            modoFatorR = ModoFatorR.NAO_APLICAVEL;</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        } else if (configurados.contains(anexoComFatorR)) {</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">            modoFatorR = configurados.contains(anexoSemFatorR) ? ModoFatorR.OPCIONAL : ModoFatorR.OBRIGATORIO;</span>
+        } else {
+<span class="fc" id="L80">            modoFatorR = ModoFatorR.INDISPONIVEL;</span>
+        }
+
+<span class="fc" id="L83">        return new Derivacao(disponivel, anexosFaltantes, modoFatorR);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

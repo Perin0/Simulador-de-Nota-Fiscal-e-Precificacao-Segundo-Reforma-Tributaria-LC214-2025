@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CacheSpecs.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.config.cache</a> &gt; <span class="el_source">CacheSpecs.java</span></div><h1>CacheSpecs.java</h1><pre class="source lang-java linenums">/*
+ * Versão de Homologação/Testes
+ */
+package br.gov.serpro.rtc.config.cache;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+/**
+ * Mapeia as propriedades dos caches Caffeine da aplicação a partir do prefixo
+ * {@code cache}. Centraliza nome do cache, expiração após acesso, capacidade
+ * inicial e tamanho máximo de cada região de cache.
+ *
+ * &lt;p&gt;Record imutável populado por constructor binding do
+ * {@code @ConfigurationProperties}: por isso NÃO é {@code @Component} — o bean
+ * é habilitado via {@code @EnableConfigurationProperties} em
+ * {@link CaffeineCacheConfig}.
+ */
+@ConfigurationProperties(prefix = &quot;cache&quot;)
+<span class="fc" id="L22">public record CacheSpecs(List&lt;CacheSpec&gt; specs) {</span>
+
+    /** Parâmetros de uma região de cache Caffeine. */
+<span class="fc" id="L25">    public record CacheSpec(</span>
+            String name,
+            Duration expireAfterAccess,
+            int initialCapacity,
+            int maximumSize) {
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

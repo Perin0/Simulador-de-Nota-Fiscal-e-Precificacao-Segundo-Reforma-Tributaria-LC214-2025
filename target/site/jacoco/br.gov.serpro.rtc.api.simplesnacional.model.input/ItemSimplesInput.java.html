@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ItemSimplesInput.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.simplesnacional.model.input</a> &gt; <span class="el_source">ItemSimplesInput.java</span></div><h1>ItemSimplesInput.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.simplesnacional.model.input;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+
+/**
+ *
+ * Item de entrada do endpoint do Simples Nacional (NT 2026.005).
+ *
+ * &lt;p&gt;Recebe a base de cálculo, o valor do Imposto Seletivo já calculado (vIS),
+ * o código de classificação tributária ({@code cClassTrib}, que resolve o
+ * {@code tpRBSN} internamente), o código oficial de atividade ({@code cAtivSN})
+ * e as alíquotas efetivas do Simples ({@code pIBSSN}/{@code pCBSSN}). Valores e
+ * alíquotas são recebidos como texto para permitir validação tolerante e a
+ * emissão dos códigos {@code VSN-} adequados.
+ *
+ * &lt;p&gt;O tipo de ente governamental adquirente ({@code tpEnteGov}) NÃO é campo de
+ * item: no leiaute do DF-e o grupo {@code gCompraGov} pertence à identificação
+ * da nota (grupo B/ide) — a tag é recebida em
+ * {@link OperacaoSimplesInput#tpEnteGov()} e vale para todos os itens.
+ *
+ */
+<span class="fc" id="L24">public record ItemSimplesInput(</span>
+
+        @Schema(name = &quot;numero&quot;, description = &quot;Número do item na operação&quot;, example = &quot;1&quot;)
+        Integer numero,
+
+        @JsonProperty(&quot;cAtivSN&quot;)
+        @Schema(name = &quot;cAtivSN&quot;, description = &quot;Código oficial de Atividade do Simples Nacional (2 caracteres, &quot;
+                + &quot;com zero à esquerda; NT 2026.005), validado contra o catálogo de atividades vigente na data. &quot;
+                + &quot;A restrição de documento é POR ATIVIDADE: atividade sem vínculo na associativa de tipos de DFE é &quot;
+                + &quot;admissível em qualquer tpDoc suportado; com vínculos, somente nos tpDoc vinculados. Ausente, &quot;
+                + &quot;desconhecido, fora de vigência ou inadmissível para o tpDoc: o item não é calculado (estado &quot;
+                + &quot;NAO_CALCULADO), sem erro&quot;, example = &quot;01&quot;, nullable = true)
+        String cAtivSN,
+
+        @JsonProperty(&quot;cClassTrib&quot;)
+        @Schema(name = &quot;cClassTrib&quot;, description = &quot;Código de Classificação Tributária do IBS e da CBS (6 dígitos). &quot;
+                + &quot;Obrigatório: resolve internamente o Tipo de Receita Bruta do Simples Nacional (tpRBSN, NT 2026.005)&quot;,
+                example = &quot;000001&quot;)
+        String cClassTrib,
+
+        @Schema(name = &quot;baseCalculo&quot;, description = &quot;Base de cálculo do item: vProd + vFrete + vSeg + vOutro - vDesc, &quot;
+                + &quot;SEM o valor do Imposto Seletivo (decimal como string). O nome é deliberado: o contrato separa &quot;
+                + &quot;semanticamente a base sem vIS (baseCalculo) do valorImpostoSeletivo, e essa separação sobrevive &quot;
+                + &quot;a qualquer mudança futura na composição legal da RBSNitem sem quebra de compatibilidade&quot;,
+                example = &quot;950.00&quot;)
+        String baseCalculo,
+
+        @Schema(name = &quot;valorImpostoSeletivo&quot;, description = &quot;Valor do Imposto Seletivo já calculado (vIS). &quot;
+                + &quot;\&quot;0.00\&quot; quando não há IS. NÃO compõe a receita bruta do item (vRBSNitem) — parametrização &quot;
+                + &quot;por vigência, atualmente desligada em todas as vigências; o valor é apenas repassado na saída &quot;
+                + &quot;e somado ao totalItem&quot;,
+                example = &quot;50.00&quot;)
+        String valorImpostoSeletivo,
+
+        @JsonProperty(&quot;pIBSSN&quot;)
+        @Schema(name = &quot;pIBSSN&quot;, description = &quot;Alíquota efetiva do Simples Nacional para o IBS, em pontos &quot;
+                + &quot;percentuais (NT 2026.005). Exigida apenas quando o cálculo a usa (cAtivSN válido, regime que &quot;
+                + &quot;calcula IBS e tpRBSN 1, 4 ou 5). Ignorada na saída para CRT=2&quot;, example = &quot;1.25&quot;, nullable = true)
+        String pIBSSN,
+
+        @JsonProperty(&quot;pCBSSN&quot;)
+        @Schema(name = &quot;pCBSSN&quot;, description = &quot;Alíquota efetiva do Simples Nacional para a CBS, em pontos &quot;
+                + &quot;percentuais (NT 2026.005). Exigida apenas quando o cálculo a usa (cAtivSN válido e tpRBSN 1, 4 ou 5)&quot;,
+                example = &quot;2.75&quot;, nullable = true)
+        String pCBSSN) {
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

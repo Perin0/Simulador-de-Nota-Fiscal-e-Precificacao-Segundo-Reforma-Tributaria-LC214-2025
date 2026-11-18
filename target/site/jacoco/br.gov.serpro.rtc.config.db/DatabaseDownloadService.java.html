@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DatabaseDownloadService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.config.db</a> &gt; <span class="el_source">DatabaseDownloadService.java</span></div><h1>DatabaseDownloadService.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.config.db;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.Duration;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpMethod;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Recover;
+import org.springframework.retry.annotation.Retryable;
+import org.springframework.retry.support.RetrySynchronizationManager;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
+
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * Baixa o arquivo do banco de dados SQLite de um bucket OBS para
+ * {@code calculadora/db/} quando ele ainda não existe localmente.
+ *
+ * &lt;p&gt;{@code application.db.download.url} é a URL base do bucket (sem o nome do
+ * arquivo); o nome final é composto em tempo de execução com
+ * {@code application.db.filename}, permitindo que ambas as variáveis de
+ * ambiente ({@code DB_DOWNLOAD_URL} e {@code API_SIMPLES_DB_FILENAME}) sejam
+ * configuradas de forma independente.
+ *
+ * &lt;p&gt;Chamado a partir de {@link DatabaseDownloadInitializer#init()} — nunca a
+ * partir de um {@code @PostConstruct} deste próprio bean: {@code @Retryable}
+ * depende do proxy AOP do Spring Retry, que só entra em ação para chamadas
+ * vindas de OUTRO bean (auto-invocação não passa pelo proxy).
+ *
+ * &lt;p&gt;{@link DatabaseDownloadOrderingConfig} garante, via
+ * {@code BeanFactoryPostProcessor}, que o bean autoconfigurado
+ * {@code dataSource} só é criado depois que o download (ou o desvio, caso o
+ * arquivo já exista) tiver terminado — necessário porque a URL JDBC usa
+ * {@code mode=ro}: o driver SQLite não cria um arquivo ausente em modo
+ * somente leitura, e o HikariCP abre a pool de conexões de forma antecipada,
+ * antes de qualquer {@code ApplicationReadyEvent}/{@code CommandLineRunner}.
+ */
+<span class="fc" id="L47">@Slf4j</span>
+@Service
+public class DatabaseDownloadService {
+
+    @Value(&quot;${application.db.filename}&quot;)
+    private String dbFileName;
+
+    @Value(&quot;${application.db.download.url}&quot;)
+    private String urlDownload;
+
+    @Value(&quot;${application.db.download.target-dir:calculadora/db}&quot;)
+    private String diretorioDestino;
+
+    @Value(&quot;${application.db.download.tentativas:3}&quot;)
+    private int tentativas;
+
+    private final RestTemplate restTemplate;
+
+    public DatabaseDownloadService(RestTemplateBuilder restTemplateBuilder,
+            @Value(&quot;${application.db.download.connect-timeout:5s}&quot;) Duration connectTimeout,
+<span class="fc" id="L67">            @Value(&quot;${application.db.download.read-timeout:30s}&quot;) Duration readTimeout) {</span>
+<span class="fc" id="L68">        this.restTemplate = restTemplateBuilder</span>
+<span class="fc" id="L69">                .connectTimeout(connectTimeout)</span>
+<span class="fc" id="L70">                .readTimeout(readTimeout)</span>
+<span class="fc" id="L71">                .build();</span>
+<span class="fc" id="L72">    }</span>
+
+    /**
+     * Baixa o arquivo se ele ainda não existir; não faz nada caso já exista
+     * (dev local via {@code run-offline.sh}/{@code run-online.sh} já tem o
+     * arquivo versionado, sem necessidade de rede).
+     */
+    @Retryable(maxAttemptsExpression = &quot;${application.db.download.tentativas:3}&quot;, backoff = @Backoff(delay = 2000), retryFor = DatabaseDownloadException.class)
+    public void baixarSeAusente() {
+<span class="fc" id="L81">        Path destino = Path.of(diretorioDestino, dbFileName);</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        if (Files.exists(destino)) {</span>
+<span class="fc" id="L83">            log.info(&quot;Banco de dados já presente em [{}]; download da OBS dispensado.&quot;, destino);</span>
+<span class="fc" id="L84">            return;</span>
+        }
+<span class="fc" id="L86">        baixar(destino);</span>
+<span class="fc" id="L87">    }</span>
+
+    private void baixar(Path destino) {
+<span class="fc" id="L90">        String urlCompleta = comporUrlDownload();</span>
+<span class="fc" id="L91">        log.info(&quot;Baixando banco de dados de [{}] para [{}] (tentativa {}/{})...&quot;, urlCompleta, destino,</span>
+<span class="fc" id="L92">                tentativaAtual(), tentativas);</span>
+        try {
+<span class="fc" id="L94">            Files.createDirectories(destino.getParent());</span>
+<span class="fc" id="L95">            Path temporario = Files.createTempFile(destino.getParent(), &quot;calculadora-pro&quot;, &quot;.db.tmp&quot;);</span>
+<span class="fc" id="L96">            restTemplate.execute(URI.create(urlCompleta), HttpMethod.GET, null, response -&gt; {</span>
+<span class="fc" id="L97">                try (OutputStream out = Files.newOutputStream(temporario)) {</span>
+<span class="fc" id="L98">                    response.getBody().transferTo(out);</span>
+                }
+<span class="fc" id="L100">                return null;</span>
+            });
+<span class="fc" id="L102">            Files.move(temporario, destino, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);</span>
+<span class="fc" id="L103">            log.info(&quot;Banco de dados baixado com sucesso em [{}].&quot;, destino);</span>
+<span class="nc" id="L104">        } catch (IOException | RestClientException e) {</span>
+<span class="nc" id="L105">            log.warn(&quot;Falha na tentativa {}/{} de download de [{}]: {}&quot;, tentativaAtual(), tentativas, urlCompleta,</span>
+<span class="nc" id="L106">                    e.getMessage());</span>
+<span class="nc" id="L107">            throw new DatabaseDownloadException(</span>
+                    &quot;Falha ao baixar o banco de dados de '&quot; + urlCompleta + &quot;' para '&quot; + destino + &quot;': &quot;
+<span class="nc" id="L109">                            + e.getMessage(),</span>
+                    e);
+<span class="fc" id="L111">        }</span>
+<span class="fc" id="L112">    }</span>
+
+    /** Completa a URL base do bucket (sem barra final) com o nome do arquivo do banco. */
+    private String comporUrlDownload() {
+<span class="pc bpc" id="L116" title="1 of 2 branches missed.">        String base = urlDownload.endsWith(&quot;/&quot;) ? urlDownload.substring(0, urlDownload.length() - 1) : urlDownload;</span>
+<span class="fc" id="L117">        return base + &quot;/&quot; + dbFileName;</span>
+    }
+
+    /** Número da tentativa atual (1-based), obtido do contexto do Spring Retry. */
+    private int tentativaAtual() {
+<span class="fc" id="L122">        var contexto = RetrySynchronizationManager.getContext();</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">        return contexto != null ? contexto.getRetryCount() + 1 : 1;</span>
+    }
+
+    @Recover
+    void falharAposTentativas(DatabaseDownloadException e) {
+<span class="nc" id="L128">        throw new IllegalStateException(</span>
+<span class="nc" id="L129">                &quot;Não foi possível baixar o banco de dados de '&quot; + comporUrlDownload() + &quot;' após &quot; + tentativas</span>
+<span class="nc" id="L130">                        + &quot; tentativas. Última falha: &quot; + e.getCause().getMessage()</span>
+                        + &quot;. Encerrando a inicialização.&quot;, e);
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

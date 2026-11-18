@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AtividadeSimplesDomain.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.atividadesimples.dto</a> &gt; <span class="el_source">AtividadeSimplesDomain.java</span></div><h1>AtividadeSimplesDomain.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.atividadesimples.dto;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.ALWAYS;
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+/**
+ *
+ * Contrato de saída de uma atividade do Simples Nacional e seu(s) anexo(s).
+ *
+ * &lt;p&gt;
+ *
+ * Vive sob {@code br.gov.serpro.rtc.api.atividadesimples}
+ * e NÃO depende do domínio do regime geral.
+ *
+ * &lt;p&gt;
+ *
+ * Escopo deliberado: resolve apenas &lt;b&gt;atividade → anexo(s)&lt;/b&gt; e as marcações
+ * de disponibilidade. NÃO devolve alíquotas — a relação anexo → alíquota
+ * continua sendo realizada externamente.
+ *
+ * &lt;p&gt;
+ *
+ * O {@code codigo} é o código oficial de Atividade do Simples Nacional (tag {@code cAtivSN}
+ * dos leiautes de DF-e, NT 2026.005; ex.: {@code &quot;09&quot;}, {@code &quot;90&quot;}).
+ *
+ * &lt;p&gt;
+ *
+ * Os campos {@code anexoSemFatorR} e {@code anexoComFatorR} são numerais romanos puros ({@code &quot;I&quot;..&quot;V&quot;}), sem ressalvas.
+ * As ressalvas (&quot;menos ICMS&quot;, etc.) ficam apenas em {@code rotuloAnexo}.
+ * &lt;b&gt;Ambos são anuláveis&lt;/b&gt;: {@code anexoComFatorR} só é preenchido para a atividade sujeita ao Fator R (a 09), e
+ * {@code anexoSemFatorR} é nulo na linha do código 90 (Operações não Tributáveis, NT 2026.005), que não possui
+ * anexo de apuração e aparece na listagem como item normal (decisão deliberada).
+ * {@code sujeitaFatorR} é derivado de {@code anexoComFatorR != null} no próprio construtor,
+ * para que as duas informações nunca divirjam (para o 90, ambos nulos → {@code false}).
+ *
+ * &lt;p&gt;
+ *
+ * Os campos {@code disponivel}, {@code anexosFaltantes} e {@code modoFatorR} são derivados
+ * da configuração de anexos informada na consulta. A regra de derivação fica concentrada
+ * em {@code DerivacaoAnexosSimples} (chamada pelo service); este record apenas transporta o resultado.
+ *
+ * &lt;p&gt;
+ *
+ * Os campos de admissibilidade por documento fiscal (associativa
+ * {@code TIPO_DFE_ATIVIDADE_SIMPLES_NACIONAL}, semântica de whitelist — mundo
+ * fechado) são aditivos: {@code tpDocsAdmissiveis} é SEMPRE presente e lista
+ * exatamente os documentos com vínculo vigente na data (lista vazia = nenhum
+ * documento publicado para a atividade — inadmissível em todos), e
+ * {@code admissivelNoDocumento} só aparece quando o query param {@code tpDoc}
+ * foi informado (inclusão {@code NON_NULL} no campo).
+ *
+ * &lt;p&gt;
+ *
+ * O campo {@code compativelComClassTrib} só aparece quando o query param
+ * {@code cClassTrib} foi informado (inclusão {@code NON_NULL}): {@code false}
+ * quando o tpRBSN da classificação declara receita vedada para atividades não
+ * tributáveis (espelho da regra UB14-90 da NT 2026.005 — hoje alcança apenas a
+ * linha do código 90 com tpRBSN 1 a 5).
+ *
+ * &lt;p&gt;
+ *
+ * {@code anexosFaltantes} e {@code modoFatorR} continuam derivados
+ * EXCLUSIVAMENTE dos anexos; {@code disponivel} agrega todos os eixos
+ * informados na consulta (anexos, admissibilidade no documento e
+ * compatibilidade com a classificação) — os motivos são distinguíveis e
+ * combináveis pelos campos individuais.
+ *
+ */
+@JsonInclude(ALWAYS)
+@JsonPropertyOrder({ &quot;codigo&quot;, &quot;ordem&quot;, &quot;descricao&quot;, &quot;anexoSemFatorR&quot;, &quot;anexoComFatorR&quot;, &quot;sujeitaFatorR&quot;,
+        &quot;rotuloAnexo&quot;, &quot;rotuloCurtoAnexo&quot;, &quot;disponivel&quot;, &quot;anexosFaltantes&quot;, &quot;modoFatorR&quot;, &quot;tpDocsAdmissiveis&quot;,
+        &quot;admissivelNoDocumento&quot;, &quot;compativelComClassTrib&quot; })
+@Schema(description = &quot;Atividade do Simples Nacional e o(s) anexo(s) aplicável(is). Não inclui alíquotas.&quot;)
+public record AtividadeSimplesDomain(
+
+        @Schema(description = &quot;Código oficial de Atividade do Simples Nacional do leiaute DF-e &quot;
+                + &quot;(tag cAtivSN, NT 2026.005): 2 caracteres com zero à esquerda ('01'..'14' e '90'). Único entre &quot;
+                + &quot;as linhas vigentes do catálogo&quot;, example = &quot;09&quot;)
+        String codigo,
+
+        @Schema(description = &quot;Ordem de exibição (1..15; a 15 é a linha do código 90)&quot;, example = &quot;9&quot;)
+        int ordem,
+
+        @Schema(description = &quot;Descrição longa da atividade&quot;,
+                example = &quot;Prestação de serviços — Sujeitos ao Fator \&quot;R\&quot;&quot;)
+        String descricao,
+
+        @Schema(description = &quot;Anexo (romano puro) quando o Fator R NÃO é ultrapassado; null na linha do código 90 &quot;
+                + &quot;(Operações não Tributáveis), que não possui anexo de apuração&quot;,
+                example = &quot;III&quot;, nullable = true)
+        String anexoSemFatorR,
+
+        @Schema(description = &quot;Anexo (romano puro) quando o Fator R é ultrapassado; null quando não depende de Fator R&quot;,
+                example = &quot;V&quot;, nullable = true)
+        String anexoComFatorR,
+
+        @Schema(description = &quot;Indica se a atividade depende do Fator R (derivado: anexoComFatorR != null)&quot;, example = &quot;true&quot;)
+        boolean sujeitaFatorR,
+
+        @Schema(description = &quot;Rótulo informativo completo do anexo (badge), com ressalvas&quot;, example = &quot;III ou V&quot;)
+        String rotuloAnexo,
+
+        @Schema(description = &quot;Rótulo curto do anexo (badge), apenas o(s) numeral(is) romano(s), sem ressalvas&quot;,
+                example = &quot;III ou V&quot;)
+        String rotuloCurtoAnexo,
+
+        @Schema(description = &quot;Indica se a atividade pode ser selecionada com os filtros informados na consulta &quot;
+                + &quot;(anexos configurados, documento fiscal e classificação tributária). A atividade sem anexo é &quot;
+                + &quot;disponível pelo eixo dos anexos.&quot;, example = &quot;true&quot;)
+        boolean disponivel,
+
+        @ArraySchema(arraySchema = @Schema(description = &quot;Anexos do conjunto possível da atividade que NÃO estão na &quot;
+                + &quot;configuração informada, ordenados por romano (I..V). Nunca null; [] quando nada falta.&quot;),
+                schema = @Schema(example = &quot;III&quot;))
+        List&lt;String&gt; anexosFaltantes,
+
+        @Schema(description = &quot;Estado da decisão de Fator R da atividade, dada a configuração de anexos informada&quot;,
+                example = &quot;OBRIGATORIO&quot;)
+        ModoFatorR modoFatorR,
+
+        @ArraySchema(arraySchema = @Schema(description = &quot;Tipos de documento fiscal (TPDF_TIPO: \&quot;55\&quot;, \&quot;65\&quot;, &quot;
+                + &quot;\&quot;91\&quot;, ...) com vínculo vigente na data na associativa da atividade (whitelist). SEMPRE &quot;
+                + &quot;presente, tenha ou não sido informado o tpDoc na consulta. Lista vazia = nenhum documento &quot;
+                + &quot;publicado para a atividade — inadmissível em todos.&quot;),
+                schema = @Schema(example = &quot;55&quot;))
+        List&lt;String&gt; tpDocsAdmissiveis,
+
+        @JsonInclude(NON_NULL)
+        @Schema(description = &quot;Indica se a atividade é admissível no documento fiscal informado no query param &quot;
+                + &quot;tpDoc. Presente SOMENTE quando tpDoc foi informado: true se e somente se o tpDoc está em &quot;
+                + &quot;tpDocsAdmissiveis (whitelist — sem vínculo vigente, não há permissão).&quot;,
+                example = &quot;true&quot;, nullable = true)
+        Boolean admissivelNoDocumento,
+
+        @JsonInclude(NON_NULL)
+        @Schema(description = &quot;Indica se a atividade é compatível com a classificação tributária informada no &quot;
+                + &quot;query param cClassTrib. Presente SOMENTE quando cClassTrib foi informado: false quando o tpRBSN &quot;
+                + &quot;da classificação declara receita vedada para atividades não tributáveis (espelho da regra &quot;
+                + &quot;UB14-90 da NT 2026.005, o mesmo erro VSN-023 do cálculo).&quot;,
+                example = &quot;true&quot;, nullable = true)
+        Boolean compativelComClassTrib) {
+
+    /**
+     *
+     * Construtor canônico: força {@code sujeitaFatorR} a ser derivado de {@code anexoComFatorR},
+     * ignorando qualquer valor informado, para garantir coerência entre os dois campos.
+     * Também garante que {@code anexosFaltantes} e {@code tpDocsAdmissiveis} nunca sejam
+     * null (contrato: lista vazia); quando presentes, são copiados para lista imutável.
+     *
+     */
+<span class="fc" id="L159">    public AtividadeSimplesDomain {</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">        sujeitaFatorR = anexoComFatorR != null;</span>
+<span class="pc bpc" id="L161" title="1 of 2 branches missed.">        anexosFaltantes = anexosFaltantes == null ? List.of() : List.copyOf(anexosFaltantes);</span>
+<span class="pc bpc" id="L162" title="1 of 2 branches missed.">        tpDocsAdmissiveis = tpDocsAdmissiveis == null ? List.of() : List.copyOf(tpDocsAdmissiveis);</span>
+<span class="fc" id="L163">    }</span>
+
+    /**
+     *
+     * Fábrica que dispensa o parâmetro {@code sujeitaFatorR} (sempre derivado).
+     * Use-a no catálogo para não correr o risco de preencher a flag manualmente.
+     *
+     */
+    public static AtividadeSimplesDomain de(
+            String codigo,
+            int ordem,
+            String descricao,
+            String anexoSemFatorR,
+            String anexoComFatorR,
+            String rotuloAnexo,
+            String rotuloCurtoAnexo,
+            boolean disponivel,
+            List&lt;String&gt; anexosFaltantes,
+            ModoFatorR modoFatorR,
+            List&lt;String&gt; tpDocsAdmissiveis,
+            Boolean admissivelNoDocumento,
+            Boolean compativelComClassTrib) {
+<span class="fc bfc" id="L185" title="All 2 branches covered.">        return new AtividadeSimplesDomain(</span>
+                codigo, ordem, descricao, anexoSemFatorR, anexoComFatorR, anexoComFatorR != null, rotuloAnexo,
+                rotuloCurtoAnexo, disponivel, anexosFaltantes, modoFatorR, tpDocsAdmissiveis, admissivelNoDocumento,
+                compativelComClassTrib);
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

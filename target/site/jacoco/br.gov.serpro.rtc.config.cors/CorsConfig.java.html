@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CorsConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.config.cors</a> &gt; <span class="el_source">CorsConfig.java</span></div><h1>CorsConfig.java</h1><pre class="source lang-java linenums">/*
+ * Versão de Homologação/Testes
+ */
+package br.gov.serpro.rtc.config.cors;
+
+import java.util.List;
+
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+/**
+ * Registra o bean {@link CorsConfigurationSource} consumido pela
+ * {@code SecurityFilterChain} (via {@code http.cors(...)}).
+ *
+ * &lt;p&gt;A configuração é totalmente externalizada em {@link CorsProperties}
+ * (prefixo {@code app.cors}), permitindo liberar origens por ambiente
+ * (dev/des/prod) sem recompilar. Nunca usa {@code &quot;*&quot;} para origem e mantém
+ * {@code allowCredentials=false}.
+ */
+@EnableConfigurationProperties(CorsProperties.class)
+@Configuration
+<span class="fc" id="L26">public class CorsConfig {</span>
+
+    @Bean
+    CorsConfigurationSource corsConfigurationSource(CorsProperties properties) {
+<span class="fc" id="L30">        final CorsConfiguration config = new CorsConfiguration();</span>
+
+        // Origens exatas (ex.: http://localhost:4200). Nunca &quot;*&quot;.
+<span class="fc" id="L33">        final List&lt;String&gt; origins = nonBlank(properties.allowedOrigins());</span>
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        if (!origins.isEmpty()) {</span>
+<span class="nc" id="L35">            config.setAllowedOrigins(origins);</span>
+        }
+        // Padrões de origem para subdomínios previsíveis por ambiente.
+<span class="fc" id="L38">        final List&lt;String&gt; originPatterns = nonBlank(properties.allowedOriginPatterns());</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (!originPatterns.isEmpty()) {</span>
+<span class="nc" id="L40">            config.setAllowedOriginPatterns(originPatterns);</span>
+        }
+
+<span class="fc" id="L43">        config.setAllowedMethods(</span>
+<span class="fc" id="L44">                orDefault(properties.allowedMethods(), List.of(&quot;GET&quot;, &quot;POST&quot;, &quot;OPTIONS&quot;)));</span>
+<span class="fc" id="L45">        config.setAllowedHeaders(</span>
+<span class="fc" id="L46">                orDefault(properties.allowedHeaders(), List.of(&quot;Content-Type&quot;, &quot;Authorization&quot;)));</span>
+
+<span class="pc bpc" id="L48" title="3 of 4 branches missed.">        if (properties.exposedHeaders() != null &amp;&amp; !properties.exposedHeaders().isEmpty()) {</span>
+<span class="nc" id="L49">            config.setExposedHeaders(properties.exposedHeaders());</span>
+        }
+
+<span class="fc" id="L52">        config.setAllowCredentials(properties.allowCredentials());</span>
+
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        if (properties.maxAge() != null) {</span>
+<span class="nc" id="L55">            config.setMaxAge(properties.maxAge().getSeconds());</span>
+        }
+
+        // Serviço expõe apenas endpoints do Simples Nacional: aplicar globalmente é aceitável.
+        // O padrão &quot;/**&quot; é relativo ao context path (/api), cobrindo os caminhos publicados.
+<span class="fc" id="L60">        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();</span>
+<span class="fc" id="L61">        source.registerCorsConfiguration(&quot;/**&quot;, config);</span>
+<span class="fc" id="L62">        return source;</span>
+    }
+
+    private static List&lt;String&gt; orDefault(List&lt;String&gt; value, List&lt;String&gt; fallback) {
+<span class="fc" id="L66">        final List&lt;String&gt; filtered = nonBlank(value);</span>
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        return !filtered.isEmpty() ? filtered : fallback;</span>
+    }
+
+    /** Remove entradas nulas/vazias (ex.: default vazio de variável de ambiente não definida). */
+    private static List&lt;String&gt; nonBlank(List&lt;String&gt; value) {
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        if (value == null) {</span>
+<span class="fc" id="L73">            return List.of();</span>
+        }
+<span class="nc" id="L75">        return value.stream()</span>
+<span class="nc bnc" id="L76" title="All 4 branches missed.">                .filter(v -&gt; v != null &amp;&amp; !v.isBlank())</span>
+<span class="nc" id="L77">                .map(String::trim)</span>
+<span class="nc" id="L78">                .toList();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

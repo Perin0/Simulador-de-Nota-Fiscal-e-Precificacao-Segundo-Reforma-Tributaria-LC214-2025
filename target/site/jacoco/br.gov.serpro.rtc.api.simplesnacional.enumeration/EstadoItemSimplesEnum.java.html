@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EstadoItemSimplesEnum.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.simplesnacional.enumeration</a> &gt; <span class="el_source">EstadoItemSimplesEnum.java</span></div><h1>EstadoItemSimplesEnum.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.simplesnacional.enumeration;
+
+/**
+ *
+ * Enumera os estados possíveis de um item processado pelo endpoint do Simples Nacional.
+ *
+ * Duplicado deliberadamente da enumeração análoga {@code EstadoItemEnum} do regime
+ * geral, para preservar o isolamento entre os pacotes (os estados dos dois cálculos
+ * evoluem de forma independente).
+ *
+ * &lt;p&gt;Valores: {@code CALCULADO}, {@code NAO_CALCULADO}, {@code NAO_IMPLEMENTADO},
+ * {@code INCONSISTENCIA_ENTRADA} e {@code FALHA_TECNICA}.
+ *
+ * &lt;p&gt;{@code NAO_CALCULADO} (NT 2026.005, seções 5.3.3 e 5.3.4, Observação 2):
+ * o item tem {@code cAtivSN} ausente, desconhecido, fora de vigência ou
+ * inadmissível para o tpDoc — o cálculo de IBS/CBS não é realizado (NÃO é erro)
+ * e o {@code tribCalc} traz apenas {@code vRBSNitem} e {@code tpRBSN}.
+ *
+ * &lt;p&gt;{@code NAO_IMPLEMENTADO}: o {@code cClassTrib} do item está vinculado, na
+ * data do fato gerador, a tratamento tributário marcado como ainda não
+ * implementado na Calculadora (indicador de ajuste {@code TRTR_IN_POSSUI_AJUSTE},
+ * mesma semântica do CAL-007 do regime geral). É verificado com PRIORIDADE —
+ * primeira consulta de banco do item — e encerra o processamento: sem
+ * {@code tribCalc}, com o erro VSN-027 e fora de todos os totais.
+ *
+ */
+<span class="fc" id="L27">public enum EstadoItemSimplesEnum {</span>
+<span class="fc" id="L28">    CALCULADO,</span>
+<span class="fc" id="L29">    NAO_CALCULADO,</span>
+<span class="fc" id="L30">    NAO_IMPLEMENTADO,</span>
+<span class="fc" id="L31">    INCONSISTENCIA_ENTRADA,</span>
+<span class="fc" id="L32">    FALHA_TECNICA</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

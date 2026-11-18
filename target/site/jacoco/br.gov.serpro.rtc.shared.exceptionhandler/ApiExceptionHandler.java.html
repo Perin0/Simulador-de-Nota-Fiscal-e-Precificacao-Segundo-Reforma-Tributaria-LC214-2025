@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ApiExceptionHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.shared.exceptionhandler</a> &gt; <span class="el_source">ApiExceptionHandler.java</span></div><h1>ApiExceptionHandler.java</h1><pre class="source lang-java linenums">/*
+ * Versão de Homologação/Testes
+ */
+package br.gov.serpro.rtc.shared.exceptionhandler;
+
+import java.time.Instant;
+import java.util.List;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ProblemDetail;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import br.gov.serpro.rtc.shared.exceptionhandler.dto.ErroDetalhe;
+import br.gov.serpro.rtc.shared.exceptionhandler.enumeration.ProblemType;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * Handler ÚNICO de exceções da API ({@code @RestControllerAdvice} exclusivo do
+ * projeto), que traduz erros de validação, erros de cálculo e falhas internas
+ * para respostas {@link ProblemDetail} com estrutura unificada: {@code type},
+ * {@code title}, {@code timestamp} e, quando há erros de campo/parâmetro, a
+ * propriedade {@code errors[]} com objetos {@link ErroDetalhe} cujo
+ * {@code pointer} segue a RFC 6901.
+ *
+ * &lt;p&gt;Por ser o único advice, o handler mais específico vence o catch-all de
+ * {@link Exception} dentro do próprio advice — não há necessidade de
+ * {@code @Order} (o antigo {@code SimplesNacionalExceptionHandler}, hoje
+ * absorvido aqui, precisava de precedência máxima apenas por coexistir com
+ * este advice).
+ *
+ * &lt;p&gt;Também ajusta o nível de log conforme a natureza do erro (5xx com
+ * stacktrace em {@code ERROR}; 4xx em {@code DEBUG}) e padroniza o payload
+ * retornado aos clientes.
+ */
+<span class="fc" id="L47">@Slf4j</span>
+@RestControllerAdvice
+<span class="fc" id="L49">public class ApiExceptionHandler extends ResponseEntityExceptionHandler {</span>
+
+    @Override
+    protected ResponseEntity&lt;Object&gt; handleExceptionInternal(@NonNull Exception ex, @Nullable Object body, @NonNull HttpHeaders headers,
+            @NonNull HttpStatusCode statusCode, @NonNull WebRequest request) {
+
+        // Estratégia simples: apenas erros 500+ são logados como ERROR (erros reais)
+        // Erros 400-499 são comportamento esperado (erros de negócio/validação)
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        if (statusCode.is5xxServerError()) {</span>
+            // Erro real do sistema - log completo para análise
+<span class="nc" id="L59">            log.error(&quot;Erro interno: &quot;, ex);</span>
+        } else {
+            // Erro de negócio/validação - log simples sem stacktrace
+<span class="fc" id="L62">            log.debug(&quot;Erro cliente [{}]: {} | URI: {}&quot;,</span>
+<span class="fc" id="L63">                     statusCode.value(),</span>
+<span class="fc" id="L64">                     ex.getMessage(),</span>
+<span class="fc" id="L65">                     request.getDescription(false));</span>
+        }
+
+<span class="fc" id="L68">        return super.handleExceptionInternal(ex, body, headers, statusCode, request);</span>
+    }
+
+    @Override
+    protected ResponseEntity&lt;Object&gt; handleHttpMessageNotReadable(
+            HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+<span class="nc" id="L74">        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;</span>
+<span class="nc" id="L75">        ProblemDetail problemDetail = createProblem(ex, httpStatus);</span>
+<span class="nc" id="L76">        problemDetail.setDetail(ex.getLocalizedMessage());</span>
+<span class="nc" id="L77">        return handleExceptionInternal(ex, problemDetail, headers, httpStatus, request);</span>
+    }
+
+    /**
+     * Query param com valor mal-formado (ex.: {@code data=15/03/2027} nos
+     * endpoints de atividades): HTTP 400 com {@code errors[]} apontando o
+     * parâmetro ofensor.
+     */
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity&lt;Object&gt; handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex, WebRequest request) {
+<span class="fc" id="L87">        HttpStatus status = HttpStatus.BAD_REQUEST;</span>
+<span class="fc" id="L88">        String detail = String.format(&quot;Parâmetro inválido [%s: %s] &quot;, ex.getPropertyName(), ex.getValue());</span>
+<span class="fc" id="L89">        ProblemDetail problemDetail = createProblem(ex, status);</span>
+<span class="fc" id="L90">        problemDetail.setDetail(detail);</span>
+<span class="fc" id="L91">        problemDetail.setProperty(&quot;errors&quot;, List.of(</span>
+<span class="fc" id="L92">                erroSemCatalogo(&quot;Tipo de argumento inválido&quot;, ex.getPropertyName(), detail.trim())));</span>
+<span class="fc" id="L93">        return handleExceptionInternal(ex, problemDetail, new HttpHeaders(), status, request);</span>
+    }
+
+    /**
+     * Query param obrigatório ausente (ex.: {@code data} nos endpoints de
+     * atividades): HTTP 400 padronizado com {@code errors[]} apontando o
+     * parâmetro, em vez do tratamento padrão do Spring.
+     */
+    @Override
+    protected ResponseEntity&lt;Object&gt; handleMissingServletRequestParameter(
+            @NonNull MissingServletRequestParameterException ex, @NonNull HttpHeaders headers,
+            @NonNull HttpStatusCode status, @NonNull WebRequest request) {
+<span class="fc" id="L105">        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;</span>
+<span class="fc" id="L106">        String detail = String.format(&quot;O parâmetro obrigatório '%s' (%s) não foi informado.&quot;,</span>
+<span class="fc" id="L107">                ex.getParameterName(), ex.getParameterType());</span>
+<span class="fc" id="L108">        ProblemDetail problemDetail = createProblem(ex, httpStatus);</span>
+<span class="fc" id="L109">        problemDetail.setDetail(detail);</span>
+<span class="fc" id="L110">        problemDetail.setProperty(&quot;errors&quot;, List.of(</span>
+<span class="fc" id="L111">                erroSemCatalogo(&quot;Parâmetro obrigatório ausente&quot;, ex.getParameterName(), detail)));</span>
+<span class="fc" id="L112">        return handleExceptionInternal(ex, problemDetail, headers, httpStatus, request);</span>
+    }
+
+    @Override
+    protected ResponseEntity&lt;Object&gt; handleMethodArgumentNotValid(@NonNull MethodArgumentNotValidException ex,
+            @NonNull HttpHeaders headers, @NonNull HttpStatusCode status, @NonNull WebRequest request) {
+<span class="nc" id="L118">        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;</span>
+
+        // Log sucinto para validação - sem stacktrace
+<span class="nc" id="L121">        log.debug(&quot;Validação falhou: {} campos inválidos | URI: {}&quot;,</span>
+<span class="nc" id="L122">                 ex.getBindingResult().getErrorCount(),</span>
+<span class="nc" id="L123">                 request.getDescription(false));</span>
+
+<span class="nc" id="L125">        ProblemDetail problemDetail = createProblem(ex, httpStatus);</span>
+<span class="nc" id="L126">        problemDetail.setTitle(&quot;Campos inválidos.&quot;);</span>
+<span class="nc" id="L127">        StringBuilder detailMessage = new StringBuilder(&quot;Um ou mais campos são inválidos - &quot;);</span>
+<span class="nc" id="L128">        ex.getBindingResult().getFieldErrors().forEach(error -&gt;</span>
+<span class="nc" id="L129">            detailMessage.append(String.format(&quot;[%s: %s] &quot;, error.getField(), error.getDefaultMessage()))</span>
+        );
+<span class="nc" id="L131">        problemDetail.setDetail(detailMessage.toString());</span>
+<span class="nc" id="L132">        problemDetail.setProperty(&quot;errors&quot;, ex.getBindingResult().getFieldErrors().stream()</span>
+<span class="nc" id="L133">                .map(error -&gt; erroSemCatalogo(&quot;Campo inválido&quot;, error.getField(), error.getDefaultMessage()))</span>
+<span class="nc" id="L134">                .toList());</span>
+<span class="nc" id="L135">        return handleExceptionInternal(ex, problemDetail, headers, httpStatus, request);</span>
+    }
+
+    /**
+     * Erros globais de cálculo em modo de observabilidade
+     * ({@link ErrosCalculoException}): HTTP 422 com a lista detalhada de erros
+     * na propriedade {@code errors} (absorvido do antigo
+     * {@code SimplesNacionalExceptionHandler}; os {@link ErroDetalhe} chegam
+     * prontos, com os códigos do catálogo da feature — ex.: {@code VSN-}).
+     */
+    @ExceptionHandler(ErrosCalculoException.class)
+    ResponseEntity&lt;ProblemDetail&gt; handleErrosCalculoException(ErrosCalculoException ex, WebRequest request) {
+<span class="fc" id="L147">        HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;</span>
+<span class="fc" id="L148">        List&lt;ErroDetalhe&gt; erros = ex.getErros();</span>
+
+<span class="fc" id="L150">        log.debug(&quot;Erros de observabilidade: {} erro(s) | URI: {}&quot;,</span>
+<span class="fc" id="L151">                erros.size(), request.getDescription(false));</span>
+
+<span class="fc" id="L153">        ProblemDetail problemDetail = ProblemDetail.forStatus(status);</span>
+<span class="fc" id="L154">        problemDetail.setType(java.net.URI.create(&quot;about:blank&quot;));</span>
+<span class="fc" id="L155">        problemDetail.setTitle(&quot;Erros no processamento do cálculo do Simples Nacional&quot;);</span>
+<span class="fc" id="L156">        problemDetail.setDetail(String.format(&quot;O cálculo contém %d erro(s).&quot;, erros.size()));</span>
+<span class="fc" id="L157">        problemDetail.setProperty(&quot;timestamp&quot;, Instant.now());</span>
+<span class="fc" id="L158">        problemDetail.setProperty(&quot;errors&quot;, erros);</span>
+<span class="fc" id="L159">        return ResponseEntity.status(status).body(problemDetail);</span>
+    }
+
+    @ExceptionHandler(Exception.class)
+    ResponseEntity&lt;Object&gt; handleGenericException(Exception ex, WebRequest request) {
+<span class="nc" id="L164">        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;</span>
+<span class="nc" id="L165">        ProblemDetail problemDetail = createProblem(ex, status);</span>
+<span class="nc" id="L166">        return handleExceptionInternal(ex, problemDetail, new HttpHeaders(), status, request);</span>
+    }
+
+    private static &lt;E extends Exception&gt; ProblemDetail createProblem(E ex, HttpStatus status) {
+<span class="fc" id="L170">        ProblemType type = ProblemType.from(ex);</span>
+<span class="fc" id="L171">        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(status, ex.getMessage());</span>
+<span class="fc" id="L172">        problemDetail.setType(type.getURI());</span>
+<span class="fc" id="L173">        problemDetail.setTitle(type.getTitulo());</span>
+<span class="fc" id="L174">        problemDetail.setProperty(&quot;timestamp&quot;, Instant.now());</span>
+<span class="fc" id="L175">        return problemDetail;</span>
+    }
+
+    /**
+     * Monta um {@link ErroDetalhe} genérico (sem catálogo próprio): {@code type}
+     * e {@code code} nulos são omitidos pela inclusão {@code NON_NULL} do record;
+     * o {@code pointer} segue a RFC 6901 ({@code &quot;#/&quot; + campo}).
+     */
+    private static ErroDetalhe erroSemCatalogo(String title, String campo, String detail) {
+<span class="fc" id="L184">        return new ErroDetalhe(null, title, null, &quot;#/&quot; + campo, detail);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

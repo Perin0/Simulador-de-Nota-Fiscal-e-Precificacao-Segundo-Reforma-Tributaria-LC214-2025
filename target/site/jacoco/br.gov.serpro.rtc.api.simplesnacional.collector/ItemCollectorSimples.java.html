@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ItemCollectorSimples.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.simplesnacional.collector</a> &gt; <span class="el_source">ItemCollectorSimples.java</span></div><h1>ItemCollectorSimples.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.simplesnacional.collector;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import br.gov.serpro.rtc.api.simplesnacional.enumeration.EstadoItemSimplesEnum;
+import br.gov.serpro.rtc.shared.exceptionhandler.dto.ErroDetalhe;
+import br.gov.serpro.rtc.api.simplesnacional.exceptionhandler.enumeration.CodigoValidacaoSimples;
+
+/**
+ * Coletor de erros por item do Simples Nacional.
+ *
+ * Duplicado deliberadamente da classe análoga {@code ItemCollector} do regime geral,
+ * para preservar a independência dos códigos de erro ({@code VSN-}) e do endpoint de
+ * catálogo específicos do Simples Nacional.
+ */
+public class ItemCollectorSimples {
+
+    private final int index;
+    private final String baseURL;
+<span class="fc" id="L22">    private final List&lt;ErroDetalhe&gt; erros = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L23">    private EstadoItemSimplesEnum estado = EstadoItemSimplesEnum.CALCULADO;</span>
+
+<span class="fc" id="L25">    public ItemCollectorSimples(int index, String baseURL) {</span>
+<span class="fc" id="L26">        this.index = index;</span>
+<span class="fc" id="L27">        this.baseURL = baseURL;</span>
+<span class="fc" id="L28">    }</span>
+
+    /**
+     * Acumula um erro de validação de entrada no item, promovendo o estado para
+     * {@code INCONSISTENCIA_ENTRADA} (se ainda estiver {@code CALCULADO}).
+     *
+     * @param codigo código {@code VSN-} catalogado
+     * @param campo  nome do campo (relativo ao item) para compor o JSON Pointer
+     * @param detail mensagem de detalhe
+     */
+    public void addErroValidacao(CodigoValidacaoSimples codigo, String campo, String detail) {
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (estado == EstadoItemSimplesEnum.CALCULADO) {</span>
+<span class="fc" id="L40">            estado = EstadoItemSimplesEnum.INCONSISTENCIA_ENTRADA;</span>
+        }
+<span class="fc" id="L42">        String pointer = buildPointer(campo);</span>
+<span class="fc" id="L43">        String type = buildTypeURI(codigo.getCode());</span>
+<span class="fc" id="L44">        erros.add(new ErroDetalhe(type, codigo.getTitulo(), codigo.getCode(), pointer, detail));</span>
+<span class="fc" id="L45">    }</span>
+
+    /**
+     * Registra que o item não pode ser calculado por falta de implementação na
+     * Calculadora (cClassTrib vinculado, na data do fato gerador, a tratamento
+     * tributário marcado como &quot;sem implementação&quot;), definindo o estado como
+     * {@code NAO_IMPLEMENTADO}.
+     *
+     * &lt;p&gt;Diferente de {@link #addErroValidacao}, o estado é atribuído
+     * INCONDICIONALMENTE: a falta de implementação tem prioridade sobre
+     * inconsistências de entrada eventualmente já acumuladas — o mesmo
+     * comportamento do coletor do regime geral, em que o estado do código de
+     * erro catalogado prevalece.
+     *
+     * @param codigo código {@code VSN-} catalogado
+     * @param campo  nome do campo (relativo ao item) para compor o JSON Pointer
+     * @param detail mensagem de detalhe
+     */
+    public void addNaoImplementado(CodigoValidacaoSimples codigo, String campo, String detail) {
+<span class="fc" id="L64">        estado = EstadoItemSimplesEnum.NAO_IMPLEMENTADO;</span>
+<span class="fc" id="L65">        String pointer = buildPointer(campo);</span>
+<span class="fc" id="L66">        String type = buildTypeURI(codigo.getCode());</span>
+<span class="fc" id="L67">        erros.add(new ErroDetalhe(type, codigo.getTitulo(), codigo.getCode(), pointer, detail));</span>
+<span class="fc" id="L68">    }</span>
+
+    /**
+     * Acumula uma falha técnica inesperada de cálculo, definindo o estado como
+     * {@code FALHA_TECNICA}.
+     */
+    public void addFalhaTecnica(Exception ex) {
+<span class="nc" id="L75">        estado = EstadoItemSimplesEnum.FALHA_TECNICA;</span>
+<span class="nc" id="L76">        CodigoValidacaoSimples codigo = CodigoValidacaoSimples.FALHA_TECNICA;</span>
+<span class="nc" id="L77">        String pointer = &quot;#/itens/&quot; + index;</span>
+<span class="nc" id="L78">        String type = buildTypeURI(codigo.getCode());</span>
+<span class="nc" id="L79">        erros.add(new ErroDetalhe(type, codigo.getTitulo(), codigo.getCode(), pointer, ex.getMessage()));</span>
+<span class="nc" id="L80">    }</span>
+
+    private String buildTypeURI(String codigo) {
+<span class="fc" id="L83">        return String.format(&quot;%s/calculadora/observabilidade/simples-nacional/erros?codigo=%s&quot;, baseURL, codigo);</span>
+    }
+
+    private String buildPointer(String campo) {
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">        if (campo == null) {</span>
+<span class="nc" id="L88">            return &quot;#/itens/&quot; + index;</span>
+        }
+<span class="fc" id="L90">        return &quot;#/itens/&quot; + index + &quot;/&quot; + campo;</span>
+    }
+
+    public EstadoItemSimplesEnum getEstado() {
+<span class="fc" id="L94">        return estado;</span>
+    }
+
+    public List&lt;ErroDetalhe&gt; getErros() {
+<span class="fc" id="L98">        return Collections.unmodifiableList(erros);</span>
+    }
+
+    public boolean hasErros() {
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        return !erros.isEmpty();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

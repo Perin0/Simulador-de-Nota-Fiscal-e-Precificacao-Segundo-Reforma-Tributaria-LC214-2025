@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ErroDetalhe.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.shared.exceptionhandler.dto</a> &gt; <span class="el_source">ErroDetalhe.java</span></div><h1>ErroDetalhe.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.shared.exceptionhandler.dto;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+/**
+ * Detalhe de erro individual da API, conforme RFC 7807/9457 — a estrutura
+ * COMPARTILHADA da propriedade {@code errors[]} de qualquer {@code ProblemDetail}
+ * do projeto (ex-{@code ErroDetalheSimples}, generalizado).
+ *
+ * &lt;p&gt;O campo {@code pointer} segue a RFC 6901 (JSON Pointer).
+ *
+ * &lt;p&gt;{@code @JsonInclude(NON_NULL)} omite os campos nulos: erros genéricos sem
+ * catálogo próprio (ex.: validação de campos ou de query params) não têm
+ * {@code code} nem {@code type}; os erros {@code VSN-} do Simples Nacional
+ * sempre preenchem ambos — o catálogo de códigos permanece na feature
+ * ({@code CodigoValidacaoSimples}), apenas a estrutura do erro é compartilhada.
+ *
+ * @param type    URI de consulta ao catálogo do erro (nulo quando não há catálogo)
+ * @param title   título curto do erro
+ * @param code    código catalogado (ex.: {@code VSN-001}; nulo quando não há catálogo)
+ * @param pointer JSON Pointer (RFC 6901) do campo/parâmetro de origem
+ * @param detail  mensagem detalhada
+ */
+@JsonInclude(NON_NULL)
+<span class="fc" id="L27">public record ErroDetalhe(String type, String title, String code, String pointer, String detail) {</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

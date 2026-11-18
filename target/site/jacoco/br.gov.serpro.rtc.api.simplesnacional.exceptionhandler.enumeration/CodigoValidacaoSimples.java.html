@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CodigoValidacaoSimples.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.simplesnacional.exceptionhandler.enumeration</a> &gt; <span class="el_source">CodigoValidacaoSimples.java</span></div><h1>CodigoValidacaoSimples.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.simplesnacional.exceptionhandler.enumeration;
+
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import lombok.Getter;
+
+/**
+ * Catálogo próprio de códigos de validação do Simples Nacional,
+ * com prefixo {@code VSN-} (Validação Simples Nacional), alinhado à
+ * NT 2026.005 (Reforma Tributária do Consumo — Simples Nacional).
+ *
+ * &lt;p&gt;
+ * POLÍTICA DE APOSENTADORIA DE CÓDIGOS: os códigos {@code VSN-008} e
+ * {@code VSN-009} (origem de alíquota ANEXO/REGIME_GERAL do contrato antigo)
+ * foram APOSENTADOS junto com o conceito de &quot;origem&quot; e seus números NÃO são
+ * reutilizados, para que consultas históricas ao catálogo nunca retornem um
+ * significado diferente do que foi emitido à época. Novos erros recebem
+ * números a partir de {@code VSN-014}.
+ *
+ * &lt;p&gt;
+ * Duplicado deliberadamente do análogo {@code CodigoValidacao} do regime geral:
+ * os catálogos de erro dos dois cálculos são independentes (códigos, mensagens e
+ * ciclos de vida próprios) e a duplicação preserva o isolamento entre os pacotes.
+ *
+ */
+<span class="fc" id="L30">@Getter</span>
+public enum CodigoValidacaoSimples {
+
+<span class="fc" id="L33">    BASE_AUSENTE(&quot;VSN-001&quot;,</span>
+            &quot;Base de cálculo do Simples ausente&quot;,
+            &quot;A base de cálculo do Simples Nacional é obrigatória e não foi informada.&quot;),
+<span class="fc" id="L36">    BASE_INVALIDA(&quot;VSN-002&quot;,</span>
+            &quot;Base de cálculo do Simples inválida (negativa/não numérica)&quot;,
+            &quot;A base de cálculo informada não é um número decimal válido ou é negativa.&quot;),
+<span class="fc" id="L39">    IS_INVALIDO(&quot;VSN-003&quot;,</span>
+            &quot;Valor do Imposto Seletivo inválido (negativo/não numérico)&quot;,
+            &quot;O valor do Imposto Seletivo (vIS) informado não é um número decimal válido ou é negativo.&quot;),
+<span class="fc" id="L42">    ALIQUOTA_CBS_AUSENTE(&quot;VSN-004&quot;,</span>
+            &quot;Alíquota pCBSSN ausente&quot;,
+            &quot;A alíquota efetiva de CBS do Simples Nacional (pCBSSN) é exigida para o cálculo do item e não foi informada.&quot;),
+<span class="fc" id="L45">    ALIQUOTA_CBS_INVALIDA(&quot;VSN-005&quot;,</span>
+            &quot;Alíquota pCBSSN inválida (negativa/não numérica)&quot;,
+            &quot;A alíquota efetiva de CBS do Simples Nacional (pCBSSN) informada não é um número decimal válido ou é negativa.&quot;),
+<span class="fc" id="L48">    ALIQUOTA_IBS_AUSENTE(&quot;VSN-006&quot;,</span>
+            &quot;Alíquota pIBSSN ausente&quot;,
+            &quot;A alíquota efetiva de IBS do Simples Nacional (pIBSSN) é exigida para o cálculo do item e não foi informada.&quot;),
+<span class="fc" id="L51">    ALIQUOTA_IBS_INVALIDA(&quot;VSN-007&quot;,</span>
+            &quot;Alíquota pIBSSN inválida (negativa/não numérica)&quot;,
+            &quot;A alíquota efetiva de IBS do Simples Nacional (pIBSSN) informada não é um número decimal válido ou é negativa.&quot;),
+    // VSN-008 e VSN-009 (origem de alíquota): APOSENTADOS — números não reutilizados (ver Javadoc da classe).
+<span class="fc" id="L55">    NUMERO_AUSENTE(&quot;VSN-010&quot;,</span>
+            &quot;Número do item ausente&quot;,
+            &quot;O número (identificador) do item é obrigatório e não foi informado.&quot;),
+<span class="fc" id="L58">    ITENS_VAZIOS(&quot;VSN-011&quot;,</span>
+            &quot;Lista de itens vazia&quot;,
+            &quot;A lista de itens da operação é obrigatória e não pode estar vazia.&quot;),
+<span class="fc" id="L61">    DATA_INVALIDA(&quot;VSN-012&quot;,</span>
+            &quot;Data do fato gerador ausente/inválida&quot;,
+            &quot;A data do fato gerador é obrigatória e deve estar no formato de data (YYYY-MM-DD).&quot;),
+<span class="fc" id="L64">    DADO_GLOBAL_AUSENTE(&quot;VSN-013&quot;,</span>
+            &quot;Dado global obrigatório ausente&quot;,
+            &quot;Um campo global obrigatório da operação (id ou versao) não foi informado.&quot;),
+<span class="fc" id="L67">    TPDOC_AUSENTE(&quot;VSN-014&quot;,</span>
+            &quot;Tipo de documento fiscal (tpDoc) ausente&quot;,
+            &quot;O tipo de documento fiscal (tpDoc) é obrigatório e não foi informado.&quot;),
+<span class="fc" id="L70">    TPDOC_NAO_SUPORTADO(&quot;VSN-015&quot;,</span>
+            &quot;Tipo de documento fiscal (tpDoc) não suportado&quot;,
+            &quot;O tipo de documento fiscal (tpDoc) informado não está habilitado para o cálculo do Simples &quot;
+                    + &quot;Nacional na data do fato gerador. A habilitação de documentos é parametrizada em banco &quot;
+                    + &quot;de dados (tabela de tipos de DFe do cálculo do Simples), conforme as NTs publicadas.&quot;),
+<span class="fc" id="L75">    CRT_INVALIDO(&quot;VSN-016&quot;,</span>
+            &quot;Código de Regime Tributário (CRT) ausente/inválido&quot;,
+            &quot;O Código de Regime Tributário (CRT) é obrigatório e deve ser 1, 2, 3 ou 4.&quot;),
+<span class="fc" id="L78">    TPREGIMEIBSCBS_INVALIDO(&quot;VSN-017&quot;,</span>
+            &quot;Tipo de regime do IBS/CBS (tpRegimeIBSCBS) inválido&quot;,
+            &quot;O tipo de regime de apuração do IBS/CBS (tpRegimeIBSCBS), quando informado, deve ser 1 ou 2.&quot;),
+<span class="fc" id="L81">    TPREGIMEIBSCBS_INCOMPATIVEL(&quot;VSN-018&quot;,</span>
+            &quot;tpRegimeIBSCBS incompatível com o CRT&quot;,
+            &quot;A combinação de CRT e tpRegimeIBSCBS informada é incoerente (regras C21a-10/20/30 da NT 2026.005): &quot;
+                    + &quot;CRT 1, 2 ou 4 não admite tpRegimeIBSCBS=2; CRT 3 não admite tpRegimeIBSCBS=1; &quot;
+                    + &quot;CRT 4 não admite tpRegimeIBSCBS algum.&quot;),
+<span class="fc" id="L86">    OPERACAO_FORA_ESCOPO(&quot;VSN-019&quot;,</span>
+            &quot;Operação fora do escopo do cálculo assistido do Simples Nacional&quot;,
+            &quot;A operação não é calculada por este endpoint: optante pelo regime regular do IBS/CBS &quot;
+                    + &quot;(tpRegimeIBSCBS=1), MEI (CRT=4) ou regime normal puro (CRT=3 sem tpRegimeIBSCBS=2).&quot;),
+<span class="fc" id="L90">    CCLASSTRIB_AUSENTE(&quot;VSN-020&quot;,</span>
+            &quot;Código de Classificação Tributária (cClassTrib) ausente&quot;,
+            &quot;O código de classificação tributária do IBS/CBS (cClassTrib) é obrigatório e não foi informado.&quot;),
+<span class="fc" id="L93">    CCLASSTRIB_DESCONHECIDO(&quot;VSN-021&quot;,</span>
+            &quot;cClassTrib desconhecido ou fora de vigência&quot;,
+            &quot;O cClassTrib informado não existe ou não está vigente na data do fato gerador: &quot;
+                    + &quot;o Tipo de Receita Bruta do Simples Nacional (tpRBSN) não pôde ser determinado.&quot;),
+<span class="fc" id="L97">    CCLASSTRIB_INCOMPATIVEL_TPDOC(&quot;VSN-022&quot;,</span>
+            &quot;cClassTrib incompatível com o tpDoc&quot;,
+            &quot;O cClassTrib informado não é admissível para o tipo de documento fiscal (tpDoc) da operação.&quot;),
+<span class="fc" id="L100">    CATIVSN_INCOMPATIVEL_CCLASSTRIB(&quot;VSN-023&quot;,</span>
+            &quot;Código de Atividade do Simples Nacional incompatível com cClassTrib&quot;,
+            &quot;O código de atividade cAtivSN='90' (Operações não Tributáveis) é incompatível com cClassTrib &quot;
+                    + &quot;cujo tpRBSN esteja entre 1 e 5 (regra UB14-90 da NT 2026.005).&quot;),
+<span class="fc" id="L104">    TPENTEGOV_INVALIDO(&quot;VSN-024&quot;,</span>
+            &quot;Tipo de ente governamental (tpEnteGov) inválido&quot;,
+            &quot;O tipo de ente governamental (tpEnteGov), quando informado, deve ser 1 (União), 2 (Estado), &quot;
+                    + &quot;3 (Distrito Federal) ou 4 (Município). O campo é da operação — espelha a tag &quot;
+                    + &quot;gCompraGov/tpEnteGov da identificação da nota (grupo B/ide do leiaute do DF-e) — e &quot;
+                    + &quot;sua invalidade rejeita a operação inteira.&quot;),
+<span class="fc" id="L110">    COMPRA_GOV_SEM_VIGENCIA(&quot;VSN-025&quot;,</span>
+            &quot;Parametrização de compra governamental indisponível para a data&quot;,
+            &quot;A data do fato gerador está fora de todas as vigências do parâmetro de transição de alíquotas &quot;
+                    + &quot;de compra governamental do Simples Nacional (NT 2026.005, seção 5.3.3; arts. 372 e 473 &quot;
+                    + &quot;da LC 214/2025). Como o tpEnteGov é dado da operação, a falha rejeita a operação &quot;
+                    + &quot;inteira.&quot;),
+<span class="fc" id="L116">    PARAMETRIZACAO_INDISPONIVEL(&quot;VSN-026&quot;,</span>
+            &quot;Parametrização do cálculo do Simples Nacional indisponível para a data&quot;,
+            &quot;Não há linha vigente, na data do fato gerador, em uma tabela de parametrização do cálculo do &quot;
+                    + &quot;Simples Nacional (efeito do tipo de receita bruta ou matriz de regime de apuração). &quot;
+                    + &quot;O cálculo nunca assume comportamento implícito: a parametrização deve ser corrigida &quot;
+                    + &quot;por script de migração.&quot;),
+<span class="fc" id="L122">    CCLASSTRIB_NAO_IMPLEMENTADO(&quot;VSN-027&quot;,</span>
+            &quot;cClassTrib sem tratamento implementado no cálculo do Simples Nacional&quot;,
+            &quot;A classificação tributária (cClassTrib) informada está vinculada, na data do fato gerador, a &quot;
+                    + &quot;tratamento tributário marcado como ainda não implementado na Calculadora (indicador de &quot;
+                    + &quot;ajuste do tratamento tributário). O item é reportado com o estado NAO_IMPLEMENTADO, &quot;
+                    + &quot;sem cálculo e fora dos totais; a funcionalidade está prevista no roadmap e será &quot;
+                    + &quot;disponibilizada em versão futura.&quot;),
+<span class="fc" id="L129">    DESCONHECIDO(&quot;VSN-000&quot;,</span>
+            &quot;Erro de validação não categorizado&quot;,
+            &quot;O tipo de validação aplicado não possui uma categoria específica.&quot;),
+<span class="fc" id="L132">    FALHA_TECNICA(&quot;VSN-999&quot;,</span>
+            &quot;Falha técnica no cálculo do item&quot;,
+            &quot;Ocorreu uma falha técnica inesperada durante o cálculo do item.&quot;);
+
+    private final String code;
+    private final String titulo;
+    private final String descricao;
+
+<span class="fc" id="L140">    private static final Map&lt;String, CodigoValidacaoSimples&gt; CODE_INDEX =</span>
+<span class="fc" id="L141">            Stream.of(values())</span>
+<span class="fc" id="L142">                    .collect(Collectors.toUnmodifiableMap(CodigoValidacaoSimples::getCode, Function.identity()));</span>
+
+<span class="fc" id="L144">    CodigoValidacaoSimples(String code, String titulo, String descricao) {</span>
+<span class="fc" id="L145">        this.code = code;</span>
+<span class="fc" id="L146">        this.titulo = titulo;</span>
+<span class="fc" id="L147">        this.descricao = descricao;</span>
+<span class="fc" id="L148">    }</span>
+
+    public static Optional&lt;CodigoValidacaoSimples&gt; fromCodigo(String codigo) {
+<span class="pc bpc" id="L151" title="1 of 2 branches missed.">        if (codigo == null) {</span>
+<span class="nc" id="L152">            return Optional.empty();</span>
+        }
+<span class="fc" id="L154">        return Optional.ofNullable(CODE_INDEX.get(codigo));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

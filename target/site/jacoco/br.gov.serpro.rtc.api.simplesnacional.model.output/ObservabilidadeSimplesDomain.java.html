@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ObservabilidadeSimplesDomain.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.simplesnacional.model.output</a> &gt; <span class="el_source">ObservabilidadeSimplesDomain.java</span></div><h1>ObservabilidadeSimplesDomain.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.simplesnacional.model.output;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+/**
+ *
+ * Resposta do endpoint de observabilidade do Simples Nacional.
+ *
+ * &lt;p&gt;Contém:
+ * &lt;ul&gt;
+ * &lt;li&gt;o repasse da operação ({@code oper})&lt;/li&gt;
+ * &lt;li&gt;os itens com estado de processamento ({@code objetos})&lt;/li&gt;
+ * &lt;li&gt;o total consolidado dos itens calculados ({@code total})&lt;/li&gt;
+ * &lt;/ul&gt;
+ *
+ */
+@JsonInclude(NON_NULL)
+@JsonPropertyOrder({ &quot;oper&quot;, &quot;objetos&quot;, &quot;total&quot; })
+<span class="fc" id="L24">public record ObservabilidadeSimplesDomain(</span>
+        OperacaoSimplesDomain oper,
+        List&lt;ObjetoSimplesDomain&gt; objetos,
+        TotalSimplesDomain total) {
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

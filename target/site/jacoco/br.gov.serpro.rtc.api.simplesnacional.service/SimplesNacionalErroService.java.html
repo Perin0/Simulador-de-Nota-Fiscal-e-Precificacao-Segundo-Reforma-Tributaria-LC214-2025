@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SimplesNacionalErroService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.simplesnacional.service</a> &gt; <span class="el_source">SimplesNacionalErroService.java</span></div><h1>SimplesNacionalErroService.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.simplesnacional.service;
+
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import br.gov.serpro.rtc.api.simplesnacional.exceptionhandler.dto.ErroDescricaoSimples;
+import br.gov.serpro.rtc.api.simplesnacional.exceptionhandler.enumeration.CodigoValidacaoSimples;
+
+/**
+ *
+ * Serviço de consulta ao catálogo de erros do Simples Nacional (códigos {@code VSN-}).
+ *
+ * &lt;p&gt;Duplicado deliberadamente do análogo {@code ErroService} do antigo regime
+ * geral (removido do projeto), para preservar o isolamento entre os pacotes e a
+ * independência dos catálogos de erro.
+ *
+ */
+@Service
+<span class="fc" id="L20">public class SimplesNacionalErroService {</span>
+
+    public Optional&lt;ErroDescricaoSimples&gt; buscarPorCodigo(String codigo) {
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">        if (codigo == null) {</span>
+<span class="nc" id="L24">            return Optional.empty();</span>
+        }
+<span class="fc" id="L26">        return CodigoValidacaoSimples.fromCodigo(codigo)</span>
+<span class="fc" id="L27">                .map(cv -&gt; new ErroDescricaoSimples(codigo, cv.getTitulo(), cv.getDescricao()));</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

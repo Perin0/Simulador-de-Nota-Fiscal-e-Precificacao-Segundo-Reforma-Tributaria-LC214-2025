@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RegimeCalculoSimplesEnum.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.simplesnacional.enumeration</a> &gt; <span class="el_source">RegimeCalculoSimplesEnum.java</span></div><h1>RegimeCalculoSimplesEnum.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.simplesnacional.enumeration;
+
+/**
+ * Regime de apuração do IBS/CBS que CALCULA neste endpoint, resolvido a partir
+ * da combinação {@code CRT} × {@code tpRegimeIBSCBS} (NT 2026.005, seção 5.3.4).
+ *
+ * &lt;p&gt;
+ * Este enum é apenas o DISCRIMINADOR tipado das combinações válidas; o
+ * comportamento de cada regime (gera IBS ou não, destino dos valores devidos e
+ * pendentes/suspensos) é parametrizado em banco, na tabela
+ * {@code REGIME_APURACAO_SIMPLES_NACIONAL}, resolvida pela vigência da data do
+ * fato gerador.
+ *
+ * &lt;p&gt;
+ * Combinações fora deste enum são rejeitadas na validação global (HTTP 422):
+ * {@code CRT=4} (MEI), {@code tpRegimeIBSCBS=1} (regime regular),
+ * {@code CRT=3} sem {@code tpRegimeIBSCBS=2} (regime normal puro) e as
+ * incoerências CRT × tpRegimeIBSCBS das regras C21a-10/20/30 da NT.
+ */
+<span class="fc" id="L20">public enum RegimeCalculoSimplesEnum {</span>
+
+    /** CRT=1 — Simples Nacional (sem {@code tpRegimeIBSCBS}). */
+<span class="fc" id="L23">    CRT_1,</span>
+
+    /**
+     * CRT=2 — Simples Nacional com excesso de sublimite de receita bruta
+     * (sem {@code tpRegimeIBSCBS}). Na parametrização vigente, o regime não
+     * gera o bloco de IBS na saída: o IBS desse contribuinte é declarado pelo
+     * emitente no gIBSCBS da nota (regime regular), fora deste endpoint.
+     */
+<span class="fc" id="L31">    CRT_2,</span>
+
+    /**
+     * CRT=3 + tpRegimeIBSCBS=2 — Regime Normal com apuração pelo regime do
+     * Simples Nacional. Na parametrização vigente, os valores calculados ficam
+     * integralmente pendentes ou suspensos
+     * ({@code vIBSPendSusp}/{@code vCBSPendSusp}), e a exportação indireta
+     * (tpRBSN=4) zera tudo (fórmulas P32/P33 da NT — literal e intencional).
+     */
+<span class="fc" id="L40">    CRT_3_TPREGIME_2</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

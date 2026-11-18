@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SimplesNacionalCalculoService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.simplesnacional.service</a> &gt; <span class="el_source">SimplesNacionalCalculoService.java</span></div><h1>SimplesNacionalCalculoService.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.simplesnacional.service;
+
+import java.math.BigDecimal;
+import java.util.Objects;
+import java.util.stream.Stream;
+
+import org.springframework.stereotype.Service;
+
+import br.gov.serpro.rtc.api.simplesnacional.entity.RegimeApuracaoSimples;
+import br.gov.serpro.rtc.api.simplesnacional.entity.TipoReceitaBrutaSimples;
+import br.gov.serpro.rtc.api.simplesnacional.enumeration.EstadoItemSimplesEnum;
+import br.gov.serpro.rtc.api.simplesnacional.model.output.ImpostoSeletivoSimplesDomain;
+import br.gov.serpro.rtc.api.simplesnacional.model.output.TributosSimplesDomain;
+import br.gov.serpro.rtc.shared.util.ArredondamentoUtils;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ *
+ * Serviço de cálculo do Simples Nacional conforme a NT 2026.005 v1.00
+ * (Reforma Tributária do Consumo — Simples Nacional; LC 123/2006, LC 214/2025,
+ * LC 227/2026), seções 5.3.2 a 5.3.4.
+ *
+ * &lt;p&gt;
+ * Serviço PURO: recebe no insumo todos os parâmetros já resolvidos e validados
+ * pelo serviço de observabilidade (efeito do tipo de receita bruta, matriz de
+ * regime, fator de compra governamental, alíquotas efetivas) e não faz nenhum
+ * acesso a banco. O comportamento parametrizável vive nas tabelas
+ * {@code TIPO_RECEITA_BRUTA_SIMPLES_NACIONAL} e
+ * {@code REGIME_APURACAO_SIMPLES_NACIONAL}; aqui ficam apenas as fórmulas
+ * fixas da NT, em três eixos legíveis separadamente:
+ * &lt;ol&gt;
+ * &lt;li&gt;transformação de alíquotas por compra governamental (pipeline de passos
+ * nomeados sobre o par pIBSSN/pCBSSN);&lt;/li&gt;
+ * &lt;li&gt;matriz de regime (decide QUAIS campos são gerados e o destino dos
+ * valores);&lt;/li&gt;
+ * &lt;li&gt;efeito do tipo de receita bruta (decide COMO: fração da receita
+ * tributada e devido versus pendente/suspenso).&lt;/li&gt;
+ * &lt;/ol&gt;
+ *
+ * &lt;p&gt;
+ * Não chama nem depende do regime geral. Cada arredondamento e totalização usa
+ * {@link ArredondamentoUtils}; não há arredondamento próprio, e cada valor é
+ * arredondado uma única vez, ao final da expressão.
+ *
+ */
+<span class="fc" id="L46">@Slf4j</span>
+@Service
+<span class="fc" id="L48">public class SimplesNacionalCalculoService {</span>
+
+    /**
+     * Insumos já resolvidos, validados e convertidos de um item.
+     *
+     * @param regime                    linha vigente da matriz de regime
+     *                                  ({@code REGIME_APURACAO_SIMPLES_NACIONAL})
+     * @param tipoReceitaBruta          linha vigente do efeito do tpRBSN
+     *                                  ({@code TIPO_RECEITA_BRUTA_SIMPLES_NACIONAL})
+     * @param cAtivSNValido             {@code true} quando o cAtivSN foi informado, está vigente e é
+     *                                  admissível para o tpDoc; {@code false} leva ao estado
+     *                                  {@code NAO_CALCULADO} (o cálculo não é realizado e isso não é erro)
+     * @param baseCalculo               base de cálculo do item (sem o vIS somado)
+     * @param valorImpostoSeletivo      vIS já calculado (repasse)
+     * @param pIBSSN                    alíquota efetiva do Simples para o IBS, em pontos percentuais
+     *                                  ({@code null} quando dispensada/não informada)
+     * @param pCBSSN                    alíquota efetiva do Simples para a CBS, em pontos percentuais
+     *                                  ({@code null} quando dispensada/não informada)
+     * @param tpEnteGov                 tipo de ente governamental adquirente ({@code null} quando não
+     *                                  informado) — dado da OPERAÇÃO (tag {@code gCompraGov/tpEnteGov} da
+     *                                  identificação da nota, grupo B/ide do DF-e), o mesmo para todos os
+     *                                  itens; a transformação de alíquotas que ele dispara é aplicada por item
+     * @param fatorTransicaoCompraGov   fator (fração) do deslocamento de alíquotas CBS→IBS, já resolvido
+     *                                  pela vigência da data do fato gerador (também dado da operação);
+     *                                  exigido apenas quando {@code tpEnteGov} é 2, 3 ou 4 e há alíquota a
+     *                                  transformar
+     */
+<span class="fc" id="L75">    public record InsumoCalculoSimples(</span>
+            RegimeApuracaoSimples regime,
+            TipoReceitaBrutaSimples tipoReceitaBruta,
+            boolean cAtivSNValido,
+            BigDecimal baseCalculo,
+            BigDecimal valorImpostoSeletivo,
+            BigDecimal pIBSSN,
+            BigDecimal pCBSSN,
+            Integer tpEnteGov,
+            BigDecimal fatorTransicaoCompraGov) {
+    }
+
+    /**
+     * Resultado do cálculo de um item: estado ({@code CALCULADO} ou
+     * {@code NAO_CALCULADO}) e os tributos correspondentes.
+     */
+<span class="fc" id="L91">    public record ResultadoCalculoSimples(EstadoItemSimplesEnum estadoItem, TributosSimplesDomain tribCalc) {</span>
+    }
+
+    /** Par de alíquotas (pontos percentuais) que atravessa o pipeline de transformação. */
+<span class="fc" id="L95">    private record ParAliquotas(BigDecimal pIBSSN, BigDecimal pCBSSN) {</span>
+    }
+
+    /** Valor de um tributo repartido entre devido e pendente/suspenso. */
+<span class="fc" id="L99">    private record ValorTributo(BigDecimal devido, BigDecimal pendenteSuspenso) {</span>
+    }
+
+    /**
+     *
+     * PONTO ÚNICO DE DECISÃO DE FLUXO DE CÁLCULO.
+     *
+     * &lt;p&gt;
+     * Executa, nesta ordem: receita bruta do item (zero quando o tipo de receita
+     * não compõe receita), curto-circuito de código de atividade inválido
+     * (estado {@code NAO_CALCULADO}, sem erro), transformação de alíquotas
+     * por compra governamental e, por fim, a matriz de regime combinada com o
+     * efeito do tipo de receita bruta.
+     *
+     * &lt;p&gt;
+     * EXTENSIBILIDADE: quando novos fatores fizerem parte da entrada e exigirem
+     * fluxos de cálculo distintos, ramifique AQUI.
+     *
+     * Não espalhe a regra por outros pontos; concentre-a neste método.
+     *
+     * @param insumo insumos já resolvidos, validados e convertidos
+     * @return estado e tributos calculados do item
+     *
+     */
+    public ResultadoCalculoSimples calcularItem(InsumoCalculoSimples insumo) {
+<span class="fc" id="L124">        TipoReceitaBrutaSimples tipoReceita = insumo.tipoReceitaBruta();</span>
+
+        // Receita bruta do item (NT 2026.005, campo P26): zero quando o tipo de
+        // receita não compõe receita bruta; caso contrário baseCalculo, somada
+        // ao vIS quando a linha vigente do tpRBSN determina que o IS compõe a
+        // receita bruta (TRBS_IN_IS_COMPOE_RECEITA, resolvida pela data do fato
+        // gerador — carga oficial: 0 em TODAS as vigências, o vIS fica fora da
+        // receita bruta). Divergência deliberada com o texto da NT, que soma o
+        // vIS incondicionalmente; a coluna permanece como alavanca de
+        // parametrização por vigência para mudanças legais futuras — ver o
+        // comentário da coluna no script de carga da tabela.
+<span class="fc" id="L135">        boolean isCompoeReceita = Boolean.TRUE.equals(tipoReceita.getImpostoSeletivoCompoeReceita());</span>
+<span class="fc bfc" id="L136" title="All 2 branches covered.">        BigDecimal vRBSNitem = Boolean.TRUE.equals(tipoReceita.getCompoeReceita())</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">                ? ArredondamentoUtils.totalizar(isCompoeReceita</span>
+<span class="fc" id="L138">                        ? Stream.of(insumo.baseCalculo(), insumo.valorImpostoSeletivo())</span>
+<span class="fc" id="L139">                        : Stream.of(insumo.baseCalculo()))</span>
+<span class="fc" id="L140">                : BigDecimal.ZERO;</span>
+
+        // cAtivSN ausente ou inválido: cálculo não realizado (NÃO é erro) — o item
+        // reporta apenas a receita bruta e o tipo de receita. NT 2026.005, seção
+        // 5.3.4 (Observação 2) e observação da seção 5.3.3.
+<span class="fc bfc" id="L145" title="All 2 branches covered.">        if (!insumo.cAtivSNValido()) {</span>
+<span class="fc" id="L146">            return new ResultadoCalculoSimples(EstadoItemSimplesEnum.NAO_CALCULADO,</span>
+<span class="fc" id="L147">                    TributosSimplesDomain.builder()</span>
+<span class="fc" id="L148">                            .vRBSNitem(vRBSNitem)</span>
+<span class="fc" id="L149">                            .tpRBSN(tipoReceita.getCodigo())</span>
+<span class="fc" id="L150">                            .tpRBSNDescricao(tipoReceita.getDescricao())</span>
+<span class="fc" id="L151">                            .build());</span>
+        }
+
+        // Pipeline de transformação de alíquotas por compra governamental
+        // (passos nomeados, aplicados em sequência sobre o par pIBSSN/pCBSSN).
+<span class="fc" id="L156">        ParAliquotas aliquotas = aplicarDeslocamentoCbsIbs(</span>
+<span class="fc" id="L157">                aplicarRedutorCompraGovernamental(new ParAliquotas(insumo.pIBSSN(), insumo.pCBSSN())),</span>
+<span class="fc" id="L158">                insumo.tpEnteGov(), insumo.fatorTransicaoCompraGov());</span>
+
+        // Matriz de regime × efeito do tipo de receita bruta.
+<span class="fc" id="L161">        BigDecimal fatorReceita = tipoReceita.getFatorReceita();</span>
+<span class="fc" id="L162">        boolean pendenteSuspenso = Boolean.TRUE.equals(tipoReceita.getPendenteSuspenso());</span>
+
+        // Base de cálculo de IBS/CBS do item: a fração da receita bruta
+        // efetivamente tributada (vRBSNitem × TRBS_FATOR_RECEITA). Zero quando
+        // o fator anula a receita (tpRBSN 0, 2, 3 e 9). Gerada apenas para item
+        // CALCULADO — o NAO_CALCULADO reporta só vRBSNitem/tpRBSN (acima).
+<span class="fc" id="L168">        BigDecimal vBC = ArredondamentoUtils.multiplicar(vRBSNitem, fatorReceita);</span>
+
+<span class="fc" id="L170">        BigDecimal valorIbs = valorTributo(vRBSNitem, fatorReceita, aliquotas.pIBSSN());</span>
+<span class="fc" id="L171">        BigDecimal valorCbs = valorTributo(vRBSNitem, fatorReceita, aliquotas.pCBSSN());</span>
+
+        // Quando o regime não gera IBS (CRT=2), os campos de IBS não saem na
+        // resposta: o IBS desse contribuinte é declarado pelo emitente no
+        // gIBSCBS da nota (regime regular), fora deste endpoint.
+<span class="fc" id="L176">        boolean geraIbs = Boolean.TRUE.equals(insumo.regime().getGeraIbs());</span>
+<span class="fc bfc" id="L177" title="All 2 branches covered.">        ValorTributo ibs = geraIbs ? repartirPorRegime(insumo.regime(), valorIbs, pendenteSuspenso) : null;</span>
+<span class="fc" id="L178">        ValorTributo cbs = repartirPorRegime(insumo.regime(), valorCbs, pendenteSuspenso);</span>
+
+        // Imposto Seletivo: repassar o valor recebido (sem recalcular).
+<span class="fc" id="L181">        BigDecimal valorIs = insumo.valorImpostoSeletivo();</span>
+
+        // Total do item: somente os valores DEVIDOS (pendente/suspenso fica fora) + IS.
+<span class="fc" id="L184">        BigDecimal totalItem = ArredondamentoUtils.totalizar(</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">                Stream.of(ibs != null ? ibs.devido() : null, cbs.devido(), valorIs).filter(Objects::nonNull));</span>
+
+<span class="fc" id="L187">        return new ResultadoCalculoSimples(EstadoItemSimplesEnum.CALCULADO,</span>
+<span class="fc" id="L188">                TributosSimplesDomain.builder()</span>
+<span class="fc" id="L189">                        .vRBSNitem(vRBSNitem)</span>
+<span class="fc" id="L190">                        .tpRBSN(tipoReceita.getCodigo())</span>
+<span class="fc" id="L191">                        .tpRBSNDescricao(tipoReceita.getDescricao())</span>
+<span class="fc" id="L192">                        .vBC(vBC)</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">                        .pIBSSN(geraIbs ? aliquotas.pIBSSN() : null)</span>
+<span class="fc bfc" id="L194" title="All 2 branches covered.">                        .vIBSSN(ibs != null ? ibs.devido() : null)</span>
+<span class="fc bfc" id="L195" title="All 2 branches covered.">                        .vIBSPendSusp(ibs != null ? ibs.pendenteSuspenso() : null)</span>
+<span class="fc" id="L196">                        .pCBSSN(aliquotas.pCBSSN())</span>
+<span class="fc" id="L197">                        .vCBSSN(cbs.devido())</span>
+<span class="fc" id="L198">                        .vCBSPendSusp(cbs.pendenteSuspenso())</span>
+<span class="fc" id="L199">                        .IS(new ImpostoSeletivoSimplesDomain(valorIs))</span>
+<span class="fc" id="L200">                        .totalItem(totalItem)</span>
+<span class="fc" id="L201">                        .build());</span>
+    }
+
+    // ─── Pipeline de transformação de alíquotas (compra governamental) ─────────
+
+    /**
+     *
+     * Passo 1 do pipeline — Redutor de compra governamental (arts. 370 e 472 da
+     * LC 214/2025, tag {@code pRedutor} do gCompraGov da NT 2025.002):
+     * DELIBERADAMENTE NÃO APLICADO.
+     *
+     * &lt;p&gt;
+     * A NT 2026.005, seção 5.3.3, invoca apenas os arts. 372 e 473 da LC
+     * 214/2025 e usa apenas o {@code tpEnteGov}; a tag {@code pRedutor} NÃO
+     * participa da fórmula do Evento de Tributação do Simples Nacional
+     * (tpEvento 412140). O redutor aplica-se às alíquotas do regime regular —
+     * no ecossistema do Simples ele aparece somente no IBS do CRT=2 (gIBSCBS,
+     * calculado pelo emitente) e no tpRegimeIBSCBS=1, ambos fora deste
+     * endpoint. Este endpoint reproduz o evento oficial: aplicar um redutor que
+     * o evento não aplica geraria divergência com o documento oficial. Por isso
+     * o {@code pRedutor} também NÃO é aceito no contrato de entrada.
+     *
+     * &lt;p&gt;
+     * PONTO DE INSERÇÃO: caso NT futura determine a aplicação do redutor ao
+     * Simples, implemente a regra NESTE método (a assinatura já recebe e
+     * devolve o par de alíquotas do pipeline). Não confundir com as tabelas
+     * {@code REDUTOR_COMPRA_GOVERNAMENTAL} e {@code TRANSFERENCIA_CBS_ENTE_GOV}
+     * do regime geral, que permanecem proibidas para este pacote.
+     *
+     * @param aliquotas par de alíquotas corrente do pipeline
+     * @return o mesmo par, inalterado (identidade deliberada)
+     *
+     */
+    private ParAliquotas aplicarRedutorCompraGovernamental(ParAliquotas aliquotas) {
+<span class="fc" id="L235">        return aliquotas;</span>
+    }
+
+    /**
+     *
+     * Passo 2 do pipeline — Deslocamento de alíquotas CBS↔IBS em compras
+     * governamentais (arts. 372 e 473 da LC 214/2025; NT 2026.005, seção 5.3.3),
+     * aplicado apenas quando {@code tpEnteGov} foi informado:
+     * &lt;ul&gt;
+     * &lt;li&gt;{@code tpEnteGov=1} (União) — regra ESTRUTURAL e atemporal, sem
+     * parâmetro (por isso não está na tabela de transição):
+     * {@code pCBS' = pCBS + pIBS; pIBS' = 0};&lt;/li&gt;
+     * &lt;li&gt;{@code tpEnteGov ∈ {2,3,4}} — com o fator {@code f} (fração) da tabela
+     * {@code TRANSICAO_ALIQUOTA_COMPRA_GOV_SIMPLES_NACIONAL}, já resolvido pela
+     * vigência da data do fato gerador e recebido no insumo:
+     * {@code pIBS' = pIBS + f × pCBS; pCBS' = (1 − f) × pCBS}.&lt;/li&gt;
+     * &lt;/ul&gt;
+     *
+     * &lt;p&gt;
+     * As alíquotas transformadas são as usadas no cálculo E as reportadas na
+     * saída ({@code pIBSSN}/{@code pCBSSN}).
+     *
+     * &lt;p&gt;
+     * Para regime que não gera IBS (CRT=2), o {@code pIBSSN} recebido é usado
+     * APENAS como insumo desta transformação (a fórmula de {@code pCBS'} depende
+     * de {@code pIBS}); quando não informado, é tratado como zero. Os campos de
+     * IBS continuam suprimidos da saída — a supressão é decidida na matriz de
+     * regime.
+     *
+     */
+    private ParAliquotas aplicarDeslocamentoCbsIbs(ParAliquotas aliquotas, Integer tpEnteGov, BigDecimal fator) {
+<span class="pc bpc" id="L266" title="1 of 6 branches missed.">        if (tpEnteGov == null || (aliquotas.pIBSSN() == null &amp;&amp; aliquotas.pCBSSN() == null)) {</span>
+<span class="fc" id="L267">            return aliquotas;</span>
+        }
+
+<span class="fc" id="L270">        BigDecimal pIbs = Objects.requireNonNullElse(aliquotas.pIBSSN(), BigDecimal.ZERO);</span>
+<span class="fc" id="L271">        BigDecimal pCbs = Objects.requireNonNullElse(aliquotas.pCBSSN(), BigDecimal.ZERO);</span>
+
+<span class="fc bfc" id="L273" title="All 2 branches covered.">        if (tpEnteGov == 1) {</span>
+            // União: pCBS' = pCBS + pIBS; pIBS' = 0.
+<span class="fc" id="L275">            return new ParAliquotas(BigDecimal.ZERO,</span>
+<span class="fc" id="L276">                    ArredondamentoUtils.totalizar(Stream.of(pCbs, pIbs)));</span>
+        }
+
+<span class="fc" id="L279">        Objects.requireNonNull(fator,</span>
+                &quot;Fator de transição de compra governamental não resolvido para tpEnteGov &quot; + tpEnteGov);
+
+        // pIBS' = pIBS + f × pCBS; pCBS' = (1 − f) × pCBS.
+<span class="fc" id="L283">        BigDecimal pIbsTransformada = ArredondamentoUtils.totalizar(</span>
+<span class="fc" id="L284">                Stream.of(pIbs, ArredondamentoUtils.multiplicar(fator, pCbs)));</span>
+<span class="fc" id="L285">        BigDecimal pCbsTransformada = ArredondamentoUtils.multiplicar(</span>
+<span class="fc" id="L286">                ArredondamentoUtils.subtrair(BigDecimal.ONE, fator), pCbs);</span>
+
+<span class="fc" id="L288">        return new ParAliquotas(pIbsTransformada, pCbsTransformada);</span>
+    }
+
+    // ─── Matriz de regime × efeito do tipo de receita bruta ────────────────────
+
+    /**
+     * Valor bruto do tributo: {@code vRBSNitem × fatorReceita × (alíquota / 100)},
+     * com o fator de receita (1.0, 0.5 ou 0.0) vindo da tabela de tipos de
+     * receita bruta. Zero quando o fator anula a receita ou a alíquota é
+     * dispensada (nula).
+     */
+    private BigDecimal valorTributo(BigDecimal vRBSNitem, BigDecimal fatorReceita, BigDecimal aliquota) {
+<span class="fc bfc" id="L300" title="All 4 branches covered.">        if (aliquota == null || fatorReceita.signum() == 0) {</span>
+<span class="fc" id="L301">            return BigDecimal.ZERO;</span>
+        }
+<span class="fc" id="L303">        return ArredondamentoUtils.multiplicar(</span>
+<span class="fc" id="L304">                ArredondamentoUtils.multiplicar(vRBSNitem, fatorReceita),</span>
+<span class="fc" id="L305">                ArredondamentoUtils.dividirPorCem(aliquota));</span>
+    }
+
+    /**
+     * Reparte o valor do tributo entre devido e pendente/suspenso aplicando os
+     * destinos parametrizados na matriz de regime
+     * ({@code REGIME_APURACAO_SIMPLES_NACIONAL}): o valor que o tipo de receita
+     * bruta qualificou como devido segue o destino &quot;devido&quot; do regime; o valor
+     * qualificado como pendente/suspenso (exportação indireta) segue o destino
+     * &quot;pendente/suspenso&quot; — que pode ser ZERO (caso do CRT=3 + tpRegimeIBSCBS=2,
+     * literal nas fórmulas P32/P33 da NT 2026.005; intencional, NÃO &quot;corrigir&quot;).
+     */
+    private ValorTributo repartirPorRegime(RegimeApuracaoSimples regime, BigDecimal valor,
+            boolean pendenteSuspenso) {
+<span class="fc bfc" id="L319" title="All 2 branches covered.">        var destino = pendenteSuspenso ? regime.getDestinoPendenteSuspenso() : regime.getDestinoDevido();</span>
+<span class="fc bfc" id="L320" title="All 3 branches covered.">        return switch (destino) {</span>
+<span class="fc" id="L321">            case DEVIDO -&gt; new ValorTributo(valor, BigDecimal.ZERO);</span>
+<span class="fc" id="L322">            case PENDENTE_SUSPENSO -&gt; new ValorTributo(BigDecimal.ZERO, valor);</span>
+<span class="fc" id="L323">            case ZERO -&gt; new ValorTributo(BigDecimal.ZERO, BigDecimal.ZERO);</span>
+        };
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

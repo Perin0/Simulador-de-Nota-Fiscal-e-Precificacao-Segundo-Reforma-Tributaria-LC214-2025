@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TributosSimplesDomain.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.simplesnacional.model.output</a> &gt; <span class="el_source">TributosSimplesDomain.java</span></div><h1>TributosSimplesDomain.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.simplesnacional.model.output;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
+import java.math.BigDecimal;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import br.gov.serpro.rtc.shared.serializer.BigDecimalTDec0302_04Serializer;
+import br.gov.serpro.rtc.shared.serializer.BigDecimalTDec1302Serializer;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
+
+/**
+ *
+ * Tributos calculados de um item do Simples Nacional, espelhando o leiaute do
+ * Evento de Tributação do Simples Nacional (tpEvento 412140) da NT 2026.005.
+ *
+ * &lt;p&gt;A supressão de tags exigida pela NT é feita por {@code @JsonInclude(NON_NULL)}:
+ * para CRT=2 os campos de IBS ({@code pIBSSN}, {@code vIBSSN}, {@code vIBSPendSusp})
+ * não são gerados; para itens {@code NAO_CALCULADO} apenas {@code vRBSNitem} e
+ * {@code tpRBSN} são preenchidos.
+ *
+ * &lt;p&gt;Record com {@code @Builder} (12 componentes, construção condicional no
+ * serviço de cálculo).
+ *
+ */
+@Builder
+@JsonInclude(NON_NULL)
+@JsonPropertyOrder({ &quot;vRBSNitem&quot;, &quot;tpRBSN&quot;, &quot;tpRBSNDescricao&quot;, &quot;vBC&quot;, &quot;pIBSSN&quot;, &quot;vIBSSN&quot;, &quot;vIBSPendSusp&quot;, &quot;pCBSSN&quot;,
+        &quot;vCBSSN&quot;, &quot;vCBSPendSusp&quot;, &quot;IS&quot;, &quot;totalItem&quot; })
+<span class="fc" id="L35">public record TributosSimplesDomain(</span>
+
+        @JsonProperty(&quot;vRBSNitem&quot;)
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(name = &quot;vRBSNitem&quot;, description = &quot;Receita bruta do Simples Nacional do item (NT 2026.005): &quot;
+                + &quot;a baseCalculo, ou zero quando tpRBSN=0. O valorImpostoSeletivo NÃO compõe a receita bruta &quot;
+                + &quot;(parametrização por vigência, atualmente desligada em todas as vigências — divergência &quot;
+                + &quot;deliberada com a fórmula do campo P26 da NT)&quot;)
+        BigDecimal vRBSNitem,
+
+        @JsonProperty(&quot;tpRBSN&quot;)
+        @Schema(name = &quot;tpRBSN&quot;, description = &quot;Tipo de Receita Bruta do Simples Nacional, resolvido do cClassTrib &quot;
+                + &quot;(NT 2026.005): 0, 1, 2, 3, 4, 5 ou 9&quot;)
+        Integer tpRBSN,
+
+        @JsonProperty(&quot;tpRBSNDescricao&quot;)
+        @Schema(name = &quot;tpRBSNDescricao&quot;, description = &quot;Descrição do Tipo de Receita Bruta do Simples Nacional &quot;
+                + &quot;(texto oficial do leiaute do evento da NT 2026.005; ex.: \&quot;Receita bruta - interna\&quot;), vinda da &quot;
+                + &quot;tabela de tipos de receita bruta vigente na data do fato gerador&quot;)
+        String tpRBSNDescricao,
+
+        @JsonProperty(&quot;vBC&quot;)
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(name = &quot;vBC&quot;, description = &quot;Base de cálculo de IBS/CBS do item: vRBSNitem × fator do tipo de &quot;
+                + &quot;receita bruta, resolvido pela vigência da data do fato gerador (tpRBSN 1 e 4: fator 1,0; &quot;
+                + &quot;tpRBSN 5: 0,5; tpRBSN 0, 2, 3 e 9: 0 — retorna 0.00). Suprimido para item NAO_CALCULADO: &quot;
+                + &quot;o cálculo não ocorreu e emitir uma base de cálculo sugeriria o contrário (o contrato do &quot;
+                + &quot;NAO_CALCULADO — apenas vRBSNitem, tpRBSN e tpRBSNDescricao — permanece intacto); o item &quot;
+                + &quot;também não contribui para o vBC do total&quot;)
+        BigDecimal vBC,
+
+        @JsonProperty(&quot;pIBSSN&quot;)
+        @JsonSerialize(using = BigDecimalTDec0302_04Serializer.class)
+        @Schema(name = &quot;pIBSSN&quot;, description = &quot;Alíquota efetiva de IBS do Simples Nacional efetivamente aplicada, &quot;
+                + &quot;em pontos percentuais (pós-transformação de compra governamental). Suprimida para CRT=2&quot;)
+        BigDecimal pIBSSN,
+
+        @JsonProperty(&quot;vIBSSN&quot;)
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(name = &quot;vIBSSN&quot;, description = &quot;Valor devido de IBS do Simples Nacional. Suprimido para CRT=2&quot;)
+        BigDecimal vIBSSN,
+
+        @JsonProperty(&quot;vIBSPendSusp&quot;)
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(name = &quot;vIBSPendSusp&quot;, description = &quot;Valor de IBS pendente/suspenso (exportação indireta ou &quot;
+                + &quot;CRT=3 + tpRegimeIBSCBS=2). Suprimido para CRT=2&quot;)
+        BigDecimal vIBSPendSusp,
+
+        @JsonProperty(&quot;pCBSSN&quot;)
+        @JsonSerialize(using = BigDecimalTDec0302_04Serializer.class)
+        @Schema(name = &quot;pCBSSN&quot;, description = &quot;Alíquota efetiva de CBS do Simples Nacional efetivamente aplicada, &quot;
+                + &quot;em pontos percentuais (pós-transformação de compra governamental)&quot;)
+        BigDecimal pCBSSN,
+
+        @JsonProperty(&quot;vCBSSN&quot;)
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(name = &quot;vCBSSN&quot;, description = &quot;Valor devido de CBS do Simples Nacional&quot;)
+        BigDecimal vCBSSN,
+
+        @JsonProperty(&quot;vCBSPendSusp&quot;)
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(name = &quot;vCBSPendSusp&quot;, description = &quot;Valor de CBS pendente/suspenso (exportação indireta ou &quot;
+                + &quot;CRT=3 + tpRegimeIBSCBS=2)&quot;)
+        BigDecimal vCBSPendSusp,
+
+        @SuppressWarnings(&quot;java:S116&quot;) // Nomenclatura no padrão da saída de observabilidade do projeto.
+        @JsonProperty(&quot;IS&quot;)
+        @Schema(name = &quot;IS&quot;, description = &quot;Imposto Seletivo (repasse do valor recebido, sem recálculo)&quot;)
+        ImpostoSeletivoSimplesDomain IS,
+
+        @JsonSerialize(using = BigDecimalTDec1302Serializer.class)
+        @Schema(description = &quot;Total do item: vIBSSN + vCBSSN + IS.valor (somente os valores devidos; &quot;
+                + &quot;os pendentes/suspensos ficam fora)&quot;)
+        BigDecimal totalItem) {
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

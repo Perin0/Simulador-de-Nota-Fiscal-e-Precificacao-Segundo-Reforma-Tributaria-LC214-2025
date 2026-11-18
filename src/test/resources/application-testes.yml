@@ -1,6 +1,8 @@
 application:
   db:
     filename: calculadora-pro.db
+    download:
+      url: ${DB_DOWNLOAD_URL:}
 
 spring:
   application:

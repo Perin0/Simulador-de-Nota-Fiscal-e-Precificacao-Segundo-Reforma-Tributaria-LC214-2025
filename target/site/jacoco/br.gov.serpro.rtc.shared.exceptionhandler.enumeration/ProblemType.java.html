@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProblemType.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.shared.exceptionhandler.enumeration</a> &gt; <span class="el_source">ProblemType.java</span></div><h1>ProblemType.java</h1><pre class="source lang-java linenums">/*
+ * Versão de Homologação/Testes
+ */
+package br.gov.serpro.rtc.shared.exceptionhandler.enumeration;
+
+import java.net.URI;
+import java.util.stream.Stream;
+
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+
+import br.gov.serpro.rtc.shared.util.HttpUtils;
+import lombok.Getter;
+import lombok.NonNull;
+
+/**
+ * Catálogo dos tipos de erro genéricos expostos pela API, relacionando
+ * exceções a títulos e paths usados no {@code ProblemDetail}.
+ */
+<span class="fc" id="L22">@Getter</span>
+public enum ProblemType {
+
+<span class="fc" id="L25">    MENSAGEM_INCOMPREENSIVEL(HttpMessageNotReadableException.class,</span>
+            &quot;Mensagem incompreensível&quot;, &quot;mensagem-incompreensivel&quot;),
+
+<span class="fc" id="L28">    METHOD_ARGUMENT_TYPE_MISMATCH(MethodArgumentTypeMismatchException.class,</span>
+            &quot;Tipo de argumento inválido&quot;, &quot;tipo-argumento-invalido&quot;),
+
+<span class="fc" id="L31">    PARAMETRO_OBRIGATORIO_AUSENTE(MissingServletRequestParameterException.class,</span>
+            &quot;Parâmetro obrigatório ausente&quot;, &quot;parametro-obrigatorio-ausente&quot;),
+
+<span class="fc" id="L34">    CAMPOS_INVALIDOS(MethodArgumentNotValidException.class,</span>
+            &quot;Campos inválidos.&quot;, &quot;campos-invalidos&quot;),
+
+<span class="fc" id="L37">    ERRO_SISTEMA(Exception.class,</span>
+            &quot;Erro de sistema não previsto&quot;, &quot;erro-de-sistema-nao-previsto&quot;);
+
+    private final Class&lt;? extends Exception&gt; classeErro;
+    private final String titulo;
+    private final String path;
+
+<span class="fc" id="L44">    private ProblemType(Class&lt;? extends Exception&gt; classeErro, String titulo, String path) {</span>
+<span class="fc" id="L45">        this.classeErro = classeErro;</span>
+<span class="fc" id="L46">        this.titulo = titulo;</span>
+<span class="fc" id="L47">        this.path = path;</span>
+<span class="fc" id="L48">    }</span>
+
+    public URI getURI() {
+<span class="fc" id="L51">        return URI.create(String.format(&quot;%s/errors/%s&quot;, HttpUtils.getBaseURL(), path));</span>
+    }
+
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">    public static &lt;E extends Exception&gt; ProblemType from(@NonNull final E e) {</span>
+<span class="fc" id="L55">        Class&lt;? extends Exception&gt; classeErro = e.getClass();</span>
+<span class="fc" id="L56">        return Stream.of(values()).filter(t -&gt; t.getClasseErro().equals(classeErro)).findFirst().orElse(ERRO_SISTEMA);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OffsetDateTimeCustomDeserializer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.shared.serializer</a> &gt; <span class="el_source">OffsetDateTimeCustomDeserializer.java</span></div><h1>OffsetDateTimeCustomDeserializer.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.shared.serializer;
+
+import static java.time.OffsetDateTime.parse;
+import static java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME;
+
+import java.io.IOException;
+import java.time.OffsetDateTime;
+
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * Desserializador customizado para campos {@link OffsetDateTime} no payload JSON.
+ * &lt;p&gt;
+ * A implementação delega a lógica de validação e conversão para
+ * {@link GenericCustomDeserializer}, restringindo os valores ao padrão
+ * {@code yyyy-MM-dd'T'HH:mm:ssXXX} com offset explícito (por exemplo,
+ * {@code -03:00}) ou sufixo {@code Z} (UTC).
+ * &lt;/p&gt;
+ * &lt;p&gt;
+ * Exemplos válidos:
+ * {@code 2026-01-05T13:45:00-03:00} e {@code 2026-05-22T10:57:23Z}.
+ * &lt;/p&gt;
+ */
+<span class="fc" id="L30">@Slf4j</span>
+@Component
+<span class="fc" id="L32">public final class OffsetDateTimeCustomDeserializer extends JsonDeserializer&lt;OffsetDateTime&gt; {</span>
+    private static final String PATTERN = &quot;\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}([+-]\\d{2}:\\d{2}|Z)&quot;;
+    private static final String FORMAT = &quot;yyyy-MM-dd'T'HH:mm:ssXXX&quot;;
+    private static final String VALID_EXAMPLE = &quot;2026-01-05T13:45:00-03:00 ou 2026-05-22T10:57:23Z&quot;;
+
+<span class="fc" id="L37">    private static final JsonDeserializer&lt;OffsetDateTime&gt; INSTANCE =     </span>
+            new GenericCustomDeserializer&lt;&gt;(
+                    PATTERN,
+                    FORMAT,
+                    VALID_EXAMPLE,
+<span class="nc" id="L42">                    value -&gt; parse(value, ISO_OFFSET_DATE_TIME),</span>
+                    OffsetDateTime.class
+                );
+
+    /**
+     * Desserializa o valor textual recebido no JSON para {@link OffsetDateTime}.
+     *
+     * @param p parser do Jackson posicionado no valor de data/hora
+     * @param ctxt contexto de desserialização do Jackson
+     * @return instância de {@link OffsetDateTime} validada e convertida
+     * @throws IOException quando houver falha de leitura ou valor inválido
+     */
+    @Override
+    public OffsetDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+<span class="nc" id="L56">        return INSTANCE.deserialize(p, ctxt);</span>
+    }
+    
+    /**
+     * Retorna o desserializador responsável pela implementação efetiva.
+     *
+     * @return instância interna de {@link GenericCustomDeserializer}
+     */
+    @Override
+    public JsonDeserializer&lt;?&gt; getDelegatee() {
+<span class="nc" id="L66">        return INSTANCE;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

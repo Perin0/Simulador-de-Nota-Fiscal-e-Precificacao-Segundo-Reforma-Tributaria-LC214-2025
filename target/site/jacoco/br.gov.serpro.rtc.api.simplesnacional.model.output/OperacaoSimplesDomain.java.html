@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OperacaoSimplesDomain.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.simplesnacional.model.output</a> &gt; <span class="el_source">OperacaoSimplesDomain.java</span></div><h1>OperacaoSimplesDomain.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.simplesnacional.model.output;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+
+/**
+ *
+ * Repasse dos dados relevantes da operação do Simples Nacional na saída
+ * (NT 2026.005).
+ *
+ */
+@JsonInclude(NON_NULL)
+@JsonPropertyOrder({ &quot;data&quot;, &quot;tpDoc&quot;, &quot;CRT&quot;, &quot;tpRegimeIBSCBS&quot;, &quot;tpEnteGov&quot; })
+<span class="fc" id="L19">public record OperacaoSimplesDomain(</span>
+
+        @Schema(description = &quot;Data do fato gerador&quot;)
+        String data,
+
+        @Schema(description = &quot;Tipo de documento fiscal eletrônico da operação&quot;)
+        String tpDoc,
+
+        @SuppressWarnings(&quot;java:S116&quot;) // Nomenclatura oficial VERBATIM do leiaute DF-e/NT 2026.005.
+        @JsonProperty(&quot;CRT&quot;)
+        @Schema(name = &quot;CRT&quot;, description = &quot;Código de Regime Tributário do emitente&quot;)
+        String CRT,
+
+        @Schema(description = &quot;Tipo de regime de apuração do IBS/CBS, quando informado&quot;)
+        String tpRegimeIBSCBS,
+
+        @Schema(description = &quot;Tipo de ente governamental adquirente (compra governamental), quando informado&quot;)
+        String tpEnteGov) {
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

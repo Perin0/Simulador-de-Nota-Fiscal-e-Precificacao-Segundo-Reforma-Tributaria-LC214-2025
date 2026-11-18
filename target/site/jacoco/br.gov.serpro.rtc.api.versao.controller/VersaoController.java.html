@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VersaoController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api-simples-nacional</a> &gt; <a href="index.source.html" class="el_package">br.gov.serpro.rtc.api.versao.controller</a> &gt; <span class="el_source">VersaoController.java</span></div><h1>VersaoController.java</h1><pre class="source lang-java linenums">package br.gov.serpro.rtc.api.versao.controller;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.gov.serpro.rtc.api.versao.dto.VersaoDomain;
+import br.gov.serpro.rtc.api.versao.service.VersaoAplicacaoService;
+import br.gov.serpro.rtc.api.versao.service.VersaoService;
+import lombok.RequiredArgsConstructor;
+
+/**
+ * Controlador REST, disponível em todos os perfis, com as informações de versão
+ * desta instalação (aplicação, base de dados e ambiente).
+ *
+ * &lt;p&gt;Segue o modelo dos demais controllers do projeto: implementa a interface
+ * OpenAPI ({@link VersaoControllerOpenApi}) e devolve os headers de versão
+ * ({@code X-CALC-*}) via {@link VersaoAplicacaoService}.
+ */
+@RestController
+@RequiredArgsConstructor
+public class VersaoController implements VersaoControllerOpenApi {
+
+    private final VersaoService versaoService;
+    private final VersaoAplicacaoService versaoAplicacaoService;
+
+    @Override
+    @GetMapping(value = &quot;/versao&quot;, produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity&lt;VersaoDomain&gt; getVersao() {
+<span class="fc" id="L32">        return ResponseEntity.ok()</span>
+<span class="fc" id="L33">                .headers(versaoAplicacaoService.getHeaders())</span>
+<span class="fc" id="L34">                .body(versaoService.getVersao());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
