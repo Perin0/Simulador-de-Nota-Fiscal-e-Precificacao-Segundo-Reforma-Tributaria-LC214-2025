@@ -1,0 +1,430 @@
+[
+  {
+    "id": "000001",
+    "descricao": "Situações tributadas integralmente pelo IBS e CBS"
+  },
+  {
+    "id": "000002",
+    "descricao": "Exploração de via"
+  },
+  {
+    "id": "000003",
+    "descricao": "Regime automotivo - projetos incentivados (art. 311)"
+  },
+  {
+    "id": "000004",
+    "descricao": "Regime automotivo - projetos incentivados (art. 312)"
+  },
+  {
+    "id": "200002",
+    "descricao": "Fornecimento ou importação para produtor rural não contribuinte ou TAC"
+  },
+  {
+    "id": "200003",
+    "descricao": "Vendas de produtos destinados à alimentação humana (Anexo I - Cesta Básica Nacional de Alimentos)"
+  },
+  {
+    "id": "200004",
+    "descricao": "Venda de dispositivos médicos com a especificação das respectivas classificações da NCM/SH previstas no Anexo XII"
+  },
+  {
+    "id": "200005",
+    "descricao": "Venda de dispositivos médicos com a especificação das respectivas classificações da NCM/SH previstas no Anexo IV"
+  },
+  {
+    "id": "200006",
+    "descricao": "Situação de emergência de saúde pública reconhecida pelo Poder Público (Anexo XII)"
+  },
+  {
+    "id": "200007",
+    "descricao": "Fornecimento dos dispositivos de acessibilidade próprios para pessoas com deficiência relacionados no Anexo XIII"
+  },
+  {
+    "id": "200008",
+    "descricao": "Fornecimento dos dispositivos de acessibilidade próprios para pessoas com deficiência relacionados no Anexo V"
+  },
+  {
+    "id": "200009",
+    "descricao": "Fornecimento de medicamentos relacionados no Anexo XIV"
+  },
+  {
+    "id": "200010",
+    "descricao": "Fornecimento dos medicamentos registrados na Anvisa, adquiridos por órgãos da administração pública"
+  },
+  {
+    "id": "200011",
+    "descricao": "Fornecimento das composições para nutrição enteral e parenteral relacionadas no Anexo VI"
+  },
+  {
+    "id": "200012",
+    "descricao": "Situação de emergência de saúde pública reconhecida pelo Poder Público (Anexo XIV)"
+  },
+  {
+    "id": "200013",
+    "descricao": "Fornecimento de tampões higiênicos, absorventes higiênicos internos ou externos"
+  },
+  {
+    "id": "200014",
+    "descricao": "Fornecimento dos produtos hortícolas, frutas e ovos, relacionados no Anexo XV"
+  },
+  {
+    "id": "200015",
+    "descricao": "Venda de automóveis de passageiros de fabricação nacional adquiridos por motoristas profissionais ou pessoas com deficiência"
+  },
+  {
+    "id": "200017",
+    "descricao": "Operações relacionadas ao Projeto Integração do Rio São Francisco (PISF)"
+  },
+  {
+    "id": "200018",
+    "descricao": "Operações com bens e serviços relacionados à segurança cibernética e segurança da informação"
+  },
+  {
+    "id": "200019",
+    "descricao": "Importador ou fabricante de bens de informática e automação (PADIS)"
+  },
+  {
+    "id": "200021",
+    "descricao": "Serviços de transporte público coletivo de passageiros ferroviário e hidroviário urbano, semiurbano e metropolitano"
+  },
+  {
+    "id": "200022",
+    "descricao": "Operação originada fora da ZFM que destine bem material industrializado a contribuinte estabelecido na ZFM"
+  },
+  {
+    "id": "200023",
+    "descricao": "Operação realizada por indústria incentivada na ZFM com bem intermediário"
+  },
+  {
+    "id": "200024",
+    "descricao": "Operação originada fora das Áreas de Livre Comércio (ALC) destinada a contribuinte estabelecido nas ALC"
+  },
+  {
+    "id": "200025",
+    "descricao": "Fornecimento dos serviços de educação relacionados no Anexo II"
+  },
+  {
+    "id": "200026",
+    "descricao": "Fornecimento dos serviços de saúde relacionados no Anexo III"
+  },
+  {
+    "id": "200027",
+    "descricao": "Fornecimento dos dispositivos médicos relacionados no Anexo IV"
+  },
+  {
+    "id": "200028",
+    "descricao": "Fornecimento dos dispositivos de acessibilidade próprios para pessoas com deficiência relacionados no Anexo V"
+  },
+  {
+    "id": "200029",
+    "descricao": "Fornecimento dos alimentos destinados ao consumo humano relacionados no Anexo VII"
+  },
+  {
+    "id": "200030",
+    "descricao": "Fornecimento dos produtos de higiene pessoal e limpeza relacionados no Anexo VIII"
+  },
+  {
+    "id": "200031",
+    "descricao": "Fornecimento de produtos agropecuários, aquícolas, pesqueiros, florestais e extrativistas vegetais in natura"
+  },
+  {
+    "id": "200032",
+    "descricao": "Fornecimento de insumos agropecuários e aquícolas relacionados no Anexo IX"
+  },
+  {
+    "id": "200033",
+    "descricao": "Fornecimento de serviços e o licenciamento ou cessão dos direitos relacionados às produções nacionais artísticas, culturais, de eventos, jornalísticas e audiovisuais (Anexo X)"
+  },
+  {
+    "id": "200034",
+    "descricao": "Fornecimento dos bens e serviços relacionados à soberania e segurança nacional, segurança da informação e segurança cibernética (Anexo XI)"
+  },
+  {
+    "id": "200036",
+    "descricao": "Operações de transporte público coletivo de passageiros rodoviário e metroviário de caráter urbano, semiurbano e metropolitano"
+  },
+  {
+    "id": "200037",
+    "descricao": "Serviços de transporte aéreo regional coletivo de passageiros ou de carga"
+  },
+  {
+    "id": "200038",
+    "descricao": "Fornecimento dos serviços de comunicação institucional à administração pública direta, autarquias e fundações públicas"
+  },
+  {
+    "id": "200039",
+    "descricao": "Serviços e operações de saneamento"
+  },
+  {
+    "id": "200040",
+    "descricao": "Serviços de educação desportiva (art. 141, I)"
+  },
+  {
+    "id": "200041",
+    "descricao": "Serviços de educação desportiva (art. 141, II)"
+  },
+  {
+    "id": "200042",
+    "descricao": "Receitas decorrentes de exportação de bens e serviços (redução a zero / imunidade)"
+  },
+  {
+    "id": "200043",
+    "descricao": "Fornecimento de bens e serviços para a administração pública direta, autarquias e fundações públicas"
+  },
+  {
+    "id": "200044",
+    "descricao": "Operações e prestações de serviços de segurança pública e defesa civil"
+  },
+  {
+    "id": "200045",
+    "descricao": "Operações relacionadas a bens de capital (RECAP / Reporto)"
+  },
+  {
+    "id": "200046",
+    "descricao": "Operações com bens e serviços destinados à reabilitação urbana de zonas históricas e de áreas críticas de recuperação e reconversão urbanística"
+  },
+  {
+    "id": "200047",
+    "descricao": "Bares e restaurantes"
+  },
+  {
+    "id": "200048",
+    "descricao": "Hotelaria, parques de diversão e parques temáticos"
+  },
+  {
+    "id": "200049",
+    "descricao": "Transporte coletivo de passageiros rodoviário, ferroviário e hidroviário intermunicipais e interestaduais"
+  },
+  {
+    "id": "200050",
+    "descricao": "Serviços de agências de turismo"
+  },
+  {
+    "id": "200051",
+    "descricao": "Agências de viagem e turismo"
+  },
+  {
+    "id": "200052",
+    "descricao": "Prestação de serviços de profissões intelectuais de natureza científica, literária ou artística submetidas à fiscalização por conselho profissional"
+  },
+  {
+    "id": "210001",
+    "descricao": "Redução de alíquota de 60% aplicável a bens e serviços específicos"
+  },
+  {
+    "id": "221001",
+    "descricao": "Locação, cessão onerosa e arrendamento de bem imóvel"
+  },
+  {
+    "id": "222001",
+    "descricao": "Transporte internacional de passageiros, caso os trechos de ida e volta sejam vendidos em conjunto"
+  },
+  {
+    "id": "400001",
+    "descricao": "Fornecimento de serviços de transporte público coletivo de passageiros rodoviário e metroviário de caráter urbano, semiurbano e metropolitano (isenção)"
+  },
+  {
+    "id": "410001",
+    "descricao": "Fornecimento de bonificações quando constem no respectivo documento fiscal e que não dependam de evento posterior"
+  },
+  {
+    "id": "410002",
+    "descricao": "Transferência de bem entre estabelecimentos pertencentes ao mesmo contribuinte"
+  },
+  {
+    "id": "410003",
+    "descricao": "Doações sem contraprestação em benefício do doador"
+  },
+  {
+    "id": "410004",
+    "descricao": "Exportações de bens e serviços"
+  },
+  {
+    "id": "410008",
+    "descricao": "Fornecimentos de livros, jornais, periódicos e do papel destinado a sua impressão"
+  },
+  {
+    "id": "410009",
+    "descricao": "Fornecimentos de fonogramas e videofonogramas musicais produzidos no Brasil"
+  },
+  {
+    "id": "410010",
+    "descricao": "Fornecimentos de serviço de comunicação nas modalidades de radiodifusão sonora e de sons e imagens de recepção livre e gratuita"
+  },
+  {
+    "id": "410013",
+    "descricao": "Exportações de bens e serviços (imunidade constitucional)"
+  },
+  {
+    "id": "410016",
+    "descricao": "Fornecimento de resíduos sólidos destinados à reciclagem"
+  },
+  {
+    "id": "410017",
+    "descricao": "Aquisição de bem móvel usado de pessoa física não contribuinte para revenda"
+  },
+  {
+    "id": "410019",
+    "descricao": "Exclusão da gorjeta na base de cálculo no fornecimento de alimentação"
+  },
+  {
+    "id": "410020",
+    "descricao": "Exclusão do valor de intermediação na base de cálculo"
+  },
+  {
+    "id": "410022",
+    "descricao": "Operações de transferência de bens entre estabelecimentos do mesmo titular"
+  },
+  {
+    "id": "410023",
+    "descricao": "Operações sujeitas à não incidência por ausência de onerosidade"
+  },
+  {
+    "id": "410024",
+    "descricao": "Demais operações sem incidência de IBS e CBS"
+  },
+  {
+    "id": "410025",
+    "descricao": "Demais operações com imunidade de IBS e CBS"
+  },
+  {
+    "id": "410026",
+    "descricao": "Operações com suspensão do pagamento de IBS e CBS"
+  },
+  {
+    "id": "410999",
+    "descricao": "Operações não onerosas sem previsão de tributação, não especificadas anteriormente"
+  },
+  {
+    "id": "510001",
+    "descricao": "Operações, sujeitas a diferimento, com energia elétrica, relativas à geração, comercialização, distribuição e transmissão"
+  },
+  {
+    "id": "515001",
+    "descricao": "Operações, sujeitas a diferimento, com insumos agropecuários e aquícolas destinados a produtor rural contribuinte"
+  },
+  {
+    "id": "550001",
+    "descricao": "Exportações de bens materiais (suspensão)"
+  },
+  {
+    "id": "550002",
+    "descricao": "Regime de Trânsito Aduaneiro"
+  },
+  {
+    "id": "550003",
+    "descricao": "Regimes de Depósito Aduaneiro"
+  },
+  {
+    "id": "550004",
+    "descricao": "Regimes de Admissão Temporária"
+  },
+  {
+    "id": "550005",
+    "descricao": "Regimes de Exportação Temporária"
+  },
+  {
+    "id": "550006",
+    "descricao": "Regimes de Aperfeiçoamento (Drawback)"
+  },
+  {
+    "id": "550007",
+    "descricao": "Regime Aduaneiro Especial de Entreposto Industrial sob Controle Informatizado (Recof)"
+  },
+  {
+    "id": "550008",
+    "descricao": "Regime Tributário para Incentivo à Modernização e à Ampliação da Estrutura Portuária (Reporto)"
+  },
+  {
+    "id": "550009",
+    "descricao": "Regime Especial de Incentivos para o Desenvolvimento da Infraestrutura (Reidi)"
+  },
+  {
+    "id": "550010",
+    "descricao": "Regime Especial de Aquisição de Bens de Capital para Empresas Exportadoras (Recap)"
+  },
+  {
+    "id": "550011",
+    "descricao": "Regime Especial de Incentivos para o Desenvolvimento da Infraestrutura da Indústria Petrolífera (Repetro)"
+  },
+  {
+    "id": "550012",
+    "descricao": "Zonas de Processamento de Exportação (ZPE)"
+  },
+  {
+    "id": "550013",
+    "descricao": "Fornecimento de bens materiais destinados à industrialização na ZFM"
+  },
+  {
+    "id": "550014",
+    "descricao": "Fornecimento de bens materiais destinados à comercialização na ZFM"
+  },
+  {
+    "id": "550015",
+    "descricao": "Fornecimento de bens materiais destinados às Áreas de Livre Comércio (ALC)"
+  },
+  {
+    "id": "550016",
+    "descricao": "Fornecimento de bens de capital"
+  },
+  {
+    "id": "550017",
+    "descricao": "Operações de industrialização por encomenda"
+  },
+  {
+    "id": "550018",
+    "descricao": "Operações com bens destinados à exportação por meio de empresa comercial exportadora (ECE)"
+  },
+  {
+    "id": "550019",
+    "descricao": "Operações sujeitas à suspensão prevista em regime aduaneiro especial"
+  },
+  {
+    "id": "550020",
+    "descricao": "Demais operações com suspensão de IBS e CBS"
+  },
+  {
+    "id": "620001",
+    "descricao": "Tributação monofásica sobre combustíveis"
+  },
+  {
+    "id": "620002",
+    "descricao": "Tributação monofásica com responsabilidade pela retenção sobre combustíveis"
+  },
+  {
+    "id": "620003",
+    "descricao": "Tributação monofásica com tributos retidos por responsabilidade sobre combustíveis"
+  },
+  {
+    "id": "620004",
+    "descricao": "Tributação monofásica sobre mistura de biocombustíveis"
+  },
+  {
+    "id": "620005",
+    "descricao": "Tributação monofásica sobre combustíveis cobrada anteriormente"
+  },
+  {
+    "id": "620006",
+    "descricao": "Tributação monofásica sobre combustíveis não cobrada anteriormente"
+  },
+  {
+    "id": "800001",
+    "descricao": "Fusão, cisão ou incorporação"
+  },
+  {
+    "id": "811001",
+    "descricao": "Anulação de crédito por saída imune/isenta"
+  },
+  {
+    "id": "811002",
+    "descricao": "Anulação de crédito por saída com redução de alíquota"
+  },
+  {
+    "id": "811003",
+    "descricao": "Anulação de crédito por perecimento, deterioração, roubo, furto ou extravio"
+  },
+  {
+    "id": "820008",
+    "descricao": "Documento com informações de ajuste de apuração"
+  }
+]

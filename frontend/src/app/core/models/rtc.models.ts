@@ -6,6 +6,10 @@ export interface AtividadeSn {
   sujeitaFatorR: boolean;
   disponivel: boolean;
 }
+export interface ClassificacaoTributariaSn {
+  id: string;
+  descricao: string;
+}
 export interface ItemRtcRequest {
   numero: number;
   cAtivSN?: string;

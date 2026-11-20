@@ -25,7 +25,7 @@
                     <thead>
                         <tr>
                             <th>Item</th>
-                            <th>Classificação fiscal</th>
+                            <th>Classificação tributária</th>
                             <th>Quantidade</th>
                             <th>Valor unitário</th>
                             <th>Total</th>
@@ -36,10 +36,14 @@
                             [formGroupName]="i">
                             <td><input formControlName="descricao" aria-label="Descrição do item {{i+1}}"><small>Item
                                     {{i+1}}</small></td>
-                            <td><input formControlName="cClassTrib"
+                            <td><select formControlName="cClassTrib" [disabled]="classificacoesCarregando() || !classificacoes().length"
                                     aria-label="Classificação tributária do item {{i+1}}">
-                                <div class="rate"><label>IBS<input type="number" step=".01"
-                                            formControlName="pIbs"></label><label>CBS<input type="number" step=".01"
+                                    @for (classificacao of classificacoes(); track classificacao.id) {
+                                    <option [value]="classificacao.id">{{ classificacao.id }} - {{ classificacao.descricao }}</option>
+                                    }
+                                </select>
+                                <div class="rate"><label>IBS (%)<input type="number" step=".01"
+                                            formControlName="pIbs"></label><label>CBS (%)<input type="number" step=".01"
                                             formControlName="pCbs"></label></div>
                             </td>
                             <td><input type="number" min=".0001" step=".01" formControlName="quantidade"

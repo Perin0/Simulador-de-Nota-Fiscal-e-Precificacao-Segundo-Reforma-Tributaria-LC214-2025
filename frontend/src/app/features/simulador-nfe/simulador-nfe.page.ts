@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { EmpresaContextService } from '../../core/services/empresa-context.service';
 import { RtcCalculadoraService } from '../../core/services/rtc-calculadora.service';
 import { RtcSistemaService } from '../../core/services/rtc-sistema.service';
-import { ObjetoRtc, OperacaoRtcRequest } from '../../core/models/rtc.models';
+import { ClassificacaoTributariaSn, ObjetoRtc, OperacaoRtcRequest } from '../../core/models/rtc.models';
+import { RtcClassificacoesService } from '../../core/services/rtc-classificacoes.service';
 import { SimuladorStateService } from './services/simulador-state.service';
 
 @Component({
@@ -18,9 +19,12 @@ export class SimuladorNfePage {
   private fb = inject(FormBuilder);
   private api = inject(RtcCalculadoraService);
   private errors = inject(RtcSistemaService);
+  private classificacoesApi = inject(RtcClassificacoesService);
   readonly company = inject(EmpresaContextService);
   readonly state = inject(SimuladorStateService);
   erro = '';
+  readonly classificacoes = signal<ClassificacaoTributariaSn[]>([]);
+  readonly classificacoesCarregando = signal(true);
   readonly form = this.fb.group({
     tpDoc: this.fb.nonNullable.control('55'),
     itens: this.fb.array([this.item()]),
@@ -34,6 +38,13 @@ export class SimuladorNfePage {
       0,
     ),
   );
+  constructor() {
+    this.classificacoesApi.listar().subscribe({
+      next: (classificacoes) => this.classificacoes.set(classificacoes),
+      error: () => this.classificacoes.set([]),
+      complete: () => this.classificacoesCarregando.set(false),
+    });
+  }
   item() {
     return this.fb.nonNullable.group({
       descricao: 'Produto ou serviço',
@@ -41,8 +52,8 @@ export class SimuladorNfePage {
       cClassTrib: '000001',
       quantidade: [1, [Validators.required, Validators.min(0.0001)]],
       valor: [100, [Validators.required, Validators.min(0.01)]],
-      pIbs: [1.25, [Validators.required]],
-      pCbs: [2.75, [Validators.required]],
+      pIbs: [0.1, [Validators.required]],
+      pCbs: [0.9, [Validators.required]],
     });
   }
   add() {
