@@ -1,0 +1,314 @@
+[
+  {
+    "id": 3200102,
+    "municipio": "Afonso Cláudio"
+  },
+  {
+    "id": 3200136,
+    "municipio": "Águia Branca"
+  },
+  {
+    "id": 3200169,
+    "municipio": "Água Doce do Norte"
+  },
+  {
+    "id": 3200201,
+    "municipio": "Alegre"
+  },
+  {
+    "id": 3200300,
+    "municipio": "Alfredo Chaves"
+  },
+  {
+    "id": 3200359,
+    "municipio": "Alto Rio Novo"
+  },
+  {
+    "id": 3200409,
+    "municipio": "Anchieta"
+  },
+  {
+    "id": 3200508,
+    "municipio": "Apiacá"
+  },
+  {
+    "id": 3200607,
+    "municipio": "Aracruz"
+  },
+  {
+    "id": 3200706,
+    "municipio": "Atilio Vivacqua"
+  },
+  {
+    "id": 3200805,
+    "municipio": "Baixo Guandu"
+  },
+  {
+    "id": 3200904,
+    "municipio": "Barra de São Francisco"
+  },
+  {
+    "id": 3201001,
+    "municipio": "Boa Esperança"
+  },
+  {
+    "id": 3201100,
+    "municipio": "Bom Jesus do Norte"
+  },
+  {
+    "id": 3201159,
+    "municipio": "Brejetuba"
+  },
+  {
+    "id": 3201209,
+    "municipio": "Cachoeiro de Itapemirim"
+  },
+  {
+    "id": 3201308,
+    "municipio": "Cariacica"
+  },
+  {
+    "id": 3201407,
+    "municipio": "Castelo"
+  },
+  {
+    "id": 3201506,
+    "municipio": "Colatina"
+  },
+  {
+    "id": 3201605,
+    "municipio": "Conceição da Barra"
+  },
+  {
+    "id": 3201704,
+    "municipio": "Conceição do Castelo"
+  },
+  {
+    "id": 3201803,
+    "municipio": "Divino de São Lourenço"
+  },
+  {
+    "id": 3201902,
+    "municipio": "Domingos Martins"
+  },
+  {
+    "id": 3202009,
+    "municipio": "Dores do Rio Preto"
+  },
+  {
+    "id": 3202108,
+    "municipio": "Ecoporanga"
+  },
+  {
+    "id": 3202207,
+    "municipio": "Fundão"
+  },
+  {
+    "id": 3202256,
+    "municipio": "Governador Lindenberg"
+  },
+  {
+    "id": 3202306,
+    "municipio": "Guaçuí"
+  },
+  {
+    "id": 3202405,
+    "municipio": "Guarapari"
+  },
+  {
+    "id": 3202454,
+    "municipio": "Ibatiba"
+  },
+  {
+    "id": 3202504,
+    "municipio": "Ibiraçu"
+  },
+  {
+    "id": 3202553,
+    "municipio": "Ibitirama"
+  },
+  {
+    "id": 3202603,
+    "municipio": "Iconha"
+  },
+  {
+    "id": 3202652,
+    "municipio": "Irupi"
+  },
+  {
+    "id": 3202702,
+    "municipio": "Itaguaçu"
+  },
+  {
+    "id": 3202801,
+    "municipio": "Itapemirim"
+  },
+  {
+    "id": 3202900,
+    "municipio": "Itarana"
+  },
+  {
+    "id": 3203007,
+    "municipio": "Iúna"
+  },
+  {
+    "id": 3203056,
+    "municipio": "Jaguaré"
+  },
+  {
+    "id": 3203106,
+    "municipio": "Jerônimo Monteiro"
+  },
+  {
+    "id": 3203130,
+    "municipio": "João Neiva"
+  },
+  {
+    "id": 3203163,
+    "municipio": "Laranja da Terra"
+  },
+  {
+    "id": 3203205,
+    "municipio": "Linhares"
+  },
+  {
+    "id": 3203304,
+    "municipio": "Mantenópolis"
+  },
+  {
+    "id": 3203320,
+    "municipio": "Marataízes"
+  },
+  {
+    "id": 3203346,
+    "municipio": "Marechal Floriano"
+  },
+  {
+    "id": 3203353,
+    "municipio": "Marilândia"
+  },
+  {
+    "id": 3203403,
+    "municipio": "Mimoso do Sul"
+  },
+  {
+    "id": 3203502,
+    "municipio": "Montanha"
+  },
+  {
+    "id": 3203601,
+    "municipio": "Mucurici"
+  },
+  {
+    "id": 3203700,
+    "municipio": "Muniz Freire"
+  },
+  {
+    "id": 3203809,
+    "municipio": "Muqui"
+  },
+  {
+    "id": 3203908,
+    "municipio": "Nova Venécia"
+  },
+  {
+    "id": 3204005,
+    "municipio": "Pancas"
+  },
+  {
+    "id": 3204054,
+    "municipio": "Pedro Canário"
+  },
+  {
+    "id": 3204104,
+    "municipio": "Pinheiros"
+  },
+  {
+    "id": 3204203,
+    "municipio": "Piúma"
+  },
+  {
+    "id": 3204252,
+    "municipio": "Ponto Belo"
+  },
+  {
+    "id": 3204302,
+    "municipio": "Presidente Kennedy"
+  },
+  {
+    "id": 3204351,
+    "municipio": "Rio Bananal"
+  },
+  {
+    "id": 3204401,
+    "municipio": "Rio Novo do Sul"
+  },
+  {
+    "id": 3204500,
+    "municipio": "Santa Leopoldina"
+  },
+  {
+    "id": 3204559,
+    "municipio": "Santa Maria de Jetibá"
+  },
+  {
+    "id": 3204609,
+    "municipio": "Santa Teresa"
+  },
+  {
+    "id": 3204658,
+    "municipio": "São Domingos do Norte"
+  },
+  {
+    "id": 3204708,
+    "municipio": "São Gabriel da Palha"
+  },
+  {
+    "id": 3204807,
+    "municipio": "São José do Calçado"
+  },
+  {
+    "id": 3204906,
+    "municipio": "São Mateus"
+  },
+  {
+    "id": 3204955,
+    "municipio": "São Roque do Canaã"
+  },
+  {
+    "id": 3205002,
+    "municipio": "Serra"
+  },
+  {
+    "id": 3205010,
+    "municipio": "Sooretama"
+  },
+  {
+    "id": 3205036,
+    "municipio": "Vargem Alta"
+  },
+  {
+    "id": 3205069,
+    "municipio": "Venda Nova do Imigrante"
+  },
+  {
+    "id": 3205101,
+    "municipio": "Viana"
+  },
+  {
+    "id": 3205150,
+    "municipio": "Vila Pavão"
+  },
+  {
+    "id": 3205176,
+    "municipio": "Vila Valério"
+  },
+  {
+    "id": 3205200,
+    "municipio": "Vila Velha"
+  },
+  {
+    "id": 3205309,
+    "municipio": "Vitória"
+  }
+]

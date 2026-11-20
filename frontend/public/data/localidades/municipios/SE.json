@@ -1,0 +1,302 @@
+[
+  {
+    "id": 2800100,
+    "municipio": "Amparo de São Francisco"
+  },
+  {
+    "id": 2800209,
+    "municipio": "Aquidabã"
+  },
+  {
+    "id": 2800308,
+    "municipio": "Aracaju"
+  },
+  {
+    "id": 2800407,
+    "municipio": "Arauá"
+  },
+  {
+    "id": 2800506,
+    "municipio": "Areia Branca"
+  },
+  {
+    "id": 2800605,
+    "municipio": "Barra dos Coqueiros"
+  },
+  {
+    "id": 2800670,
+    "municipio": "Boquim"
+  },
+  {
+    "id": 2800704,
+    "municipio": "Brejo Grande"
+  },
+  {
+    "id": 2801009,
+    "municipio": "Campo do Brito"
+  },
+  {
+    "id": 2801108,
+    "municipio": "Canhoba"
+  },
+  {
+    "id": 2801207,
+    "municipio": "Canindé de São Francisco"
+  },
+  {
+    "id": 2801306,
+    "municipio": "Capela"
+  },
+  {
+    "id": 2801405,
+    "municipio": "Carira"
+  },
+  {
+    "id": 2801504,
+    "municipio": "Carmópolis"
+  },
+  {
+    "id": 2801603,
+    "municipio": "Cedro de São João"
+  },
+  {
+    "id": 2801702,
+    "municipio": "Cristinápolis"
+  },
+  {
+    "id": 2801900,
+    "municipio": "Cumbe"
+  },
+  {
+    "id": 2802007,
+    "municipio": "Divina Pastora"
+  },
+  {
+    "id": 2802106,
+    "municipio": "Estância"
+  },
+  {
+    "id": 2802205,
+    "municipio": "Feira Nova"
+  },
+  {
+    "id": 2802304,
+    "municipio": "Frei Paulo"
+  },
+  {
+    "id": 2802403,
+    "municipio": "Gararu"
+  },
+  {
+    "id": 2802502,
+    "municipio": "General Maynard"
+  },
+  {
+    "id": 2802601,
+    "municipio": "Graccho Cardoso"
+  },
+  {
+    "id": 2802700,
+    "municipio": "Ilha das Flores"
+  },
+  {
+    "id": 2802809,
+    "municipio": "Indiaroba"
+  },
+  {
+    "id": 2802908,
+    "municipio": "Itabaiana"
+  },
+  {
+    "id": 2803005,
+    "municipio": "Itabaianinha"
+  },
+  {
+    "id": 2803104,
+    "municipio": "Itabi"
+  },
+  {
+    "id": 2803203,
+    "municipio": "Itaporanga d'Ajuda"
+  },
+  {
+    "id": 2803302,
+    "municipio": "Japaratuba"
+  },
+  {
+    "id": 2803401,
+    "municipio": "Japoatã"
+  },
+  {
+    "id": 2803500,
+    "municipio": "Lagarto"
+  },
+  {
+    "id": 2803609,
+    "municipio": "Laranjeiras"
+  },
+  {
+    "id": 2803708,
+    "municipio": "Macambira"
+  },
+  {
+    "id": 2803807,
+    "municipio": "Malhada dos Bois"
+  },
+  {
+    "id": 2803906,
+    "municipio": "Malhador"
+  },
+  {
+    "id": 2804003,
+    "municipio": "Maruim"
+  },
+  {
+    "id": 2804102,
+    "municipio": "Moita Bonita"
+  },
+  {
+    "id": 2804201,
+    "municipio": "Monte Alegre de Sergipe"
+  },
+  {
+    "id": 2804300,
+    "municipio": "Muribeca"
+  },
+  {
+    "id": 2804409,
+    "municipio": "Neópolis"
+  },
+  {
+    "id": 2804508,
+    "municipio": "Nossa Senhora Aparecida"
+  },
+  {
+    "id": 2804607,
+    "municipio": "Nossa Senhora da Glória"
+  },
+  {
+    "id": 2804706,
+    "municipio": "Nossa Senhora das Dores"
+  },
+  {
+    "id": 2804805,
+    "municipio": "Nossa Senhora de Lourdes"
+  },
+  {
+    "id": 2804904,
+    "municipio": "Nossa Senhora do Socorro"
+  },
+  {
+    "id": 2805000,
+    "municipio": "Pacatuba"
+  },
+  {
+    "id": 2805109,
+    "municipio": "Pedra Mole"
+  },
+  {
+    "id": 2805208,
+    "municipio": "Pedrinhas"
+  },
+  {
+    "id": 2805307,
+    "municipio": "Pinhão"
+  },
+  {
+    "id": 2805406,
+    "municipio": "Pirambu"
+  },
+  {
+    "id": 2805505,
+    "municipio": "Poço Redondo"
+  },
+  {
+    "id": 2805604,
+    "municipio": "Poço Verde"
+  },
+  {
+    "id": 2805703,
+    "municipio": "Porto da Folha"
+  },
+  {
+    "id": 2805802,
+    "municipio": "Propriá"
+  },
+  {
+    "id": 2805901,
+    "municipio": "Riachão do Dantas"
+  },
+  {
+    "id": 2806008,
+    "municipio": "Riachuelo"
+  },
+  {
+    "id": 2806107,
+    "municipio": "Ribeirópolis"
+  },
+  {
+    "id": 2806206,
+    "municipio": "Rosário do Catete"
+  },
+  {
+    "id": 2806305,
+    "municipio": "Salgado"
+  },
+  {
+    "id": 2806404,
+    "municipio": "Santa Luzia do Itanhy"
+  },
+  {
+    "id": 2806503,
+    "municipio": "Santa Rosa de Lima"
+  },
+  {
+    "id": 2806552,
+    "municipio": "Santana do São Francisco"
+  },
+  {
+    "id": 2806602,
+    "municipio": "Santo Amaro das Brotas"
+  },
+  {
+    "id": 2806701,
+    "municipio": "São Cristóvão"
+  },
+  {
+    "id": 2806800,
+    "municipio": "São Domingos"
+  },
+  {
+    "id": 2806909,
+    "municipio": "São Francisco"
+  },
+  {
+    "id": 2807006,
+    "municipio": "São Miguel do Aleixo"
+  },
+  {
+    "id": 2807105,
+    "municipio": "Simão Dias"
+  },
+  {
+    "id": 2807204,
+    "municipio": "Siriri"
+  },
+  {
+    "id": 2807303,
+    "municipio": "Telha"
+  },
+  {
+    "id": 2807402,
+    "municipio": "Tobias Barreto"
+  },
+  {
+    "id": 2807501,
+    "municipio": "Tomar do Geru"
+  },
+  {
+    "id": 2807600,
+    "municipio": "Umbaúba"
+  }
+]

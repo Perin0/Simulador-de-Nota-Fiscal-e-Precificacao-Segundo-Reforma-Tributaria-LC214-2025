@@ -1,0 +1,318 @@
+[
+  {
+    "id": 5000203,
+    "municipio": "Água Clara"
+  },
+  {
+    "id": 5000252,
+    "municipio": "Alcinópolis"
+  },
+  {
+    "id": 5000609,
+    "municipio": "Amambai"
+  },
+  {
+    "id": 5000708,
+    "municipio": "Anastácio"
+  },
+  {
+    "id": 5000807,
+    "municipio": "Anaurilândia"
+  },
+  {
+    "id": 5000856,
+    "municipio": "Angélica"
+  },
+  {
+    "id": 5000906,
+    "municipio": "Antônio João"
+  },
+  {
+    "id": 5001003,
+    "municipio": "Aparecida do Taboado"
+  },
+  {
+    "id": 5001102,
+    "municipio": "Aquidauana"
+  },
+  {
+    "id": 5001243,
+    "municipio": "Aral Moreira"
+  },
+  {
+    "id": 5001508,
+    "municipio": "Bandeirantes"
+  },
+  {
+    "id": 5001904,
+    "municipio": "Bataguassu"
+  },
+  {
+    "id": 5002001,
+    "municipio": "Batayporã"
+  },
+  {
+    "id": 5002100,
+    "municipio": "Bela Vista"
+  },
+  {
+    "id": 5002159,
+    "municipio": "Bodoquena"
+  },
+  {
+    "id": 5002209,
+    "municipio": "Bonito"
+  },
+  {
+    "id": 5002308,
+    "municipio": "Brasilândia"
+  },
+  {
+    "id": 5002407,
+    "municipio": "Caarapó"
+  },
+  {
+    "id": 5002605,
+    "municipio": "Camapuã"
+  },
+  {
+    "id": 5002704,
+    "municipio": "Campo Grande"
+  },
+  {
+    "id": 5002803,
+    "municipio": "Caracol"
+  },
+  {
+    "id": 5002902,
+    "municipio": "Cassilândia"
+  },
+  {
+    "id": 5002951,
+    "municipio": "Chapadão do Sul"
+  },
+  {
+    "id": 5003108,
+    "municipio": "Corguinho"
+  },
+  {
+    "id": 5003157,
+    "municipio": "Coronel Sapucaia"
+  },
+  {
+    "id": 5003207,
+    "municipio": "Corumbá"
+  },
+  {
+    "id": 5003256,
+    "municipio": "Costa Rica"
+  },
+  {
+    "id": 5003306,
+    "municipio": "Coxim"
+  },
+  {
+    "id": 5003454,
+    "municipio": "Deodápolis"
+  },
+  {
+    "id": 5003488,
+    "municipio": "Dois Irmãos do Buriti"
+  },
+  {
+    "id": 5003504,
+    "municipio": "Douradina"
+  },
+  {
+    "id": 5003702,
+    "municipio": "Dourados"
+  },
+  {
+    "id": 5003751,
+    "municipio": "Eldorado"
+  },
+  {
+    "id": 5003801,
+    "municipio": "Fátima do Sul"
+  },
+  {
+    "id": 5003900,
+    "municipio": "Figueirão"
+  },
+  {
+    "id": 5004007,
+    "municipio": "Glória de Dourados"
+  },
+  {
+    "id": 5004106,
+    "municipio": "Guia Lopes da Laguna"
+  },
+  {
+    "id": 5004304,
+    "municipio": "Iguatemi"
+  },
+  {
+    "id": 5004403,
+    "municipio": "Inocência"
+  },
+  {
+    "id": 5004502,
+    "municipio": "Itaporã"
+  },
+  {
+    "id": 5004601,
+    "municipio": "Itaquiraí"
+  },
+  {
+    "id": 5004700,
+    "municipio": "Ivinhema"
+  },
+  {
+    "id": 5004809,
+    "municipio": "Japorã"
+  },
+  {
+    "id": 5004908,
+    "municipio": "Jaraguari"
+  },
+  {
+    "id": 5005004,
+    "municipio": "Jardim"
+  },
+  {
+    "id": 5005103,
+    "municipio": "Jateí"
+  },
+  {
+    "id": 5005152,
+    "municipio": "Juti"
+  },
+  {
+    "id": 5005202,
+    "municipio": "Ladário"
+  },
+  {
+    "id": 5005251,
+    "municipio": "Laguna Carapã"
+  },
+  {
+    "id": 5005400,
+    "municipio": "Maracaju"
+  },
+  {
+    "id": 5005608,
+    "municipio": "Miranda"
+  },
+  {
+    "id": 5005681,
+    "municipio": "Mundo Novo"
+  },
+  {
+    "id": 5005707,
+    "municipio": "Naviraí"
+  },
+  {
+    "id": 5005806,
+    "municipio": "Nioaque"
+  },
+  {
+    "id": 5006002,
+    "municipio": "Nova Alvorada do Sul"
+  },
+  {
+    "id": 5006200,
+    "municipio": "Nova Andradina"
+  },
+  {
+    "id": 5006259,
+    "municipio": "Novo Horizonte do Sul"
+  },
+  {
+    "id": 5006275,
+    "municipio": "Paraíso das Águas"
+  },
+  {
+    "id": 5006309,
+    "municipio": "Paranaíba"
+  },
+  {
+    "id": 5006358,
+    "municipio": "Paranhos"
+  },
+  {
+    "id": 5006408,
+    "municipio": "Pedro Gomes"
+  },
+  {
+    "id": 5006606,
+    "municipio": "Ponta Porã"
+  },
+  {
+    "id": 5006903,
+    "municipio": "Porto Murtinho"
+  },
+  {
+    "id": 5007109,
+    "municipio": "Ribas do Rio Pardo"
+  },
+  {
+    "id": 5007208,
+    "municipio": "Rio Brilhante"
+  },
+  {
+    "id": 5007307,
+    "municipio": "Rio Negro"
+  },
+  {
+    "id": 5007406,
+    "municipio": "Rio Verde de Mato Grosso"
+  },
+  {
+    "id": 5007505,
+    "municipio": "Rochedo"
+  },
+  {
+    "id": 5007554,
+    "municipio": "Santa Rita do Pardo"
+  },
+  {
+    "id": 5007695,
+    "municipio": "São Gabriel do Oeste"
+  },
+  {
+    "id": 5007703,
+    "municipio": "Sete Quedas"
+  },
+  {
+    "id": 5007802,
+    "municipio": "Selvíria"
+  },
+  {
+    "id": 5007901,
+    "municipio": "Sidrolândia"
+  },
+  {
+    "id": 5007935,
+    "municipio": "Sonora"
+  },
+  {
+    "id": 5007950,
+    "municipio": "Tacuru"
+  },
+  {
+    "id": 5007976,
+    "municipio": "Taquarussu"
+  },
+  {
+    "id": 5008008,
+    "municipio": "Terenos"
+  },
+  {
+    "id": 5008305,
+    "municipio": "Três Lagoas"
+  },
+  {
+    "id": 5008404,
+    "municipio": "Vicentina"
+  }
+]

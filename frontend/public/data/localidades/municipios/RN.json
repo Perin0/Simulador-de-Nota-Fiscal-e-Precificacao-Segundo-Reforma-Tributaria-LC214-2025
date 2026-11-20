@@ -1,0 +1,670 @@
+[
+  {
+    "id": 2400109,
+    "municipio": "Acari"
+  },
+  {
+    "id": 2400208,
+    "municipio": "Açu"
+  },
+  {
+    "id": 2400307,
+    "municipio": "Afonso Bezerra"
+  },
+  {
+    "id": 2400406,
+    "municipio": "Água Nova"
+  },
+  {
+    "id": 2400505,
+    "municipio": "Alexandria"
+  },
+  {
+    "id": 2400604,
+    "municipio": "Almino Afonso"
+  },
+  {
+    "id": 2400703,
+    "municipio": "Alto do Rodrigues"
+  },
+  {
+    "id": 2400802,
+    "municipio": "Angicos"
+  },
+  {
+    "id": 2400901,
+    "municipio": "Antônio Martins"
+  },
+  {
+    "id": 2401008,
+    "municipio": "Apodi"
+  },
+  {
+    "id": 2401107,
+    "municipio": "Areia Branca"
+  },
+  {
+    "id": 2401206,
+    "municipio": "Arês"
+  },
+  {
+    "id": 2401453,
+    "municipio": "Baía Formosa"
+  },
+  {
+    "id": 2401503,
+    "municipio": "Baraúna"
+  },
+  {
+    "id": 2401602,
+    "municipio": "Barcelona"
+  },
+  {
+    "id": 2401651,
+    "municipio": "Bento Fernandes"
+  },
+  {
+    "id": 2401701,
+    "municipio": "Bodó"
+  },
+  {
+    "id": 2401800,
+    "municipio": "Bom Jesus"
+  },
+  {
+    "id": 2401859,
+    "municipio": "Brejinho"
+  },
+  {
+    "id": 2401909,
+    "municipio": "Caiçara do Norte"
+  },
+  {
+    "id": 2402006,
+    "municipio": "Caiçara do Rio do Vento"
+  },
+  {
+    "id": 2402105,
+    "municipio": "Caicó"
+  },
+  {
+    "id": 2402204,
+    "municipio": "Campo Grande"
+  },
+  {
+    "id": 2401305,
+    "municipio": "Campo Redondo"
+  },
+  {
+    "id": 2402303,
+    "municipio": "Canguaretama"
+  },
+  {
+    "id": 2402402,
+    "municipio": "Caraúbas"
+  },
+  {
+    "id": 2402501,
+    "municipio": "Carnaúba dos Dantas"
+  },
+  {
+    "id": 2402600,
+    "municipio": "Carnaubais"
+  },
+  {
+    "id": 2402709,
+    "municipio": "Ceará-Mirim"
+  },
+  {
+    "id": 2402808,
+    "municipio": "Cerro Corá"
+  },
+  {
+    "id": 2402907,
+    "municipio": "Coronel Ezequiel"
+  },
+  {
+    "id": 2403004,
+    "municipio": "Coronel João Pessoa"
+  },
+  {
+    "id": 2403103,
+    "municipio": "Cruzeta"
+  },
+  {
+    "id": 2403202,
+    "municipio": "Currais Novos"
+  },
+  {
+    "id": 2403251,
+    "municipio": "Doutor Severiano"
+  },
+  {
+    "id": 2403301,
+    "municipio": "Encanto"
+  },
+  {
+    "id": 2403400,
+    "municipio": "Equador"
+  },
+  {
+    "id": 2403509,
+    "municipio": "Espírito Santo"
+  },
+  {
+    "id": 2403608,
+    "municipio": "Extremoz"
+  },
+  {
+    "id": 2403707,
+    "municipio": "Felipe Guerra"
+  },
+  {
+    "id": 2403756,
+    "municipio": "Fernando Pedroza"
+  },
+  {
+    "id": 2403806,
+    "municipio": "Florânia"
+  },
+  {
+    "id": 2403905,
+    "municipio": "Francisco Dantas"
+  },
+  {
+    "id": 2404002,
+    "municipio": "Frutuoso Gomes"
+  },
+  {
+    "id": 2404101,
+    "municipio": "Galinhos"
+  },
+  {
+    "id": 2404200,
+    "municipio": "Goianinha"
+  },
+  {
+    "id": 2404309,
+    "municipio": "Governador Dix-Sept Rosado"
+  },
+  {
+    "id": 2404408,
+    "municipio": "Grossos"
+  },
+  {
+    "id": 2404507,
+    "municipio": "Guamaré"
+  },
+  {
+    "id": 2404606,
+    "municipio": "Ielmo Marinho"
+  },
+  {
+    "id": 2404705,
+    "municipio": "Ipanguaçu"
+  },
+  {
+    "id": 2404804,
+    "municipio": "Ipueira"
+  },
+  {
+    "id": 2404853,
+    "municipio": "Itajá"
+  },
+  {
+    "id": 2404903,
+    "municipio": "Itaú"
+  },
+  {
+    "id": 2405009,
+    "municipio": "Jaçanã"
+  },
+  {
+    "id": 2405108,
+    "municipio": "Jandaíra"
+  },
+  {
+    "id": 2405207,
+    "municipio": "Janduís"
+  },
+  {
+    "id": 2405306,
+    "municipio": "Januário Cicco"
+  },
+  {
+    "id": 2405405,
+    "municipio": "Japi"
+  },
+  {
+    "id": 2405504,
+    "municipio": "Jardim de Angicos"
+  },
+  {
+    "id": 2405603,
+    "municipio": "Jardim de Piranhas"
+  },
+  {
+    "id": 2405702,
+    "municipio": "Jardim do Seridó"
+  },
+  {
+    "id": 2405801,
+    "municipio": "João Câmara"
+  },
+  {
+    "id": 2405900,
+    "municipio": "João Dias"
+  },
+  {
+    "id": 2406007,
+    "municipio": "José da Penha"
+  },
+  {
+    "id": 2406106,
+    "municipio": "Jucurutu"
+  },
+  {
+    "id": 2406155,
+    "municipio": "Jundiá"
+  },
+  {
+    "id": 2406205,
+    "municipio": "Lagoa d'Anta"
+  },
+  {
+    "id": 2406304,
+    "municipio": "Lagoa de Pedras"
+  },
+  {
+    "id": 2406403,
+    "municipio": "Lagoa de Velhos"
+  },
+  {
+    "id": 2406502,
+    "municipio": "Lagoa Nova"
+  },
+  {
+    "id": 2406601,
+    "municipio": "Lagoa Salgada"
+  },
+  {
+    "id": 2406700,
+    "municipio": "Lajes"
+  },
+  {
+    "id": 2406809,
+    "municipio": "Lajes Pintadas"
+  },
+  {
+    "id": 2406908,
+    "municipio": "Lucrécia"
+  },
+  {
+    "id": 2407005,
+    "municipio": "Luís Gomes"
+  },
+  {
+    "id": 2407104,
+    "municipio": "Macaíba"
+  },
+  {
+    "id": 2407203,
+    "municipio": "Macau"
+  },
+  {
+    "id": 2407252,
+    "municipio": "Major Sales"
+  },
+  {
+    "id": 2407302,
+    "municipio": "Marcelino Vieira"
+  },
+  {
+    "id": 2407401,
+    "municipio": "Martins"
+  },
+  {
+    "id": 2407500,
+    "municipio": "Maxaranguape"
+  },
+  {
+    "id": 2407609,
+    "municipio": "Messias Targino"
+  },
+  {
+    "id": 2407708,
+    "municipio": "Montanhas"
+  },
+  {
+    "id": 2407807,
+    "municipio": "Monte Alegre"
+  },
+  {
+    "id": 2407906,
+    "municipio": "Monte das Gameleiras"
+  },
+  {
+    "id": 2408003,
+    "municipio": "Mossoró"
+  },
+  {
+    "id": 2408102,
+    "municipio": "Natal"
+  },
+  {
+    "id": 2408201,
+    "municipio": "Nísia Floresta"
+  },
+  {
+    "id": 2408300,
+    "municipio": "Nova Cruz"
+  },
+  {
+    "id": 2408409,
+    "municipio": "Olho-d'Água do Borges"
+  },
+  {
+    "id": 2408508,
+    "municipio": "Ouro Branco"
+  },
+  {
+    "id": 2408607,
+    "municipio": "Paraná"
+  },
+  {
+    "id": 2408706,
+    "municipio": "Paraú"
+  },
+  {
+    "id": 2408805,
+    "municipio": "Parazinho"
+  },
+  {
+    "id": 2408904,
+    "municipio": "Parelhas"
+  },
+  {
+    "id": 2409001,
+    "municipio": "Parnamirim"
+  },
+  {
+    "id": 2409100,
+    "municipio": "Passa e Fica"
+  },
+  {
+    "id": 2409209,
+    "municipio": "Passagem"
+  },
+  {
+    "id": 2409308,
+    "municipio": "Patu"
+  },
+  {
+    "id": 2409407,
+    "municipio": "Pau dos Ferros"
+  },
+  {
+    "id": 2409506,
+    "municipio": "Pedra Grande"
+  },
+  {
+    "id": 2409605,
+    "municipio": "Pedra Preta"
+  },
+  {
+    "id": 2409704,
+    "municipio": "Pedro Avelino"
+  },
+  {
+    "id": 2409803,
+    "municipio": "Pedro Velho"
+  },
+  {
+    "id": 2409902,
+    "municipio": "Pendências"
+  },
+  {
+    "id": 2410009,
+    "municipio": "Pilões"
+  },
+  {
+    "id": 2410108,
+    "municipio": "Poço Branco"
+  },
+  {
+    "id": 2410207,
+    "municipio": "Portalegre"
+  },
+  {
+    "id": 2410256,
+    "municipio": "Porto do Mangue"
+  },
+  {
+    "id": 2410405,
+    "municipio": "Pureza"
+  },
+  {
+    "id": 2410504,
+    "municipio": "Rafael Fernandes"
+  },
+  {
+    "id": 2410603,
+    "municipio": "Rafael Godeiro"
+  },
+  {
+    "id": 2410702,
+    "municipio": "Riacho da Cruz"
+  },
+  {
+    "id": 2410801,
+    "municipio": "Riacho de Santana"
+  },
+  {
+    "id": 2410900,
+    "municipio": "Riachuelo"
+  },
+  {
+    "id": 2411007,
+    "municipio": "Rio do Fogo"
+  },
+  {
+    "id": 2411106,
+    "municipio": "Rodolfo Fernandes"
+  },
+  {
+    "id": 2411205,
+    "municipio": "Ruy Barbosa"
+  },
+  {
+    "id": 2411403,
+    "municipio": "Santa Cruz"
+  },
+  {
+    "id": 2411429,
+    "municipio": "Santa Maria"
+  },
+  {
+    "id": 2411502,
+    "municipio": "Santana do Matos"
+  },
+  {
+    "id": 2411601,
+    "municipio": "Santana do Seridó"
+  },
+  {
+    "id": 2411700,
+    "municipio": "Santo Antônio"
+  },
+  {
+    "id": 2411809,
+    "municipio": "São Bento do Norte"
+  },
+  {
+    "id": 2411908,
+    "municipio": "São Bento do Trairí"
+  },
+  {
+    "id": 2412005,
+    "municipio": "São Fernando"
+  },
+  {
+    "id": 2412104,
+    "municipio": "São Francisco do Oeste"
+  },
+  {
+    "id": 2412203,
+    "municipio": "São Gonçalo do Amarante"
+  },
+  {
+    "id": 2412302,
+    "municipio": "São João do Sabugi"
+  },
+  {
+    "id": 2412401,
+    "municipio": "São José de Mipibu"
+  },
+  {
+    "id": 2412500,
+    "municipio": "São José do Campestre"
+  },
+  {
+    "id": 2412559,
+    "municipio": "São José do Seridó"
+  },
+  {
+    "id": 2412609,
+    "municipio": "São Miguel"
+  },
+  {
+    "id": 2412708,
+    "municipio": "São Miguel do Gostoso"
+  },
+  {
+    "id": 2412807,
+    "municipio": "São Paulo do Potengi"
+  },
+  {
+    "id": 2412906,
+    "municipio": "São Pedro"
+  },
+  {
+    "id": 2413003,
+    "municipio": "São Rafael"
+  },
+  {
+    "id": 2413102,
+    "municipio": "São Tomé"
+  },
+  {
+    "id": 2413201,
+    "municipio": "São Vicente"
+  },
+  {
+    "id": 2413300,
+    "municipio": "Senador Elói de Souza"
+  },
+  {
+    "id": 2413359,
+    "municipio": "Senador Georgino Avelino"
+  },
+  {
+    "id": 2413409,
+    "municipio": "Serra Caiada"
+  },
+  {
+    "id": 2413508,
+    "municipio": "Serra de São Bento"
+  },
+  {
+    "id": 2413557,
+    "municipio": "Serra do Mel"
+  },
+  {
+    "id": 2413607,
+    "municipio": "Serra Negra do Norte"
+  },
+  {
+    "id": 2413706,
+    "municipio": "Serrinha"
+  },
+  {
+    "id": 2413805,
+    "municipio": "Serrinha dos Pintos"
+  },
+  {
+    "id": 2413904,
+    "municipio": "Severiano Melo"
+  },
+  {
+    "id": 2414001,
+    "municipio": "Sítio Novo"
+  },
+  {
+    "id": 2414100,
+    "municipio": "Taboleiro Grande"
+  },
+  {
+    "id": 2414159,
+    "municipio": "Taipu"
+  },
+  {
+    "id": 2414209,
+    "municipio": "Tangará"
+  },
+  {
+    "id": 2414308,
+    "municipio": "Tenente Ananias"
+  },
+  {
+    "id": 2414407,
+    "municipio": "Tenente Laurentino Cruz"
+  },
+  {
+    "id": 2414456,
+    "municipio": "Tibau"
+  },
+  {
+    "id": 2414506,
+    "municipio": "Tibau do Sul"
+  },
+  {
+    "id": 2414605,
+    "municipio": "Timbaúba dos Batistas"
+  },
+  {
+    "id": 2414704,
+    "municipio": "Touros"
+  },
+  {
+    "id": 2414753,
+    "municipio": "Triunfo Potiguar"
+  },
+  {
+    "id": 2414803,
+    "municipio": "Umarizal"
+  },
+  {
+    "id": 2414902,
+    "municipio": "Upanema"
+  },
+  {
+    "id": 2415008,
+    "municipio": "Várzea"
+  },
+  {
+    "id": 2415107,
+    "municipio": "Venha-Ver"
+  },
+  {
+    "id": 2415206,
+    "municipio": "Vera Cruz"
+  },
+  {
+    "id": 2415305,
+    "municipio": "Viçosa"
+  },
+  {
+    "id": 2415404,
+    "municipio": "Vila Flor"
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "RO",
+    "nomeUF": "Rondônia"
+  },
+  {
+    "id": "AC",
+    "nomeUF": "Acre"  
+  },
+  {
+    "id": "AM",
+    "nomeUF": "Amazonas"
+  },
+  {
+    "id": "RR",
+    "nomeUF": "Roraima"
+  },
+  {
+    "id": "PA",
+    "nomeUF": "Pará"
+  },
+  {
+    "id": "AP",
+    "nomeUF": "Amapá"
+  },
+  {
+    "id": "TO",
+    "nomeUF": "Tocantins"
+  },
+  {
+    "id": "MA",
+    "nomeUF": "Maranhão"
+  },
+  {
+    "id": "PI",
+    "nomeUF": "Piauí"
+  },
+  {
+    "id": "CE",
+    "nomeUF": "Ceará"
+  },
+  {
+    "id": "RN",
+    "nomeUF": "Rio Grande do Norte"
+  },
+  {
+    "id": "PB",
+    "nomeUF": "Paraíba"
+  },
+  {
+    "id": "PE",
+    "nomeUF": "Pernambuco"
+  },
+  {
+    "id": "AL",
+    "nomeUF": "Alagoas"
+  },
+  {
+    "id": "SE",
+    "nomeUF": "Sergipe"
+  },
+  {
+    "id": "BA",
+    "nomeUF": "Bahia"
+  },
+  {
+    "id": "MG",
+    "nomeUF": "Minas Gerais"
+  },
+  {
+    "id": "ES",
+    "nomeUF": "Espírito Santo"
+  },
+  {
+    "id": "RJ",
+    "nomeUF": "Rio de Janeiro"
+  },
+  {
+    "id": "SP",
+    "nomeUF": "São Paulo"
+  },
+  {
+    "id": "PR",
+    "nomeUF": "Paraná"
+  },
+  {
+    "id": "SC",
+    "nomeUF": "Santa Catarina"
+  },
+  {
+    "id": "RS",
+    "nomeUF": "Rio Grande do Sul"
+  },
+  {
+    "id": "MS",
+    "nomeUF": "Mato Grosso do Sul"
+  },
+  {
+    "id": "MT",
+    "nomeUF": "Mato Grosso"
+  },
+  {
+    "id": "GO",
+    "nomeUF": "Goiás"
+  },
+  {
+    "id": "DF",
+    "nomeUF": "Distrito Federal"
+  }
+]

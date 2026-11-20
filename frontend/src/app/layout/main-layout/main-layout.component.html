@@ -1,0 +1,61 @@
+<div class="shell">
+  <aside class="sidebar" aria-label="Navegação principal">
+    <a class="brand" routerLink="/simulador-nfe">
+      <span class="brand-mark">R</span>
+      <span><strong>RTC Simples</strong><small>Reforma tributária</small></span>
+    </a>
+    <nav>
+      <a routerLink="/simulador-nfe" routerLinkActive="active"><span aria-hidden="true">▣</span> Simulador de nota</a>
+      <a routerLink="/precificacao" routerLinkActive="active"><span aria-hidden="true">◒</span> Precificação</a>
+    </nav>
+    <div class="sidebar-note"><span class="dot"></span><div><strong>Motor RTC</strong><small>Conectado localmente</small></div></div>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <div class="context">
+        <label>UF
+          <select aria-label="Unidade federativa" [value]="empresa.context().uf"
+            (change)="empresa.selecionarUf($any($event.target).value)" [disabled]="empresa.carregandoUfs()">
+            <option value="">Selecione a UF</option>
+            @for (uf of empresa.ufs(); track uf.id) {
+              <option [value]="uf.id">{{ uf.nomeUF }} - {{ uf.id }}</option>
+            }
+          </select>
+        </label>
+        <label>Município
+          <select aria-label="Município" [value]="empresa.context().municipio"
+            (change)="empresa.selecionarMunicipio($any($event.target).value)"
+            [disabled]="!empresa.ufSelecionada() || empresa.carregandoMunicipios()">
+            <option value="">{{ empresa.carregandoMunicipios() ? 'Carregando municípios…' : 'Selecione o município' }}</option>
+            @for (municipio of empresa.municipios(); track municipio.id) {
+              <option [value]="municipio.id">{{ municipio.municipio }} - {{ municipio.id }}</option>
+            }
+          </select>
+        </label>
+        <label>Atividade SN
+          <input aria-label="Código da atividade do Simples Nacional" [value]="empresa.context().atividade"
+            (change)="update('atividade', $event)" maxlength="2" />
+        </label>
+        <label>Data de referência
+          <input aria-label="Data de referência" type="date" [value]="empresa.context().data"
+            (change)="update('data', $event)" />
+        </label>
+        <label class="factor"><input type="checkbox" [checked]="empresa.context().fatorR"
+          (change)="empresa.update({ fatorR: $any($event.target).checked })" /> Fator R ≥ 28%</label>
+      </div>
+      @if (empresa.erroLocalidades()) {
+        <div class="localidades-error" role="alert">{{ empresa.erroLocalidades() }}</div>
+      }
+      <span class="secure">● Ambiente local</span>
+    </header>
+
+    @if (simulation.transition()) {
+      <div class="transition-banner" role="status">Simulação baseada nas regras de transição vigentes na data selecionada.</div>
+    }
+    @if (notification.mensagem()) {
+      <div class="toast" role="status">{{ notification.mensagem() }}</div>
+    }
+    <main id="main-content" tabindex="-1"><router-outlet /></main>
+  </div>
+</div>

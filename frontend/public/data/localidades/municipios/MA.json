@@ -1,0 +1,870 @@
+[
+  {
+    "id": 2100055,
+    "municipio": "Açailândia"
+  },
+  {
+    "id": 2100105,
+    "municipio": "Afonso Cunha"
+  },
+  {
+    "id": 2100154,
+    "municipio": "Água Doce do Maranhão"
+  },
+  {
+    "id": 2100204,
+    "municipio": "Alcântara"
+  },
+  {
+    "id": 2100303,
+    "municipio": "Aldeias Altas"
+  },
+  {
+    "id": 2100402,
+    "municipio": "Altamira do Maranhão"
+  },
+  {
+    "id": 2100436,
+    "municipio": "Alto Alegre do Maranhão"
+  },
+  {
+    "id": 2100477,
+    "municipio": "Alto Alegre do Pindaré"
+  },
+  {
+    "id": 2100501,
+    "municipio": "Alto Parnaíba"
+  },
+  {
+    "id": 2100550,
+    "municipio": "Amapá do Maranhão"
+  },
+  {
+    "id": 2100600,
+    "municipio": "Amarante do Maranhão"
+  },
+  {
+    "id": 2100709,
+    "municipio": "Anajatuba"
+  },
+  {
+    "id": 2100808,
+    "municipio": "Anapurus"
+  },
+  {
+    "id": 2100832,
+    "municipio": "Apicum-Açu"
+  },
+  {
+    "id": 2100873,
+    "municipio": "Araguanã"
+  },
+  {
+    "id": 2100907,
+    "municipio": "Araioses"
+  },
+  {
+    "id": 2100956,
+    "municipio": "Arame"
+  },
+  {
+    "id": 2101004,
+    "municipio": "Arari"
+  },
+  {
+    "id": 2101103,
+    "municipio": "Axixá"
+  },
+  {
+    "id": 2101202,
+    "municipio": "Bacabal"
+  },
+  {
+    "id": 2101251,
+    "municipio": "Bacabeira"
+  },
+  {
+    "id": 2101301,
+    "municipio": "Bacuri"
+  },
+  {
+    "id": 2101350,
+    "municipio": "Bacurituba"
+  },
+  {
+    "id": 2101400,
+    "municipio": "Balsas"
+  },
+  {
+    "id": 2101509,
+    "municipio": "Barão de Grajaú"
+  },
+  {
+    "id": 2101608,
+    "municipio": "Barra do Corda"
+  },
+  {
+    "id": 2101707,
+    "municipio": "Barreirinhas"
+  },
+  {
+    "id": 2101731,
+    "municipio": "Bela Vista do Maranhão"
+  },
+  {
+    "id": 2101772,
+    "municipio": "Belágua"
+  },
+  {
+    "id": 2101806,
+    "municipio": "Benedito Leite"
+  },
+  {
+    "id": 2101905,
+    "municipio": "Bequimão"
+  },
+  {
+    "id": 2101939,
+    "municipio": "Bernardo do Mearim"
+  },
+  {
+    "id": 2101970,
+    "municipio": "Boa Vista do Gurupi"
+  },
+  {
+    "id": 2102002,
+    "municipio": "Bom Jardim"
+  },
+  {
+    "id": 2102036,
+    "municipio": "Bom Jesus das Selvas"
+  },
+  {
+    "id": 2102077,
+    "municipio": "Bom Lugar"
+  },
+  {
+    "id": 2102101,
+    "municipio": "Brejo"
+  },
+  {
+    "id": 2102150,
+    "municipio": "Brejo de Areia"
+  },
+  {
+    "id": 2102200,
+    "municipio": "Buriti"
+  },
+  {
+    "id": 2102309,
+    "municipio": "Buriti Bravo"
+  },
+  {
+    "id": 2102325,
+    "municipio": "Buriticupu"
+  },
+  {
+    "id": 2102358,
+    "municipio": "Buritirana"
+  },
+  {
+    "id": 2102374,
+    "municipio": "Cachoeira Grande"
+  },
+  {
+    "id": 2102408,
+    "municipio": "Cajapió"
+  },
+  {
+    "id": 2102507,
+    "municipio": "Cajari"
+  },
+  {
+    "id": 2102556,
+    "municipio": "Campestre do Maranhão"
+  },
+  {
+    "id": 2102606,
+    "municipio": "Cândido Mendes"
+  },
+  {
+    "id": 2102705,
+    "municipio": "Cantanhede"
+  },
+  {
+    "id": 2102754,
+    "municipio": "Capinzal do Norte"
+  },
+  {
+    "id": 2102804,
+    "municipio": "Carolina"
+  },
+  {
+    "id": 2102903,
+    "municipio": "Carutapera"
+  },
+  {
+    "id": 2103000,
+    "municipio": "Caxias"
+  },
+  {
+    "id": 2103109,
+    "municipio": "Cedral"
+  },
+  {
+    "id": 2103125,
+    "municipio": "Central do Maranhão"
+  },
+  {
+    "id": 2103158,
+    "municipio": "Centro do Guilherme"
+  },
+  {
+    "id": 2103174,
+    "municipio": "Centro Novo do Maranhão"
+  },
+  {
+    "id": 2103208,
+    "municipio": "Chapadinha"
+  },
+  {
+    "id": 2103257,
+    "municipio": "Cidelândia"
+  },
+  {
+    "id": 2103307,
+    "municipio": "Codó"
+  },
+  {
+    "id": 2103406,
+    "municipio": "Coelho Neto"
+  },
+  {
+    "id": 2103505,
+    "municipio": "Colinas"
+  },
+  {
+    "id": 2103554,
+    "municipio": "Conceição do Lago-Açu"
+  },
+  {
+    "id": 2103604,
+    "municipio": "Coroatá"
+  },
+  {
+    "id": 2103703,
+    "municipio": "Cururupu"
+  },
+  {
+    "id": 2103752,
+    "municipio": "Davinópolis"
+  },
+  {
+    "id": 2103802,
+    "municipio": "Dom Pedro"
+  },
+  {
+    "id": 2103901,
+    "municipio": "Duque Bacelar"
+  },
+  {
+    "id": 2104008,
+    "municipio": "Esperantinópolis"
+  },
+  {
+    "id": 2104057,
+    "municipio": "Estreito"
+  },
+  {
+    "id": 2104073,
+    "municipio": "Feira Nova do Maranhão"
+  },
+  {
+    "id": 2104081,
+    "municipio": "Fernando Falcão"
+  },
+  {
+    "id": 2104099,
+    "municipio": "Formosa da Serra Negra"
+  },
+  {
+    "id": 2104107,
+    "municipio": "Fortaleza dos Nogueiras"
+  },
+  {
+    "id": 2104206,
+    "municipio": "Fortuna"
+  },
+  {
+    "id": 2104305,
+    "municipio": "Godofredo Viana"
+  },
+  {
+    "id": 2104404,
+    "municipio": "Gonçalves Dias"
+  },
+  {
+    "id": 2104503,
+    "municipio": "Governador Archer"
+  },
+  {
+    "id": 2104552,
+    "municipio": "Governador Edison Lobão"
+  },
+  {
+    "id": 2104602,
+    "municipio": "Governador Eugênio Barros"
+  },
+  {
+    "id": 2104628,
+    "municipio": "Governador Luiz Rocha"
+  },
+  {
+    "id": 2104651,
+    "municipio": "Governador Newton Bello"
+  },
+  {
+    "id": 2104677,
+    "municipio": "Governador Nunes Freire"
+  },
+  {
+    "id": 2104701,
+    "municipio": "Graça Aranha"
+  },
+  {
+    "id": 2104800,
+    "municipio": "Grajaú"
+  },
+  {
+    "id": 2104909,
+    "municipio": "Guimarães"
+  },
+  {
+    "id": 2105005,
+    "municipio": "Humberto de Campos"
+  },
+  {
+    "id": 2105104,
+    "municipio": "Icatu"
+  },
+  {
+    "id": 2105153,
+    "municipio": "Igarapé do Meio"
+  },
+  {
+    "id": 2105203,
+    "municipio": "Igarapé Grande"
+  },
+  {
+    "id": 2105302,
+    "municipio": "Imperatriz"
+  },
+  {
+    "id": 2105351,
+    "municipio": "Itaipava do Grajaú"
+  },
+  {
+    "id": 2105401,
+    "municipio": "Itapecuru Mirim"
+  },
+  {
+    "id": 2105427,
+    "municipio": "Itinga do Maranhão"
+  },
+  {
+    "id": 2105450,
+    "municipio": "Jatobá"
+  },
+  {
+    "id": 2105476,
+    "municipio": "Jenipapo dos Vieiras"
+  },
+  {
+    "id": 2105500,
+    "municipio": "João Lisboa"
+  },
+  {
+    "id": 2105609,
+    "municipio": "Joselândia"
+  },
+  {
+    "id": 2105658,
+    "municipio": "Junco do Maranhão"
+  },
+  {
+    "id": 2105708,
+    "municipio": "Lago da Pedra"
+  },
+  {
+    "id": 2105807,
+    "municipio": "Lago do Junco"
+  },
+  {
+    "id": 2105948,
+    "municipio": "Lago dos Rodrigues"
+  },
+  {
+    "id": 2105906,
+    "municipio": "Lago Verde"
+  },
+  {
+    "id": 2105922,
+    "municipio": "Lagoa do Mato"
+  },
+  {
+    "id": 2105963,
+    "municipio": "Lagoa Grande do Maranhão"
+  },
+  {
+    "id": 2105989,
+    "municipio": "Lajeado Novo"
+  },
+  {
+    "id": 2106003,
+    "municipio": "Lima Campos"
+  },
+  {
+    "id": 2106102,
+    "municipio": "Loreto"
+  },
+  {
+    "id": 2106201,
+    "municipio": "Luís Domingues"
+  },
+  {
+    "id": 2106300,
+    "municipio": "Magalhães de Almeida"
+  },
+  {
+    "id": 2106326,
+    "municipio": "Maracaçumé"
+  },
+  {
+    "id": 2106359,
+    "municipio": "Marajá do Sena"
+  },
+  {
+    "id": 2106375,
+    "municipio": "Maranhãozinho"
+  },
+  {
+    "id": 2106409,
+    "municipio": "Mata Roma"
+  },
+  {
+    "id": 2106508,
+    "municipio": "Matinha"
+  },
+  {
+    "id": 2106607,
+    "municipio": "Matões"
+  },
+  {
+    "id": 2106631,
+    "municipio": "Matões do Norte"
+  },
+  {
+    "id": 2106672,
+    "municipio": "Milagres do Maranhão"
+  },
+  {
+    "id": 2106706,
+    "municipio": "Mirador"
+  },
+  {
+    "id": 2106755,
+    "municipio": "Miranda do Norte"
+  },
+  {
+    "id": 2106805,
+    "municipio": "Mirinzal"
+  },
+  {
+    "id": 2106904,
+    "municipio": "Monção"
+  },
+  {
+    "id": 2107001,
+    "municipio": "Montes Altos"
+  },
+  {
+    "id": 2107100,
+    "municipio": "Morros"
+  },
+  {
+    "id": 2107209,
+    "municipio": "Nina Rodrigues"
+  },
+  {
+    "id": 2107258,
+    "municipio": "Nova Colinas"
+  },
+  {
+    "id": 2107308,
+    "municipio": "Nova Iorque"
+  },
+  {
+    "id": 2107357,
+    "municipio": "Nova Olinda do Maranhão"
+  },
+  {
+    "id": 2107407,
+    "municipio": "Olho d'Água das Cunhãs"
+  },
+  {
+    "id": 2107456,
+    "municipio": "Olinda Nova do Maranhão"
+  },
+  {
+    "id": 2107506,
+    "municipio": "Paço do Lumiar"
+  },
+  {
+    "id": 2107605,
+    "municipio": "Palmeirândia"
+  },
+  {
+    "id": 2107704,
+    "municipio": "Paraibano"
+  },
+  {
+    "id": 2107803,
+    "municipio": "Parnarama"
+  },
+  {
+    "id": 2107902,
+    "municipio": "Passagem Franca"
+  },
+  {
+    "id": 2108009,
+    "municipio": "Pastos Bons"
+  },
+  {
+    "id": 2108058,
+    "municipio": "Paulino Neves"
+  },
+  {
+    "id": 2108108,
+    "municipio": "Paulo Ramos"
+  },
+  {
+    "id": 2108207,
+    "municipio": "Pedreiras"
+  },
+  {
+    "id": 2108256,
+    "municipio": "Pedro do Rosário"
+  },
+  {
+    "id": 2108306,
+    "municipio": "Penalva"
+  },
+  {
+    "id": 2108405,
+    "municipio": "Peri Mirim"
+  },
+  {
+    "id": 2108454,
+    "municipio": "Peritoró"
+  },
+  {
+    "id": 2108504,
+    "municipio": "Pindaré-Mirim"
+  },
+  {
+    "id": 2108603,
+    "municipio": "Pinheiro"
+  },
+  {
+    "id": 2108702,
+    "municipio": "Pio XII"
+  },
+  {
+    "id": 2108801,
+    "municipio": "Pirapemas"
+  },
+  {
+    "id": 2108900,
+    "municipio": "Poção de Pedras"
+  },
+  {
+    "id": 2109007,
+    "municipio": "Porto Franco"
+  },
+  {
+    "id": 2109056,
+    "municipio": "Porto Rico do Maranhão"
+  },
+  {
+    "id": 2109106,
+    "municipio": "Presidente Dutra"
+  },
+  {
+    "id": 2109205,
+    "municipio": "Presidente Juscelino"
+  },
+  {
+    "id": 2109239,
+    "municipio": "Presidente Médici"
+  },
+  {
+    "id": 2109270,
+    "municipio": "Presidente Sarney"
+  },
+  {
+    "id": 2109304,
+    "municipio": "Presidente Vargas"
+  },
+  {
+    "id": 2109403,
+    "municipio": "Primeira Cruz"
+  },
+  {
+    "id": 2109452,
+    "municipio": "Raposa"
+  },
+  {
+    "id": 2109502,
+    "municipio": "Riachão"
+  },
+  {
+    "id": 2109551,
+    "municipio": "Ribamar Fiquene"
+  },
+  {
+    "id": 2109601,
+    "municipio": "Rosário"
+  },
+  {
+    "id": 2109700,
+    "municipio": "Sambaíba"
+  },
+  {
+    "id": 2109759,
+    "municipio": "Santa Filomena do Maranhão"
+  },
+  {
+    "id": 2109809,
+    "municipio": "Santa Helena"
+  },
+  {
+    "id": 2109908,
+    "municipio": "Santa Inês"
+  },
+  {
+    "id": 2110005,
+    "municipio": "Santa Luzia"
+  },
+  {
+    "id": 2110039,
+    "municipio": "Santa Luzia do Paruá"
+  },
+  {
+    "id": 2110104,
+    "municipio": "Santa Quitéria do Maranhão"
+  },
+  {
+    "id": 2110203,
+    "municipio": "Santa Rita"
+  },
+  {
+    "id": 2110237,
+    "municipio": "Santana do Maranhão"
+  },
+  {
+    "id": 2110278,
+    "municipio": "Santo Amaro do Maranhão"
+  },
+  {
+    "id": 2110302,
+    "municipio": "Santo Antônio dos Lopes"
+  },
+  {
+    "id": 2110401,
+    "municipio": "São Benedito do Rio Preto"
+  },
+  {
+    "id": 2110500,
+    "municipio": "São Bento"
+  },
+  {
+    "id": 2110609,
+    "municipio": "São Bernardo"
+  },
+  {
+    "id": 2110658,
+    "municipio": "São Domingos do Azeitão"
+  },
+  {
+    "id": 2110708,
+    "municipio": "São Domingos do Maranhão"
+  },
+  {
+    "id": 2110807,
+    "municipio": "São Félix de Balsas"
+  },
+  {
+    "id": 2110856,
+    "municipio": "São Francisco do Brejão"
+  },
+  {
+    "id": 2110906,
+    "municipio": "São Francisco do Maranhão"
+  },
+  {
+    "id": 2111003,
+    "municipio": "São João Batista"
+  },
+  {
+    "id": 2111029,
+    "municipio": "São João do Carú"
+  },
+  {
+    "id": 2111052,
+    "municipio": "São João do Paraíso"
+  },
+  {
+    "id": 2111078,
+    "municipio": "São João do Soter"
+  },
+  {
+    "id": 2111102,
+    "municipio": "São João dos Patos"
+  },
+  {
+    "id": 2111201,
+    "municipio": "São José de Ribamar"
+  },
+  {
+    "id": 2111250,
+    "municipio": "São José dos Basílios"
+  },
+  {
+    "id": 2111300,
+    "municipio": "São Luís"
+  },
+  {
+    "id": 2111409,
+    "municipio": "São Luís Gonzaga do Maranhão"
+  },
+  {
+    "id": 2111508,
+    "municipio": "São Mateus do Maranhão"
+  },
+  {
+    "id": 2111532,
+    "municipio": "São Pedro da Água Branca"
+  },
+  {
+    "id": 2111573,
+    "municipio": "São Pedro dos Crentes"
+  },
+  {
+    "id": 2111607,
+    "municipio": "São Raimundo das Mangabeiras"
+  },
+  {
+    "id": 2111631,
+    "municipio": "São Raimundo do Doca Bezerra"
+  },
+  {
+    "id": 2111672,
+    "municipio": "São Roberto"
+  },
+  {
+    "id": 2111706,
+    "municipio": "São Vicente Ferrer"
+  },
+  {
+    "id": 2111722,
+    "municipio": "Satubinha"
+  },
+  {
+    "id": 2111748,
+    "municipio": "Senador Alexandre Costa"
+  },
+  {
+    "id": 2111763,
+    "municipio": "Senador La Rocque"
+  },
+  {
+    "id": 2111789,
+    "municipio": "Serrano do Maranhão"
+  },
+  {
+    "id": 2111805,
+    "municipio": "Sítio Novo"
+  },
+  {
+    "id": 2111904,
+    "municipio": "Sucupira do Norte"
+  },
+  {
+    "id": 2111953,
+    "municipio": "Sucupira do Riachão"
+  },
+  {
+    "id": 2112001,
+    "municipio": "Tasso Fragoso"
+  },
+  {
+    "id": 2112100,
+    "municipio": "Timbiras"
+  },
+  {
+    "id": 2112209,
+    "municipio": "Timon"
+  },
+  {
+    "id": 2112233,
+    "municipio": "Trizidela do Vale"
+  },
+  {
+    "id": 2112274,
+    "municipio": "Tufilândia"
+  },
+  {
+    "id": 2112308,
+    "municipio": "Tuntum"
+  },
+  {
+    "id": 2112407,
+    "municipio": "Turiaçu"
+  },
+  {
+    "id": 2112456,
+    "municipio": "Turilândia"
+  },
+  {
+    "id": 2112506,
+    "municipio": "Tutóia"
+  },
+  {
+    "id": 2112605,
+    "municipio": "Urbano Santos"
+  },
+  {
+    "id": 2112704,
+    "municipio": "Vargem Grande"
+  },
+  {
+    "id": 2112803,
+    "municipio": "Viana"
+  },
+  {
+    "id": 2112852,
+    "municipio": "Vila Nova dos Martírios"
+  },
+  {
+    "id": 2112902,
+    "municipio": "Vitória do Mearim"
+  },
+  {
+    "id": 2113009,
+    "municipio": "Vitorino Freire"
+  },
+  {
+    "id": 2114007,
+    "municipio": "Zé Doca"
+  }
+]

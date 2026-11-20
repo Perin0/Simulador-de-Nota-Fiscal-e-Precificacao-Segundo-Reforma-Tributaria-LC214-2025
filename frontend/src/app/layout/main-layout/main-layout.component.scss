@@ -1,0 +1,254 @@
+:host {
+    display: block;
+}
+
+.shell {
+    min-height: 100dvh;
+    display: flex;
+    background: var(--bg)
+}
+
+.sidebar {
+    width: 256px;
+    background: var(--ink);
+    color: #d7e1e9;
+    padding: 28px 16px;
+    display: flex;
+    flex-direction: column
+}
+
+.brand {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 0 10px 32px
+}
+
+.brand-mark {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    background: #18a77a;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 20px
+}
+
+.brand small,
+.sidebar-note small {
+    display: block;
+    color: #8da2b2;
+    font-size: 12px;
+    margin-top: 2px
+}
+
+nav {
+    display: grid;
+    gap: 8px
+}
+
+nav a {
+    color: #b9c8d2;
+    text-decoration: none;
+    padding: 13px 14px;
+    border-radius: 9px;
+    font-weight: 600;
+    display: flex;
+    gap: 12px;
+    align-items: center
+}
+
+nav a:hover,
+nav a.active {
+    background: #243746;
+    color: #fff
+}
+
+.sidebar-note {
+    margin-top: auto;
+    padding: 16px 12px;
+    border-top: 1px solid #29404e;
+    display: flex;
+    gap: 9px;
+    font-size: 13px
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    margin-top: 4px;
+    border-radius: 50%;
+    background: #3ee4a5
+}
+
+.workspace {
+    min-width: 0;
+    flex: 1
+}
+
+.topbar {
+    min-height: 72px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px clamp(16px, 3vw, 40px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px
+}
+
+.topbar {
+    flex-wrap: wrap;
+}
+
+.context {
+    display: flex;
+    gap: 14px;
+    align-items: center
+}
+
+.context label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--muted)
+}
+
+.context input:not([type=checkbox]),
+.context select {
+    display: block;
+    background: #f7fafb;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 8px;
+    margin-top: 4px;
+    color: var(--ink);
+    font: 600 13px inherit
+}
+
+.localidades-error {
+    flex-basis: 100%;
+    color: #963535;
+    font-size: 12px;
+    margin-top: -4px;
+}
+
+.factor {
+    align-self: center;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    font-size: 13px !important;
+    white-space: nowrap
+}
+
+.secure {
+    font-size: 12px;
+    color: #197657;
+    font-weight: 600
+}
+
+.transition-banner {
+    padding: 10px 40px;
+    background: #eff7ff;
+    color: #19598d;
+    font-size: 13px;
+    border-bottom: 1px solid #cfe5f8
+}
+
+.toast {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 10;
+    max-width: 420px;
+    padding: 14px 18px;
+    color: #fff;
+    background: #a83434;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px #001a2c33;
+    font-size: 14px
+}
+
+main {
+    padding: clamp(24px, 4vw, 48px);
+    max-width: 1600px;
+    margin: auto
+}
+
+@media(max-width:850px) {
+    .shell {
+        display: block
+    }
+
+    .sidebar {
+        width: auto;
+        padding: 12px 16px;
+        display: flex;
+        flex-direction: row;
+        align-items: center
+    }
+
+    .brand {
+        padding: 0;
+        margin-right: auto
+    }
+
+    .brand small,
+    .sidebar-note {
+        display: none
+    }
+
+    nav {
+        display: flex;
+        gap: 4px
+    }
+
+    nav a {
+        padding: 10px;
+        font-size: 12px
+    }
+
+    .topbar {
+        align-items: flex-start
+    }
+
+    .context {
+        flex-wrap: wrap
+    }
+
+    .secure {
+        display: none
+    }
+
+    main {
+        padding: 24px 16px
+    }
+}
+
+@media(max-width:550px) {
+    .sidebar .brand strong {
+        font-size: 14px
+    }
+
+    .sidebar nav a span {
+        display: none
+    }
+
+    .context label {
+        width: calc(50% - 7px)
+    }
+
+    .context .factor {
+        width: 100%
+    }
+
+    .context input:not([type=checkbox]),
+    .context select {
+        width: 100%;
+        box-sizing: border-box
+    }
+}

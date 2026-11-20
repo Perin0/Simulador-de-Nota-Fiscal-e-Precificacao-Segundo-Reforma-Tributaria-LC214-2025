@@ -1,0 +1,1670 @@
+[
+  {
+    "id": 2900108,
+    "municipio": "Abaíra"
+  },
+  {
+    "id": 2900207,
+    "municipio": "Abaré"
+  },
+  {
+    "id": 2900306,
+    "municipio": "Acajutiba"
+  },
+  {
+    "id": 2900355,
+    "municipio": "Adustina"
+  },
+  {
+    "id": 2900405,
+    "municipio": "Água Fria"
+  },
+  {
+    "id": 2900504,
+    "municipio": "Érico Cardoso"
+  },
+  {
+    "id": 2900603,
+    "municipio": "Aiquara"
+  },
+  {
+    "id": 2900702,
+    "municipio": "Alagoinhas"
+  },
+  {
+    "id": 2900801,
+    "municipio": "Alcobaça"
+  },
+  {
+    "id": 2900900,
+    "municipio": "Almadina"
+  },
+  {
+    "id": 2901007,
+    "municipio": "Amargosa"
+  },
+  {
+    "id": 2901106,
+    "municipio": "Amélia Rodrigues"
+  },
+  {
+    "id": 2901155,
+    "municipio": "América Dourada"
+  },
+  {
+    "id": 2901205,
+    "municipio": "Anagé"
+  },
+  {
+    "id": 2901304,
+    "municipio": "Andaraí"
+  },
+  {
+    "id": 2901353,
+    "municipio": "Andorinha"
+  },
+  {
+    "id": 2901403,
+    "municipio": "Angical"
+  },
+  {
+    "id": 2901502,
+    "municipio": "Anguera"
+  },
+  {
+    "id": 2901601,
+    "municipio": "Antas"
+  },
+  {
+    "id": 2901700,
+    "municipio": "Antônio Cardoso"
+  },
+  {
+    "id": 2901809,
+    "municipio": "Antônio Gonçalves"
+  },
+  {
+    "id": 2901908,
+    "municipio": "Aporá"
+  },
+  {
+    "id": 2901957,
+    "municipio": "Apuarema"
+  },
+  {
+    "id": 2902005,
+    "municipio": "Aracatu"
+  },
+  {
+    "id": 2902054,
+    "municipio": "Araçás"
+  },
+  {
+    "id": 2902104,
+    "municipio": "Araci"
+  },
+  {
+    "id": 2902203,
+    "municipio": "Aramari"
+  },
+  {
+    "id": 2902252,
+    "municipio": "Arataca"
+  },
+  {
+    "id": 2902302,
+    "municipio": "Aratuípe"
+  },
+  {
+    "id": 2902401,
+    "municipio": "Aurelino Leal"
+  },
+  {
+    "id": 2902500,
+    "municipio": "Baianópolis"
+  },
+  {
+    "id": 2902609,
+    "municipio": "Baixa Grande"
+  },
+  {
+    "id": 2902658,
+    "municipio": "Banzaê"
+  },
+  {
+    "id": 2902708,
+    "municipio": "Barra"
+  },
+  {
+    "id": 2902807,
+    "municipio": "Barra da Estiva"
+  },
+  {
+    "id": 2902906,
+    "municipio": "Barra do Choça"
+  },
+  {
+    "id": 2903003,
+    "municipio": "Barra do Mendes"
+  },
+  {
+    "id": 2903102,
+    "municipio": "Barra do Rocha"
+  },
+  {
+    "id": 2903201,
+    "municipio": "Barreiras"
+  },
+  {
+    "id": 2903235,
+    "municipio": "Barro Alto"
+  },
+  {
+    "id": 2903276,
+    "municipio": "Barrocas"
+  },
+  {
+    "id": 2903300,
+    "municipio": "Barro Preto"
+  },
+  {
+    "id": 2903409,
+    "municipio": "Belmonte"
+  },
+  {
+    "id": 2903508,
+    "municipio": "Belo Campo"
+  },
+  {
+    "id": 2903607,
+    "municipio": "Biritinga"
+  },
+  {
+    "id": 2903706,
+    "municipio": "Boa Nova"
+  },
+  {
+    "id": 2903805,
+    "municipio": "Boa Vista do Tupim"
+  },
+  {
+    "id": 2903904,
+    "municipio": "Bom Jesus da Lapa"
+  },
+  {
+    "id": 2903953,
+    "municipio": "Bom Jesus da Serra"
+  },
+  {
+    "id": 2904001,
+    "municipio": "Boninal"
+  },
+  {
+    "id": 2904050,
+    "municipio": "Bonito"
+  },
+  {
+    "id": 2904100,
+    "municipio": "Boquira"
+  },
+  {
+    "id": 2904209,
+    "municipio": "Botuporã"
+  },
+  {
+    "id": 2904308,
+    "municipio": "Brejões"
+  },
+  {
+    "id": 2904407,
+    "municipio": "Brejolândia"
+  },
+  {
+    "id": 2904506,
+    "municipio": "Brotas de Macaúbas"
+  },
+  {
+    "id": 2904605,
+    "municipio": "Brumado"
+  },
+  {
+    "id": 2904704,
+    "municipio": "Buerarema"
+  },
+  {
+    "id": 2904753,
+    "municipio": "Buritirama"
+  },
+  {
+    "id": 2904803,
+    "municipio": "Caatiba"
+  },
+  {
+    "id": 2904852,
+    "municipio": "Cabaceiras do Paraguaçu"
+  },
+  {
+    "id": 2904902,
+    "municipio": "Cachoeira"
+  },
+  {
+    "id": 2905008,
+    "municipio": "Caculé"
+  },
+  {
+    "id": 2905107,
+    "municipio": "Caém"
+  },
+  {
+    "id": 2905156,
+    "municipio": "Caetanos"
+  },
+  {
+    "id": 2905206,
+    "municipio": "Caetité"
+  },
+  {
+    "id": 2905305,
+    "municipio": "Cafarnaum"
+  },
+  {
+    "id": 2905404,
+    "municipio": "Cairu"
+  },
+  {
+    "id": 2905503,
+    "municipio": "Caldeirão Grande"
+  },
+  {
+    "id": 2905602,
+    "municipio": "Camacan"
+  },
+  {
+    "id": 2905701,
+    "municipio": "Camaçari"
+  },
+  {
+    "id": 2905800,
+    "municipio": "Camamu"
+  },
+  {
+    "id": 2905909,
+    "municipio": "Campo Alegre de Lourdes"
+  },
+  {
+    "id": 2906006,
+    "municipio": "Campo Formoso"
+  },
+  {
+    "id": 2906105,
+    "municipio": "Canápolis"
+  },
+  {
+    "id": 2906204,
+    "municipio": "Canarana"
+  },
+  {
+    "id": 2906303,
+    "municipio": "Canavieiras"
+  },
+  {
+    "id": 2906402,
+    "municipio": "Candeal"
+  },
+  {
+    "id": 2906501,
+    "municipio": "Candeias"
+  },
+  {
+    "id": 2906600,
+    "municipio": "Candiba"
+  },
+  {
+    "id": 2906709,
+    "municipio": "Cândido Sales"
+  },
+  {
+    "id": 2906808,
+    "municipio": "Cansanção"
+  },
+  {
+    "id": 2906824,
+    "municipio": "Canudos"
+  },
+  {
+    "id": 2906857,
+    "municipio": "Capela do Alto Alegre"
+  },
+  {
+    "id": 2906873,
+    "municipio": "Capim Grosso"
+  },
+  {
+    "id": 2906899,
+    "municipio": "Caraíbas"
+  },
+  {
+    "id": 2906907,
+    "municipio": "Caravelas"
+  },
+  {
+    "id": 2907004,
+    "municipio": "Cardeal da Silva"
+  },
+  {
+    "id": 2907103,
+    "municipio": "Carinhanha"
+  },
+  {
+    "id": 2907202,
+    "municipio": "Casa Nova"
+  },
+  {
+    "id": 2907301,
+    "municipio": "Castro Alves"
+  },
+  {
+    "id": 2907400,
+    "municipio": "Catolândia"
+  },
+  {
+    "id": 2907509,
+    "municipio": "Catu"
+  },
+  {
+    "id": 2907558,
+    "municipio": "Caturama"
+  },
+  {
+    "id": 2907608,
+    "municipio": "Central"
+  },
+  {
+    "id": 2907707,
+    "municipio": "Chorrochó"
+  },
+  {
+    "id": 2907806,
+    "municipio": "Cícero Dantas"
+  },
+  {
+    "id": 2907905,
+    "municipio": "Cipó"
+  },
+  {
+    "id": 2908002,
+    "municipio": "Coaraci"
+  },
+  {
+    "id": 2908101,
+    "municipio": "Cocos"
+  },
+  {
+    "id": 2908200,
+    "municipio": "Conceição da Feira"
+  },
+  {
+    "id": 2908309,
+    "municipio": "Conceição do Almeida"
+  },
+  {
+    "id": 2908408,
+    "municipio": "Conceição do Coité"
+  },
+  {
+    "id": 2908507,
+    "municipio": "Conceição do Jacuípe"
+  },
+  {
+    "id": 2908606,
+    "municipio": "Conde"
+  },
+  {
+    "id": 2908705,
+    "municipio": "Condeúba"
+  },
+  {
+    "id": 2908804,
+    "municipio": "Contendas do Sincorá"
+  },
+  {
+    "id": 2908903,
+    "municipio": "Coração de Maria"
+  },
+  {
+    "id": 2909000,
+    "municipio": "Cordeiros"
+  },
+  {
+    "id": 2909109,
+    "municipio": "Coribe"
+  },
+  {
+    "id": 2909208,
+    "municipio": "Coronel João Sá"
+  },
+  {
+    "id": 2909307,
+    "municipio": "Correntina"
+  },
+  {
+    "id": 2909406,
+    "municipio": "Cotegipe"
+  },
+  {
+    "id": 2909505,
+    "municipio": "Cravolândia"
+  },
+  {
+    "id": 2909604,
+    "municipio": "Crisópolis"
+  },
+  {
+    "id": 2909703,
+    "municipio": "Cristópolis"
+  },
+  {
+    "id": 2909802,
+    "municipio": "Cruz das Almas"
+  },
+  {
+    "id": 2909901,
+    "municipio": "Curaçá"
+  },
+  {
+    "id": 2910008,
+    "municipio": "Dário Meira"
+  },
+  {
+    "id": 2910057,
+    "municipio": "Dias d'Ávila"
+  },
+  {
+    "id": 2910107,
+    "municipio": "Dom Basílio"
+  },
+  {
+    "id": 2910206,
+    "municipio": "Dom Macedo Costa"
+  },
+  {
+    "id": 2910305,
+    "municipio": "Elísio Medrado"
+  },
+  {
+    "id": 2910404,
+    "municipio": "Encruzilhada"
+  },
+  {
+    "id": 2910503,
+    "municipio": "Entre Rios"
+  },
+  {
+    "id": 2910602,
+    "municipio": "Esplanada"
+  },
+  {
+    "id": 2910701,
+    "municipio": "Euclides da Cunha"
+  },
+  {
+    "id": 2910727,
+    "municipio": "Eunápolis"
+  },
+  {
+    "id": 2910750,
+    "municipio": "Fátima"
+  },
+  {
+    "id": 2910776,
+    "municipio": "Feira da Mata"
+  },
+  {
+    "id": 2910800,
+    "municipio": "Feira de Santana"
+  },
+  {
+    "id": 2910859,
+    "municipio": "Filadélfia"
+  },
+  {
+    "id": 2910909,
+    "municipio": "Firmino Alves"
+  },
+  {
+    "id": 2911006,
+    "municipio": "Floresta Azul"
+  },
+  {
+    "id": 2911105,
+    "municipio": "Formosa do Rio Preto"
+  },
+  {
+    "id": 2911204,
+    "municipio": "Gandu"
+  },
+  {
+    "id": 2911253,
+    "municipio": "Gavião"
+  },
+  {
+    "id": 2911303,
+    "municipio": "Gentio do Ouro"
+  },
+  {
+    "id": 2911402,
+    "municipio": "Glória"
+  },
+  {
+    "id": 2911501,
+    "municipio": "Gongogi"
+  },
+  {
+    "id": 2911600,
+    "municipio": "Governador Mangabeira"
+  },
+  {
+    "id": 2911659,
+    "municipio": "Guajeru"
+  },
+  {
+    "id": 2911709,
+    "municipio": "Guanambi"
+  },
+  {
+    "id": 2911808,
+    "municipio": "Guaratinga"
+  },
+  {
+    "id": 2911857,
+    "municipio": "Heliópolis"
+  },
+  {
+    "id": 2911907,
+    "municipio": "Iaçu"
+  },
+  {
+    "id": 2912004,
+    "municipio": "Ibiassucê"
+  },
+  {
+    "id": 2912103,
+    "municipio": "Ibicaraí"
+  },
+  {
+    "id": 2912202,
+    "municipio": "Ibicoara"
+  },
+  {
+    "id": 2912301,
+    "municipio": "Ibicuí"
+  },
+  {
+    "id": 2912400,
+    "municipio": "Ibipeba"
+  },
+  {
+    "id": 2912509,
+    "municipio": "Ibipitanga"
+  },
+  {
+    "id": 2912608,
+    "municipio": "Ibiquera"
+  },
+  {
+    "id": 2912707,
+    "municipio": "Ibirapitanga"
+  },
+  {
+    "id": 2912806,
+    "municipio": "Ibirapuã"
+  },
+  {
+    "id": 2912905,
+    "municipio": "Ibirataia"
+  },
+  {
+    "id": 2913002,
+    "municipio": "Ibitiara"
+  },
+  {
+    "id": 2913101,
+    "municipio": "Ibititá"
+  },
+  {
+    "id": 2913200,
+    "municipio": "Ibotirama"
+  },
+  {
+    "id": 2913309,
+    "municipio": "Ichu"
+  },
+  {
+    "id": 2913408,
+    "municipio": "Igaporã"
+  },
+  {
+    "id": 2913457,
+    "municipio": "Igrapiúna"
+  },
+  {
+    "id": 2913507,
+    "municipio": "Iguaí"
+  },
+  {
+    "id": 2913606,
+    "municipio": "Ilhéus"
+  },
+  {
+    "id": 2913705,
+    "municipio": "Inhambupe"
+  },
+  {
+    "id": 2913804,
+    "municipio": "Ipecaetá"
+  },
+  {
+    "id": 2913903,
+    "municipio": "Ipiaú"
+  },
+  {
+    "id": 2914000,
+    "municipio": "Ipirá"
+  },
+  {
+    "id": 2914109,
+    "municipio": "Ipupiara"
+  },
+  {
+    "id": 2914208,
+    "municipio": "Irajuba"
+  },
+  {
+    "id": 2914307,
+    "municipio": "Iramaia"
+  },
+  {
+    "id": 2914406,
+    "municipio": "Iraquara"
+  },
+  {
+    "id": 2914505,
+    "municipio": "Irará"
+  },
+  {
+    "id": 2914604,
+    "municipio": "Irecê"
+  },
+  {
+    "id": 2914653,
+    "municipio": "Itabela"
+  },
+  {
+    "id": 2914703,
+    "municipio": "Itaberaba"
+  },
+  {
+    "id": 2914802,
+    "municipio": "Itabuna"
+  },
+  {
+    "id": 2914901,
+    "municipio": "Itacaré"
+  },
+  {
+    "id": 2915007,
+    "municipio": "Itaeté"
+  },
+  {
+    "id": 2915106,
+    "municipio": "Itagi"
+  },
+  {
+    "id": 2915205,
+    "municipio": "Itagibá"
+  },
+  {
+    "id": 2915304,
+    "municipio": "Itagimirim"
+  },
+  {
+    "id": 2915353,
+    "municipio": "Itaguaçu da Bahia"
+  },
+  {
+    "id": 2915403,
+    "municipio": "Itaju do Colônia"
+  },
+  {
+    "id": 2915502,
+    "municipio": "Itajuípe"
+  },
+  {
+    "id": 2915601,
+    "municipio": "Itamaraju"
+  },
+  {
+    "id": 2915700,
+    "municipio": "Itamari"
+  },
+  {
+    "id": 2915809,
+    "municipio": "Itambé"
+  },
+  {
+    "id": 2915908,
+    "municipio": "Itanagra"
+  },
+  {
+    "id": 2916005,
+    "municipio": "Itanhém"
+  },
+  {
+    "id": 2916104,
+    "municipio": "Itaparica"
+  },
+  {
+    "id": 2916203,
+    "municipio": "Itapé"
+  },
+  {
+    "id": 2916302,
+    "municipio": "Itapebi"
+  },
+  {
+    "id": 2916401,
+    "municipio": "Itapetinga"
+  },
+  {
+    "id": 2916500,
+    "municipio": "Itapicuru"
+  },
+  {
+    "id": 2916609,
+    "municipio": "Itapitanga"
+  },
+  {
+    "id": 2916708,
+    "municipio": "Itaquara"
+  },
+  {
+    "id": 2916807,
+    "municipio": "Itarantim"
+  },
+  {
+    "id": 2916856,
+    "municipio": "Itatim"
+  },
+  {
+    "id": 2916906,
+    "municipio": "Itiruçu"
+  },
+  {
+    "id": 2917003,
+    "municipio": "Itiúba"
+  },
+  {
+    "id": 2917102,
+    "municipio": "Itororó"
+  },
+  {
+    "id": 2917201,
+    "municipio": "Ituaçu"
+  },
+  {
+    "id": 2917300,
+    "municipio": "Ituberá"
+  },
+  {
+    "id": 2917334,
+    "municipio": "Iuiú"
+  },
+  {
+    "id": 2917359,
+    "municipio": "Jaborandi"
+  },
+  {
+    "id": 2917409,
+    "municipio": "Jacaraci"
+  },
+  {
+    "id": 2917508,
+    "municipio": "Jacobina"
+  },
+  {
+    "id": 2917607,
+    "municipio": "Jaguaquara"
+  },
+  {
+    "id": 2917706,
+    "municipio": "Jaguarari"
+  },
+  {
+    "id": 2917805,
+    "municipio": "Jaguaripe"
+  },
+  {
+    "id": 2917904,
+    "municipio": "Jandaíra"
+  },
+  {
+    "id": 2918001,
+    "municipio": "Jequié"
+  },
+  {
+    "id": 2918100,
+    "municipio": "Jeremoabo"
+  },
+  {
+    "id": 2918209,
+    "municipio": "Jiquiriçá"
+  },
+  {
+    "id": 2918308,
+    "municipio": "Jitaúna"
+  },
+  {
+    "id": 2918357,
+    "municipio": "João Dourado"
+  },
+  {
+    "id": 2918407,
+    "municipio": "Juazeiro"
+  },
+  {
+    "id": 2918456,
+    "municipio": "Jucuruçu"
+  },
+  {
+    "id": 2918506,
+    "municipio": "Jussara"
+  },
+  {
+    "id": 2918555,
+    "municipio": "Jussari"
+  },
+  {
+    "id": 2918605,
+    "municipio": "Jussiape"
+  },
+  {
+    "id": 2918704,
+    "municipio": "Lafaiete Coutinho"
+  },
+  {
+    "id": 2918753,
+    "municipio": "Lagoa Real"
+  },
+  {
+    "id": 2918803,
+    "municipio": "Laje"
+  },
+  {
+    "id": 2918902,
+    "municipio": "Lajedão"
+  },
+  {
+    "id": 2919009,
+    "municipio": "Lajedinho"
+  },
+  {
+    "id": 2919058,
+    "municipio": "Lajedo do Tabocal"
+  },
+  {
+    "id": 2919108,
+    "municipio": "Lamarão"
+  },
+  {
+    "id": 2919157,
+    "municipio": "Lapão"
+  },
+  {
+    "id": 2919207,
+    "municipio": "Lauro de Freitas"
+  },
+  {
+    "id": 2919306,
+    "municipio": "Lençóis"
+  },
+  {
+    "id": 2919405,
+    "municipio": "Licínio de Almeida"
+  },
+  {
+    "id": 2919504,
+    "municipio": "Livramento de Nossa Senhora"
+  },
+  {
+    "id": 2919553,
+    "municipio": "Luís Eduardo Magalhães"
+  },
+  {
+    "id": 2919603,
+    "municipio": "Macajuba"
+  },
+  {
+    "id": 2919702,
+    "municipio": "Macarani"
+  },
+  {
+    "id": 2919801,
+    "municipio": "Macaúbas"
+  },
+  {
+    "id": 2919900,
+    "municipio": "Macururé"
+  },
+  {
+    "id": 2919926,
+    "municipio": "Madre de Deus"
+  },
+  {
+    "id": 2919959,
+    "municipio": "Maetinga"
+  },
+  {
+    "id": 2920007,
+    "municipio": "Maiquinique"
+  },
+  {
+    "id": 2920106,
+    "municipio": "Mairi"
+  },
+  {
+    "id": 2920205,
+    "municipio": "Malhada"
+  },
+  {
+    "id": 2920304,
+    "municipio": "Malhada de Pedras"
+  },
+  {
+    "id": 2920403,
+    "municipio": "Manoel Vitorino"
+  },
+  {
+    "id": 2920452,
+    "municipio": "Mansidão"
+  },
+  {
+    "id": 2920502,
+    "municipio": "Maracás"
+  },
+  {
+    "id": 2920601,
+    "municipio": "Maragogipe"
+  },
+  {
+    "id": 2920700,
+    "municipio": "Maraú"
+  },
+  {
+    "id": 2920809,
+    "municipio": "Marcionílio Souza"
+  },
+  {
+    "id": 2920908,
+    "municipio": "Mascote"
+  },
+  {
+    "id": 2921005,
+    "municipio": "Mata de São João"
+  },
+  {
+    "id": 2921054,
+    "municipio": "Matina"
+  },
+  {
+    "id": 2921104,
+    "municipio": "Medeiros Neto"
+  },
+  {
+    "id": 2921203,
+    "municipio": "Miguel Calmon"
+  },
+  {
+    "id": 2921302,
+    "municipio": "Milagres"
+  },
+  {
+    "id": 2921401,
+    "municipio": "Mirangaba"
+  },
+  {
+    "id": 2921450,
+    "municipio": "Mirante"
+  },
+  {
+    "id": 2921500,
+    "municipio": "Monte Santo"
+  },
+  {
+    "id": 2921609,
+    "municipio": "Morpará"
+  },
+  {
+    "id": 2921708,
+    "municipio": "Morro do Chapéu"
+  },
+  {
+    "id": 2921807,
+    "municipio": "Mortugaba"
+  },
+  {
+    "id": 2921906,
+    "municipio": "Mucugê"
+  },
+  {
+    "id": 2922003,
+    "municipio": "Mucuri"
+  },
+  {
+    "id": 2922052,
+    "municipio": "Mulungu do Morro"
+  },
+  {
+    "id": 2922102,
+    "municipio": "Mundo Novo"
+  },
+  {
+    "id": 2922201,
+    "municipio": "Muniz Ferreira"
+  },
+  {
+    "id": 2922250,
+    "municipio": "Muquém do São Francisco"
+  },
+  {
+    "id": 2922300,
+    "municipio": "Muritiba"
+  },
+  {
+    "id": 2922409,
+    "municipio": "Mutuípe"
+  },
+  {
+    "id": 2922508,
+    "municipio": "Nazaré"
+  },
+  {
+    "id": 2922607,
+    "municipio": "Nilo Peçanha"
+  },
+  {
+    "id": 2922656,
+    "municipio": "Nordestina"
+  },
+  {
+    "id": 2922706,
+    "municipio": "Nova Canaã"
+  },
+  {
+    "id": 2922730,
+    "municipio": "Nova Fátima"
+  },
+  {
+    "id": 2922755,
+    "municipio": "Nova Ibiá"
+  },
+  {
+    "id": 2922805,
+    "municipio": "Nova Itarana"
+  },
+  {
+    "id": 2922854,
+    "municipio": "Nova Redenção"
+  },
+  {
+    "id": 2922904,
+    "municipio": "Nova Soure"
+  },
+  {
+    "id": 2923001,
+    "municipio": "Nova Viçosa"
+  },
+  {
+    "id": 2923035,
+    "municipio": "Novo Horizonte"
+  },
+  {
+    "id": 2923050,
+    "municipio": "Novo Triunfo"
+  },
+  {
+    "id": 2923100,
+    "municipio": "Olindina"
+  },
+  {
+    "id": 2923209,
+    "municipio": "Oliveira dos Brejinhos"
+  },
+  {
+    "id": 2923308,
+    "municipio": "Ouriçangas"
+  },
+  {
+    "id": 2923357,
+    "municipio": "Ourolândia"
+  },
+  {
+    "id": 2923407,
+    "municipio": "Palmas de Monte Alto"
+  },
+  {
+    "id": 2923506,
+    "municipio": "Palmeiras"
+  },
+  {
+    "id": 2923605,
+    "municipio": "Paramirim"
+  },
+  {
+    "id": 2923704,
+    "municipio": "Paratinga"
+  },
+  {
+    "id": 2923803,
+    "municipio": "Paripiranga"
+  },
+  {
+    "id": 2923902,
+    "municipio": "Pau Brasil"
+  },
+  {
+    "id": 2924009,
+    "municipio": "Paulo Afonso"
+  },
+  {
+    "id": 2924058,
+    "municipio": "Pé de Serra"
+  },
+  {
+    "id": 2924108,
+    "municipio": "Pedrão"
+  },
+  {
+    "id": 2924207,
+    "municipio": "Pedro Alexandre"
+  },
+  {
+    "id": 2924306,
+    "municipio": "Piatã"
+  },
+  {
+    "id": 2924405,
+    "municipio": "Pilão Arcado"
+  },
+  {
+    "id": 2924504,
+    "municipio": "Pindaí"
+  },
+  {
+    "id": 2924603,
+    "municipio": "Pindobaçu"
+  },
+  {
+    "id": 2924652,
+    "municipio": "Pintadas"
+  },
+  {
+    "id": 2924678,
+    "municipio": "Piraí do Norte"
+  },
+  {
+    "id": 2924702,
+    "municipio": "Piripá"
+  },
+  {
+    "id": 2924801,
+    "municipio": "Piritiba"
+  },
+  {
+    "id": 2924900,
+    "municipio": "Planaltino"
+  },
+  {
+    "id": 2925006,
+    "municipio": "Planalto"
+  },
+  {
+    "id": 2925105,
+    "municipio": "Poções"
+  },
+  {
+    "id": 2925204,
+    "municipio": "Pojuca"
+  },
+  {
+    "id": 2925253,
+    "municipio": "Ponto Novo"
+  },
+  {
+    "id": 2925303,
+    "municipio": "Porto Seguro"
+  },
+  {
+    "id": 2925402,
+    "municipio": "Potiraguá"
+  },
+  {
+    "id": 2925501,
+    "municipio": "Prado"
+  },
+  {
+    "id": 2925600,
+    "municipio": "Presidente Dutra"
+  },
+  {
+    "id": 2925709,
+    "municipio": "Presidente Jânio Quadros"
+  },
+  {
+    "id": 2925758,
+    "municipio": "Presidente Tancredo Neves"
+  },
+  {
+    "id": 2925808,
+    "municipio": "Queimadas"
+  },
+  {
+    "id": 2925907,
+    "municipio": "Quijingue"
+  },
+  {
+    "id": 2925931,
+    "municipio": "Quixabeira"
+  },
+  {
+    "id": 2925956,
+    "municipio": "Rafael Jambeiro"
+  },
+  {
+    "id": 2926004,
+    "municipio": "Remanso"
+  },
+  {
+    "id": 2926103,
+    "municipio": "Retirolândia"
+  },
+  {
+    "id": 2926202,
+    "municipio": "Riachão das Neves"
+  },
+  {
+    "id": 2926301,
+    "municipio": "Riachão do Jacuípe"
+  },
+  {
+    "id": 2926400,
+    "municipio": "Riacho de Santana"
+  },
+  {
+    "id": 2926509,
+    "municipio": "Ribeira do Amparo"
+  },
+  {
+    "id": 2926608,
+    "municipio": "Ribeira do Pombal"
+  },
+  {
+    "id": 2926657,
+    "municipio": "Ribeirão do Largo"
+  },
+  {
+    "id": 2926707,
+    "municipio": "Rio de Contas"
+  },
+  {
+    "id": 2926806,
+    "municipio": "Rio do Antônio"
+  },
+  {
+    "id": 2926905,
+    "municipio": "Rio do Pires"
+  },
+  {
+    "id": 2927002,
+    "municipio": "Rio Real"
+  },
+  {
+    "id": 2927101,
+    "municipio": "Rodelas"
+  },
+  {
+    "id": 2927200,
+    "municipio": "Ruy Barbosa"
+  },
+  {
+    "id": 2927309,
+    "municipio": "Salinas da Margarida"
+  },
+  {
+    "id": 2927408,
+    "municipio": "Salvador"
+  },
+  {
+    "id": 2927507,
+    "municipio": "Santa Bárbara"
+  },
+  {
+    "id": 2927606,
+    "municipio": "Santa Brígida"
+  },
+  {
+    "id": 2927705,
+    "municipio": "Santa Cruz Cabrália"
+  },
+  {
+    "id": 2927804,
+    "municipio": "Santa Cruz da Vitória"
+  },
+  {
+    "id": 2927903,
+    "municipio": "Santa Inês"
+  },
+  {
+    "id": 2928000,
+    "municipio": "Santaluz"
+  },
+  {
+    "id": 2928059,
+    "municipio": "Santa Luzia"
+  },
+  {
+    "id": 2928109,
+    "municipio": "Santa Maria da Vitória"
+  },
+  {
+    "id": 2928208,
+    "municipio": "Santana"
+  },
+  {
+    "id": 2928307,
+    "municipio": "Santanópolis"
+  },
+  {
+    "id": 2928406,
+    "municipio": "Santa Rita de Cássia"
+  },
+  {
+    "id": 2928505,
+    "municipio": "Santa Teresinha"
+  },
+  {
+    "id": 2928604,
+    "municipio": "Santo Amaro"
+  },
+  {
+    "id": 2928703,
+    "municipio": "Santo Antônio de Jesus"
+  },
+  {
+    "id": 2928802,
+    "municipio": "Santo Estêvão"
+  },
+  {
+    "id": 2928901,
+    "municipio": "São Desidério"
+  },
+  {
+    "id": 2928950,
+    "municipio": "São Domingos"
+  },
+  {
+    "id": 2929008,
+    "municipio": "São Félix"
+  },
+  {
+    "id": 2929057,
+    "municipio": "São Félix do Coribe"
+  },
+  {
+    "id": 2929107,
+    "municipio": "São Felipe"
+  },
+  {
+    "id": 2929206,
+    "municipio": "São Francisco do Conde"
+  },
+  {
+    "id": 2929255,
+    "municipio": "São Gabriel"
+  },
+  {
+    "id": 2929305,
+    "municipio": "São Gonçalo dos Campos"
+  },
+  {
+    "id": 2929354,
+    "municipio": "São José da Vitória"
+  },
+  {
+    "id": 2929370,
+    "municipio": "São José do Jacuípe"
+  },
+  {
+    "id": 2929404,
+    "municipio": "São Miguel das Matas"
+  },
+  {
+    "id": 2929503,
+    "municipio": "São Sebastião do Passé"
+  },
+  {
+    "id": 2929602,
+    "municipio": "Sapeaçu"
+  },
+  {
+    "id": 2929701,
+    "municipio": "Sátiro Dias"
+  },
+  {
+    "id": 2929750,
+    "municipio": "Saubara"
+  },
+  {
+    "id": 2929800,
+    "municipio": "Saúde"
+  },
+  {
+    "id": 2929909,
+    "municipio": "Seabra"
+  },
+  {
+    "id": 2930006,
+    "municipio": "Sebastião Laranjeiras"
+  },
+  {
+    "id": 2930105,
+    "municipio": "Senhor do Bonfim"
+  },
+  {
+    "id": 2930154,
+    "municipio": "Serra do Ramalho"
+  },
+  {
+    "id": 2930204,
+    "municipio": "Sento Sé"
+  },
+  {
+    "id": 2930303,
+    "municipio": "Serra Dourada"
+  },
+  {
+    "id": 2930402,
+    "municipio": "Serra Preta"
+  },
+  {
+    "id": 2930501,
+    "municipio": "Serrinha"
+  },
+  {
+    "id": 2930600,
+    "municipio": "Serrolândia"
+  },
+  {
+    "id": 2930709,
+    "municipio": "Simões Filho"
+  },
+  {
+    "id": 2930758,
+    "municipio": "Sítio do Mato"
+  },
+  {
+    "id": 2930774,
+    "municipio": "Sítio do Quinto"
+  },
+  {
+    "id": 2930808,
+    "municipio": "Sobradinho"
+  },
+  {
+    "id": 2930907,
+    "municipio": "Souto Soares"
+  },
+  {
+    "id": 2931004,
+    "municipio": "Tabocas do Brejo Velho"
+  },
+  {
+    "id": 2931053,
+    "municipio": "Tanhaçu"
+  },
+  {
+    "id": 2931103,
+    "municipio": "Tanque Novo"
+  },
+  {
+    "id": 2931202,
+    "municipio": "Tanquinho"
+  },
+  {
+    "id": 2931301,
+    "municipio": "Taperoá"
+  },
+  {
+    "id": 2931350,
+    "municipio": "Tapiramutá"
+  },
+  {
+    "id": 2931400,
+    "municipio": "Teixeira de Freitas"
+  },
+  {
+    "id": 2931509,
+    "municipio": "Teodoro Sampaio"
+  },
+  {
+    "id": 2931608,
+    "municipio": "Teofilândia"
+  },
+  {
+    "id": 2931707,
+    "municipio": "Teolândia"
+  },
+  {
+    "id": 2931806,
+    "municipio": "Terra Nova"
+  },
+  {
+    "id": 2931905,
+    "municipio": "Tremedal"
+  },
+  {
+    "id": 2932002,
+    "municipio": "Tucano"
+  },
+  {
+    "id": 2932101,
+    "municipio": "Uauá"
+  },
+  {
+    "id": 2932200,
+    "municipio": "Ubaíra"
+  },
+  {
+    "id": 2932309,
+    "municipio": "Ubaitaba"
+  },
+  {
+    "id": 2932408,
+    "municipio": "Ubatã"
+  },
+  {
+    "id": 2932457,
+    "municipio": "Uibaí"
+  },
+  {
+    "id": 2932507,
+    "municipio": "Umburanas"
+  },
+  {
+    "id": 2932606,
+    "municipio": "Una"
+  },
+  {
+    "id": 2932705,
+    "municipio": "Urandi"
+  },
+  {
+    "id": 2932804,
+    "municipio": "Uruçuca"
+  },
+  {
+    "id": 2932903,
+    "municipio": "Utinga"
+  },
+  {
+    "id": 2933000,
+    "municipio": "Valença"
+  },
+  {
+    "id": 2933059,
+    "municipio": "Valente"
+  },
+  {
+    "id": 2933109,
+    "municipio": "Várzea da Roça"
+  },
+  {
+    "id": 2933158,
+    "municipio": "Várzea do Poço"
+  },
+  {
+    "id": 2933174,
+    "municipio": "Várzea Nova"
+  },
+  {
+    "id": 2933208,
+    "municipio": "Varzedo"
+  },
+  {
+    "id": 2933257,
+    "municipio": "Vera Cruz"
+  },
+  {
+    "id": 2933307,
+    "municipio": "Vereda"
+  },
+  {
+    "id": 2933406,
+    "municipio": "Vitória da Conquista"
+  },
+  {
+    "id": 2933455,
+    "municipio": "Wagner"
+  },
+  {
+    "id": 2933505,
+    "municipio": "Wanderley"
+  },
+  {
+    "id": 2933554,
+    "municipio": "Wenceslau Guimarães"
+  },
+  {
+    "id": 2933604,
+    "municipio": "Xique-Xique"
+  }
+]

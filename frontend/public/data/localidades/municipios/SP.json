@@ -1,0 +1,2582 @@
+[
+  {
+    "id": 3500105,
+    "municipio": "Adamantina"
+  },
+  {
+    "id": 3500204,
+    "municipio": "Adolfo"
+  },
+  {
+    "id": 3500303,
+    "municipio": "Aguaí"
+  },
+  {
+    "id": 3500402,
+    "municipio": "Águas da Prata"
+  },
+  {
+    "id": 3500501,
+    "municipio": "Águas de Lindóia"
+  },
+  {
+    "id": 3500550,
+    "municipio": "Águas de Santa Bárbara"
+  },
+  {
+    "id": 3500600,
+    "municipio": "Águas de São Pedro"
+  },
+  {
+    "id": 3500709,
+    "municipio": "Agudos"
+  },
+  {
+    "id": 3500758,
+    "municipio": "Alambari"
+  },
+  {
+    "id": 3500808,
+    "municipio": "Alfredo Marcondes"
+  },
+  {
+    "id": 3500907,
+    "municipio": "Altair"
+  },
+  {
+    "id": 3501004,
+    "municipio": "Altinópolis"
+  },
+  {
+    "id": 3501103,
+    "municipio": "Alto Alegre"
+  },
+  {
+    "id": 3501152,
+    "municipio": "Alumínio"
+  },
+  {
+    "id": 3501202,
+    "municipio": "Álvares Florence"
+  },
+  {
+    "id": 3501301,
+    "municipio": "Álvares Machado"
+  },
+  {
+    "id": 3501400,
+    "municipio": "Álvaro de Carvalho"
+  },
+  {
+    "id": 3501509,
+    "municipio": "Alvinlândia"
+  },
+  {
+    "id": 3501608,
+    "municipio": "Americana"
+  },
+  {
+    "id": 3501707,
+    "municipio": "Américo Brasiliense"
+  },
+  {
+    "id": 3501806,
+    "municipio": "Américo de Campos"
+  },
+  {
+    "id": 3501905,
+    "municipio": "Amparo"
+  },
+  {
+    "id": 3502002,
+    "municipio": "Analândia"
+  },
+  {
+    "id": 3502101,
+    "municipio": "Andradina"
+  },
+  {
+    "id": 3502200,
+    "municipio": "Angatuba"
+  },
+  {
+    "id": 3502309,
+    "municipio": "Anhembi"
+  },
+  {
+    "id": 3502408,
+    "municipio": "Anhumas"
+  },
+  {
+    "id": 3502507,
+    "municipio": "Aparecida"
+  },
+  {
+    "id": 3502606,
+    "municipio": "Aparecida d'Oeste"
+  },
+  {
+    "id": 3502705,
+    "municipio": "Apiaí"
+  },
+  {
+    "id": 3502754,
+    "municipio": "Araçariguama"
+  },
+  {
+    "id": 3502804,
+    "municipio": "Araçatuba"
+  },
+  {
+    "id": 3502903,
+    "municipio": "Araçoiaba da Serra"
+  },
+  {
+    "id": 3503000,
+    "municipio": "Aramina"
+  },
+  {
+    "id": 3503109,
+    "municipio": "Arandu"
+  },
+  {
+    "id": 3503158,
+    "municipio": "Arapeí"
+  },
+  {
+    "id": 3503208,
+    "municipio": "Araraquara"
+  },
+  {
+    "id": 3503307,
+    "municipio": "Araras"
+  },
+  {
+    "id": 3503356,
+    "municipio": "Arco-Íris"
+  },
+  {
+    "id": 3503406,
+    "municipio": "Arealva"
+  },
+  {
+    "id": 3503505,
+    "municipio": "Areias"
+  },
+  {
+    "id": 3503604,
+    "municipio": "Areiópolis"
+  },
+  {
+    "id": 3503703,
+    "municipio": "Ariranha"
+  },
+  {
+    "id": 3503802,
+    "municipio": "Artur Nogueira"
+  },
+  {
+    "id": 3503901,
+    "municipio": "Arujá"
+  },
+  {
+    "id": 3503950,
+    "municipio": "Aspásia"
+  },
+  {
+    "id": 3504008,
+    "municipio": "Assis"
+  },
+  {
+    "id": 3504107,
+    "municipio": "Atibaia"
+  },
+  {
+    "id": 3504206,
+    "municipio": "Auriflama"
+  },
+  {
+    "id": 3504305,
+    "municipio": "Avaí"
+  },
+  {
+    "id": 3504404,
+    "municipio": "Avanhandava"
+  },
+  {
+    "id": 3504503,
+    "municipio": "Avaré"
+  },
+  {
+    "id": 3504602,
+    "municipio": "Bady Bassitt"
+  },
+  {
+    "id": 3504701,
+    "municipio": "Balbinos"
+  },
+  {
+    "id": 3504800,
+    "municipio": "Bálsamo"
+  },
+  {
+    "id": 3504909,
+    "municipio": "Bananal"
+  },
+  {
+    "id": 3505005,
+    "municipio": "Barão de Antonina"
+  },
+  {
+    "id": 3505104,
+    "municipio": "Barbosa"
+  },
+  {
+    "id": 3505203,
+    "municipio": "Bariri"
+  },
+  {
+    "id": 3505302,
+    "municipio": "Barra Bonita"
+  },
+  {
+    "id": 3505351,
+    "municipio": "Barra do Chapéu"
+  },
+  {
+    "id": 3505401,
+    "municipio": "Barra do Turvo"
+  },
+  {
+    "id": 3505500,
+    "municipio": "Barretos"
+  },
+  {
+    "id": 3505609,
+    "municipio": "Barrinha"
+  },
+  {
+    "id": 3505708,
+    "municipio": "Barueri"
+  },
+  {
+    "id": 3505807,
+    "municipio": "Bastos"
+  },
+  {
+    "id": 3505906,
+    "municipio": "Batatais"
+  },
+  {
+    "id": 3506003,
+    "municipio": "Bauru"
+  },
+  {
+    "id": 3506102,
+    "municipio": "Bebedouro"
+  },
+  {
+    "id": 3506201,
+    "municipio": "Bento de Abreu"
+  },
+  {
+    "id": 3506300,
+    "municipio": "Bernardino de Campos"
+  },
+  {
+    "id": 3506359,
+    "municipio": "Bertioga"
+  },
+  {
+    "id": 3506409,
+    "municipio": "Bilac"
+  },
+  {
+    "id": 3506508,
+    "municipio": "Birigui"
+  },
+  {
+    "id": 3506607,
+    "municipio": "Biritiba Mirim"
+  },
+  {
+    "id": 3506706,
+    "municipio": "Boa Esperança do Sul"
+  },
+  {
+    "id": 3506805,
+    "municipio": "Bocaina"
+  },
+  {
+    "id": 3506904,
+    "municipio": "Bofete"
+  },
+  {
+    "id": 3507001,
+    "municipio": "Boituva"
+  },
+  {
+    "id": 3507100,
+    "municipio": "Bom Jesus dos Perdões"
+  },
+  {
+    "id": 3507159,
+    "municipio": "Bom Sucesso de Itararé"
+  },
+  {
+    "id": 3507209,
+    "municipio": "Borá"
+  },
+  {
+    "id": 3507308,
+    "municipio": "Boracéia"
+  },
+  {
+    "id": 3507407,
+    "municipio": "Borborema"
+  },
+  {
+    "id": 3507456,
+    "municipio": "Borebi"
+  },
+  {
+    "id": 3507506,
+    "municipio": "Botucatu"
+  },
+  {
+    "id": 3507605,
+    "municipio": "Bragança Paulista"
+  },
+  {
+    "id": 3507704,
+    "municipio": "Braúna"
+  },
+  {
+    "id": 3507753,
+    "municipio": "Brejo Alegre"
+  },
+  {
+    "id": 3507803,
+    "municipio": "Brodowski"
+  },
+  {
+    "id": 3507902,
+    "municipio": "Brotas"
+  },
+  {
+    "id": 3508009,
+    "municipio": "Buri"
+  },
+  {
+    "id": 3508108,
+    "municipio": "Buritama"
+  },
+  {
+    "id": 3508207,
+    "municipio": "Buritizal"
+  },
+  {
+    "id": 3508306,
+    "municipio": "Cabrália Paulista"
+  },
+  {
+    "id": 3508405,
+    "municipio": "Cabreúva"
+  },
+  {
+    "id": 3508504,
+    "municipio": "Caçapava"
+  },
+  {
+    "id": 3508603,
+    "municipio": "Cachoeira Paulista"
+  },
+  {
+    "id": 3508702,
+    "municipio": "Caconde"
+  },
+  {
+    "id": 3508801,
+    "municipio": "Cafelândia"
+  },
+  {
+    "id": 3508900,
+    "municipio": "Caiabu"
+  },
+  {
+    "id": 3509007,
+    "municipio": "Caieiras"
+  },
+  {
+    "id": 3509106,
+    "municipio": "Caiuá"
+  },
+  {
+    "id": 3509205,
+    "municipio": "Cajamar"
+  },
+  {
+    "id": 3509254,
+    "municipio": "Cajati"
+  },
+  {
+    "id": 3509304,
+    "municipio": "Cajobi"
+  },
+  {
+    "id": 3509403,
+    "municipio": "Cajuru"
+  },
+  {
+    "id": 3509452,
+    "municipio": "Campina do Monte Alegre"
+  },
+  {
+    "id": 3509502,
+    "municipio": "Campinas"
+  },
+  {
+    "id": 3509601,
+    "municipio": "Campo Limpo Paulista"
+  },
+  {
+    "id": 3509700,
+    "municipio": "Campos do Jordão"
+  },
+  {
+    "id": 3509809,
+    "municipio": "Campos Novos Paulista"
+  },
+  {
+    "id": 3509908,
+    "municipio": "Cananéia"
+  },
+  {
+    "id": 3509957,
+    "municipio": "Canas"
+  },
+  {
+    "id": 3510005,
+    "municipio": "Cândido Mota"
+  },
+  {
+    "id": 3510104,
+    "municipio": "Cândido Rodrigues"
+  },
+  {
+    "id": 3510153,
+    "municipio": "Canitar"
+  },
+  {
+    "id": 3510203,
+    "municipio": "Capão Bonito"
+  },
+  {
+    "id": 3510302,
+    "municipio": "Capela do Alto"
+  },
+  {
+    "id": 3510401,
+    "municipio": "Capivari"
+  },
+  {
+    "id": 3510500,
+    "municipio": "Caraguatatuba"
+  },
+  {
+    "id": 3510609,
+    "municipio": "Carapicuíba"
+  },
+  {
+    "id": 3510708,
+    "municipio": "Cardoso"
+  },
+  {
+    "id": 3510807,
+    "municipio": "Casa Branca"
+  },
+  {
+    "id": 3510906,
+    "municipio": "Cássia dos Coqueiros"
+  },
+  {
+    "id": 3511003,
+    "municipio": "Castilho"
+  },
+  {
+    "id": 3511102,
+    "municipio": "Catanduva"
+  },
+  {
+    "id": 3511201,
+    "municipio": "Catiguá"
+  },
+  {
+    "id": 3511300,
+    "municipio": "Cedral"
+  },
+  {
+    "id": 3511409,
+    "municipio": "Cerqueira César"
+  },
+  {
+    "id": 3511508,
+    "municipio": "Cerquilho"
+  },
+  {
+    "id": 3511607,
+    "municipio": "Cesário Lange"
+  },
+  {
+    "id": 3511706,
+    "municipio": "Charqueada"
+  },
+  {
+    "id": 3511904,
+    "municipio": "Clementina"
+  },
+  {
+    "id": 3512001,
+    "municipio": "Colina"
+  },
+  {
+    "id": 3512100,
+    "municipio": "Colômbia"
+  },
+  {
+    "id": 3512209,
+    "municipio": "Conchal"
+  },
+  {
+    "id": 3512308,
+    "municipio": "Conchas"
+  },
+  {
+    "id": 3512407,
+    "municipio": "Cordeirópolis"
+  },
+  {
+    "id": 3512506,
+    "municipio": "Coroados"
+  },
+  {
+    "id": 3512605,
+    "municipio": "Coronel Macedo"
+  },
+  {
+    "id": 3512704,
+    "municipio": "Corumbataí"
+  },
+  {
+    "id": 3512803,
+    "municipio": "Cosmópolis"
+  },
+  {
+    "id": 3512902,
+    "municipio": "Cosmorama"
+  },
+  {
+    "id": 3513009,
+    "municipio": "Cotia"
+  },
+  {
+    "id": 3513108,
+    "municipio": "Cravinhos"
+  },
+  {
+    "id": 3513207,
+    "municipio": "Cristais Paulista"
+  },
+  {
+    "id": 3513306,
+    "municipio": "Cruzália"
+  },
+  {
+    "id": 3513405,
+    "municipio": "Cruzeiro"
+  },
+  {
+    "id": 3513504,
+    "municipio": "Cubatão"
+  },
+  {
+    "id": 3513603,
+    "municipio": "Cunha"
+  },
+  {
+    "id": 3513702,
+    "municipio": "Descalvado"
+  },
+  {
+    "id": 3513801,
+    "municipio": "Diadema"
+  },
+  {
+    "id": 3513850,
+    "municipio": "Dirce Reis"
+  },
+  {
+    "id": 3513900,
+    "municipio": "Divinolândia"
+  },
+  {
+    "id": 3514007,
+    "municipio": "Dobrada"
+  },
+  {
+    "id": 3514106,
+    "municipio": "Dois Córregos"
+  },
+  {
+    "id": 3514205,
+    "municipio": "Dolcinópolis"
+  },
+  {
+    "id": 3514304,
+    "municipio": "Dourado"
+  },
+  {
+    "id": 3514403,
+    "municipio": "Dracena"
+  },
+  {
+    "id": 3514502,
+    "municipio": "Duartina"
+  },
+  {
+    "id": 3514601,
+    "municipio": "Dumont"
+  },
+  {
+    "id": 3514700,
+    "municipio": "Echaporã"
+  },
+  {
+    "id": 3514809,
+    "municipio": "Eldorado"
+  },
+  {
+    "id": 3514908,
+    "municipio": "Elias Fausto"
+  },
+  {
+    "id": 3514924,
+    "municipio": "Elisiário"
+  },
+  {
+    "id": 3514957,
+    "municipio": "Embaúba"
+  },
+  {
+    "id": 3515004,
+    "municipio": "Embu das Artes"
+  },
+  {
+    "id": 3515103,
+    "municipio": "Embu-Guaçu"
+  },
+  {
+    "id": 3515129,
+    "municipio": "Emilianópolis"
+  },
+  {
+    "id": 3515152,
+    "municipio": "Engenheiro Coelho"
+  },
+  {
+    "id": 3515186,
+    "municipio": "Espírito Santo do Pinhal"
+  },
+  {
+    "id": 3515194,
+    "municipio": "Espírito Santo do Turvo"
+  },
+  {
+    "id": 3515202,
+    "municipio": "Estrela d'Oeste"
+  },
+  {
+    "id": 3515301,
+    "municipio": "Estrela do Norte"
+  },
+  {
+    "id": 3515350,
+    "municipio": "Euclides da Cunha Paulista"
+  },
+  {
+    "id": 3515400,
+    "municipio": "Fartura"
+  },
+  {
+    "id": 3515509,
+    "municipio": "Fernandópolis"
+  },
+  {
+    "id": 3515608,
+    "municipio": "Fernando Prestes"
+  },
+  {
+    "id": 3515657,
+    "municipio": "Fernão"
+  },
+  {
+    "id": 3515707,
+    "municipio": "Ferraz de Vasconcelos"
+  },
+  {
+    "id": 3515806,
+    "municipio": "Flora Rica"
+  },
+  {
+    "id": 3515905,
+    "municipio": "Floreal"
+  },
+  {
+    "id": 3516002,
+    "municipio": "Flórida Paulista"
+  },
+  {
+    "id": 3516101,
+    "municipio": "Florínea"
+  },
+  {
+    "id": 3516200,
+    "municipio": "Franca"
+  },
+  {
+    "id": 3516309,
+    "municipio": "Francisco Morato"
+  },
+  {
+    "id": 3516408,
+    "municipio": "Franco da Rocha"
+  },
+  {
+    "id": 3516507,
+    "municipio": "Gabriel Monteiro"
+  },
+  {
+    "id": 3516606,
+    "municipio": "Gália"
+  },
+  {
+    "id": 3516705,
+    "municipio": "Garça"
+  },
+  {
+    "id": 3516804,
+    "municipio": "Gastão Vidigal"
+  },
+  {
+    "id": 3516853,
+    "municipio": "Gavião Peixoto"
+  },
+  {
+    "id": 3516903,
+    "municipio": "General Salgado"
+  },
+  {
+    "id": 3517000,
+    "municipio": "Getulina"
+  },
+  {
+    "id": 3517109,
+    "municipio": "Glicério"
+  },
+  {
+    "id": 3517208,
+    "municipio": "Guaiçara"
+  },
+  {
+    "id": 3517307,
+    "municipio": "Guaimbê"
+  },
+  {
+    "id": 3517406,
+    "municipio": "Guaíra"
+  },
+  {
+    "id": 3517505,
+    "municipio": "Guapiaçu"
+  },
+  {
+    "id": 3517604,
+    "municipio": "Guapiara"
+  },
+  {
+    "id": 3517703,
+    "municipio": "Guará"
+  },
+  {
+    "id": 3517802,
+    "municipio": "Guaraçaí"
+  },
+  {
+    "id": 3517901,
+    "municipio": "Guaraci"
+  },
+  {
+    "id": 3518008,
+    "municipio": "Guarani d'Oeste"
+  },
+  {
+    "id": 3518107,
+    "municipio": "Guarantã"
+  },
+  {
+    "id": 3518206,
+    "municipio": "Guararapes"
+  },
+  {
+    "id": 3518305,
+    "municipio": "Guararema"
+  },
+  {
+    "id": 3518404,
+    "municipio": "Guaratinguetá"
+  },
+  {
+    "id": 3518503,
+    "municipio": "Guareí"
+  },
+  {
+    "id": 3518602,
+    "municipio": "Guariba"
+  },
+  {
+    "id": 3518701,
+    "municipio": "Guarujá"
+  },
+  {
+    "id": 3518800,
+    "municipio": "Guarulhos"
+  },
+  {
+    "id": 3518859,
+    "municipio": "Guatapará"
+  },
+  {
+    "id": 3518909,
+    "municipio": "Guzolândia"
+  },
+  {
+    "id": 3519006,
+    "municipio": "Herculândia"
+  },
+  {
+    "id": 3519055,
+    "municipio": "Holambra"
+  },
+  {
+    "id": 3519071,
+    "municipio": "Hortolândia"
+  },
+  {
+    "id": 3519105,
+    "municipio": "Iacanga"
+  },
+  {
+    "id": 3519204,
+    "municipio": "Iacri"
+  },
+  {
+    "id": 3519253,
+    "municipio": "Iaras"
+  },
+  {
+    "id": 3519303,
+    "municipio": "Ibaté"
+  },
+  {
+    "id": 3519402,
+    "municipio": "Ibirá"
+  },
+  {
+    "id": 3519501,
+    "municipio": "Ibirarema"
+  },
+  {
+    "id": 3519600,
+    "municipio": "Ibitinga"
+  },
+  {
+    "id": 3519709,
+    "municipio": "Ibiúna"
+  },
+  {
+    "id": 3519808,
+    "municipio": "Icém"
+  },
+  {
+    "id": 3519907,
+    "municipio": "Iepê"
+  },
+  {
+    "id": 3520004,
+    "municipio": "Igaraçu do Tietê"
+  },
+  {
+    "id": 3520103,
+    "municipio": "Igarapava"
+  },
+  {
+    "id": 3520202,
+    "municipio": "Igaratá"
+  },
+  {
+    "id": 3520301,
+    "municipio": "Iguape"
+  },
+  {
+    "id": 3520400,
+    "municipio": "Ilhabela"
+  },
+  {
+    "id": 3520426,
+    "municipio": "Ilha Comprida"
+  },
+  {
+    "id": 3520442,
+    "municipio": "Ilha Solteira"
+  },
+  {
+    "id": 3520509,
+    "municipio": "Indaiatuba"
+  },
+  {
+    "id": 3520608,
+    "municipio": "Indiana"
+  },
+  {
+    "id": 3520707,
+    "municipio": "Indiaporã"
+  },
+  {
+    "id": 3520806,
+    "municipio": "Inúbia Paulista"
+  },
+  {
+    "id": 3520905,
+    "municipio": "Ipaussu"
+  },
+  {
+    "id": 3521002,
+    "municipio": "Iperó"
+  },
+  {
+    "id": 3521101,
+    "municipio": "Ipeúna"
+  },
+  {
+    "id": 3521150,
+    "municipio": "Ipiguá"
+  },
+  {
+    "id": 3521200,
+    "municipio": "Iporanga"
+  },
+  {
+    "id": 3521309,
+    "municipio": "Ipuã"
+  },
+  {
+    "id": 3521408,
+    "municipio": "Iracemápolis"
+  },
+  {
+    "id": 3521507,
+    "municipio": "Irapuã"
+  },
+  {
+    "id": 3521606,
+    "municipio": "Irapuru"
+  },
+  {
+    "id": 3521705,
+    "municipio": "Itaberá"
+  },
+  {
+    "id": 3521804,
+    "municipio": "Itaí"
+  },
+  {
+    "id": 3521903,
+    "municipio": "Itajobi"
+  },
+  {
+    "id": 3522000,
+    "municipio": "Itaju"
+  },
+  {
+    "id": 3522109,
+    "municipio": "Itanhaém"
+  },
+  {
+    "id": 3522158,
+    "municipio": "Itaoca"
+  },
+  {
+    "id": 3522208,
+    "municipio": "Itapecerica da Serra"
+  },
+  {
+    "id": 3522307,
+    "municipio": "Itapetininga"
+  },
+  {
+    "id": 3522406,
+    "municipio": "Itapeva"
+  },
+  {
+    "id": 3522505,
+    "municipio": "Itapevi"
+  },
+  {
+    "id": 3522604,
+    "municipio": "Itapira"
+  },
+  {
+    "id": 3522653,
+    "municipio": "Itapirapuã Paulista"
+  },
+  {
+    "id": 3522703,
+    "municipio": "Itápolis"
+  },
+  {
+    "id": 3522802,
+    "municipio": "Itaporanga"
+  },
+  {
+    "id": 3522901,
+    "municipio": "Itapuí"
+  },
+  {
+    "id": 3523008,
+    "municipio": "Itapura"
+  },
+  {
+    "id": 3523107,
+    "municipio": "Itaquaquecetuba"
+  },
+  {
+    "id": 3523206,
+    "municipio": "Itararé"
+  },
+  {
+    "id": 3523305,
+    "municipio": "Itariri"
+  },
+  {
+    "id": 3523404,
+    "municipio": "Itatiba"
+  },
+  {
+    "id": 3523503,
+    "municipio": "Itatinga"
+  },
+  {
+    "id": 3523602,
+    "municipio": "Itirapina"
+  },
+  {
+    "id": 3523701,
+    "municipio": "Itirapuã"
+  },
+  {
+    "id": 3523800,
+    "municipio": "Itobi"
+  },
+  {
+    "id": 3523909,
+    "municipio": "Itu"
+  },
+  {
+    "id": 3524006,
+    "municipio": "Itupeva"
+  },
+  {
+    "id": 3524105,
+    "municipio": "Ituverava"
+  },
+  {
+    "id": 3524204,
+    "municipio": "Jaborandi"
+  },
+  {
+    "id": 3524303,
+    "municipio": "Jaboticabal"
+  },
+  {
+    "id": 3524402,
+    "municipio": "Jacareí"
+  },
+  {
+    "id": 3524501,
+    "municipio": "Jaci"
+  },
+  {
+    "id": 3524600,
+    "municipio": "Jacupiranga"
+  },
+  {
+    "id": 3524709,
+    "municipio": "Jaguariúna"
+  },
+  {
+    "id": 3524808,
+    "municipio": "Jales"
+  },
+  {
+    "id": 3524907,
+    "municipio": "Jambeiro"
+  },
+  {
+    "id": 3525003,
+    "municipio": "Jandira"
+  },
+  {
+    "id": 3525102,
+    "municipio": "Jardinópolis"
+  },
+  {
+    "id": 3525201,
+    "municipio": "Jarinu"
+  },
+  {
+    "id": 3525300,
+    "municipio": "Jaú"
+  },
+  {
+    "id": 3525409,
+    "municipio": "Jeriquara"
+  },
+  {
+    "id": 3525508,
+    "municipio": "Joanópolis"
+  },
+  {
+    "id": 3525607,
+    "municipio": "João Ramalho"
+  },
+  {
+    "id": 3525706,
+    "municipio": "José Bonifácio"
+  },
+  {
+    "id": 3525805,
+    "municipio": "Júlio Mesquita"
+  },
+  {
+    "id": 3525854,
+    "municipio": "Jumirim"
+  },
+  {
+    "id": 3525904,
+    "municipio": "Jundiaí"
+  },
+  {
+    "id": 3526001,
+    "municipio": "Junqueirópolis"
+  },
+  {
+    "id": 3526100,
+    "municipio": "Juquiá"
+  },
+  {
+    "id": 3526209,
+    "municipio": "Juquitiba"
+  },
+  {
+    "id": 3526308,
+    "municipio": "Lagoinha"
+  },
+  {
+    "id": 3526407,
+    "municipio": "Laranjal Paulista"
+  },
+  {
+    "id": 3526506,
+    "municipio": "Lavínia"
+  },
+  {
+    "id": 3526605,
+    "municipio": "Lavrinhas"
+  },
+  {
+    "id": 3526704,
+    "municipio": "Leme"
+  },
+  {
+    "id": 3526803,
+    "municipio": "Lençóis Paulista"
+  },
+  {
+    "id": 3526902,
+    "municipio": "Limeira"
+  },
+  {
+    "id": 3527009,
+    "municipio": "Lindóia"
+  },
+  {
+    "id": 3527108,
+    "municipio": "Lins"
+  },
+  {
+    "id": 3527207,
+    "municipio": "Lorena"
+  },
+  {
+    "id": 3527256,
+    "municipio": "Lourdes"
+  },
+  {
+    "id": 3527306,
+    "municipio": "Louveira"
+  },
+  {
+    "id": 3527405,
+    "municipio": "Lucélia"
+  },
+  {
+    "id": 3527504,
+    "municipio": "Lucianópolis"
+  },
+  {
+    "id": 3527603,
+    "municipio": "Luís Antônio"
+  },
+  {
+    "id": 3527702,
+    "municipio": "Luiziânia"
+  },
+  {
+    "id": 3527801,
+    "municipio": "Lupércio"
+  },
+  {
+    "id": 3527900,
+    "municipio": "Lutécia"
+  },
+  {
+    "id": 3528007,
+    "municipio": "Macatuba"
+  },
+  {
+    "id": 3528106,
+    "municipio": "Macaubal"
+  },
+  {
+    "id": 3528205,
+    "municipio": "Macedônia"
+  },
+  {
+    "id": 3528304,
+    "municipio": "Magda"
+  },
+  {
+    "id": 3528403,
+    "municipio": "Mairinque"
+  },
+  {
+    "id": 3528502,
+    "municipio": "Mairiporã"
+  },
+  {
+    "id": 3528601,
+    "municipio": "Manduri"
+  },
+  {
+    "id": 3528700,
+    "municipio": "Marabá Paulista"
+  },
+  {
+    "id": 3528809,
+    "municipio": "Maracaí"
+  },
+  {
+    "id": 3528858,
+    "municipio": "Marapoama"
+  },
+  {
+    "id": 3528908,
+    "municipio": "Mariápolis"
+  },
+  {
+    "id": 3529005,
+    "municipio": "Marília"
+  },
+  {
+    "id": 3529104,
+    "municipio": "Marinópolis"
+  },
+  {
+    "id": 3529203,
+    "municipio": "Martinópolis"
+  },
+  {
+    "id": 3529302,
+    "municipio": "Matão"
+  },
+  {
+    "id": 3529401,
+    "municipio": "Mauá"
+  },
+  {
+    "id": 3529500,
+    "municipio": "Mendonça"
+  },
+  {
+    "id": 3529609,
+    "municipio": "Meridiano"
+  },
+  {
+    "id": 3529658,
+    "municipio": "Mesópolis"
+  },
+  {
+    "id": 3529708,
+    "municipio": "Miguelópolis"
+  },
+  {
+    "id": 3529807,
+    "municipio": "Mineiros do Tietê"
+  },
+  {
+    "id": 3529906,
+    "municipio": "Miracatu"
+  },
+  {
+    "id": 3530003,
+    "municipio": "Mira Estrela"
+  },
+  {
+    "id": 3530102,
+    "municipio": "Mirandópolis"
+  },
+  {
+    "id": 3530201,
+    "municipio": "Mirante do Paranapanema"
+  },
+  {
+    "id": 3530300,
+    "municipio": "Mirassol"
+  },
+  {
+    "id": 3530409,
+    "municipio": "Mirassolândia"
+  },
+  {
+    "id": 3530508,
+    "municipio": "Mococa"
+  },
+  {
+    "id": 3530607,
+    "municipio": "Mogi das Cruzes"
+  },
+  {
+    "id": 3530706,
+    "municipio": "Mogi Guaçu"
+  },
+  {
+    "id": 3530805,
+    "municipio": "Mogi Mirim"
+  },
+  {
+    "id": 3530904,
+    "municipio": "Mombuca"
+  },
+  {
+    "id": 3531001,
+    "municipio": "Monções"
+  },
+  {
+    "id": 3531100,
+    "municipio": "Mongaguá"
+  },
+  {
+    "id": 3531209,
+    "municipio": "Monte Alegre do Sul"
+  },
+  {
+    "id": 3531308,
+    "municipio": "Monte Alto"
+  },
+  {
+    "id": 3531407,
+    "municipio": "Monte Aprazível"
+  },
+  {
+    "id": 3531506,
+    "municipio": "Monte Azul Paulista"
+  },
+  {
+    "id": 3531605,
+    "municipio": "Monte Castelo"
+  },
+  {
+    "id": 3531704,
+    "municipio": "Monteiro Lobato"
+  },
+  {
+    "id": 3531803,
+    "municipio": "Monte Mor"
+  },
+  {
+    "id": 3531902,
+    "municipio": "Morro Agudo"
+  },
+  {
+    "id": 3532009,
+    "municipio": "Morungaba"
+  },
+  {
+    "id": 3532058,
+    "municipio": "Motuca"
+  },
+  {
+    "id": 3532108,
+    "municipio": "Murutinga do Sul"
+  },
+  {
+    "id": 3532157,
+    "municipio": "Nantes"
+  },
+  {
+    "id": 3532207,
+    "municipio": "Narandiba"
+  },
+  {
+    "id": 3532306,
+    "municipio": "Natividade da Serra"
+  },
+  {
+    "id": 3532405,
+    "municipio": "Nazaré Paulista"
+  },
+  {
+    "id": 3532504,
+    "municipio": "Neves Paulista"
+  },
+  {
+    "id": 3532603,
+    "municipio": "Nhandeara"
+  },
+  {
+    "id": 3532702,
+    "municipio": "Nipoã"
+  },
+  {
+    "id": 3532801,
+    "municipio": "Nova Aliança"
+  },
+  {
+    "id": 3532827,
+    "municipio": "Nova Campina"
+  },
+  {
+    "id": 3532843,
+    "municipio": "Nova Canaã Paulista"
+  },
+  {
+    "id": 3532868,
+    "municipio": "Nova Castilho"
+  },
+  {
+    "id": 3532900,
+    "municipio": "Nova Europa"
+  },
+  {
+    "id": 3533007,
+    "municipio": "Nova Granada"
+  },
+  {
+    "id": 3533106,
+    "municipio": "Nova Guataporanga"
+  },
+  {
+    "id": 3533205,
+    "municipio": "Nova Independência"
+  },
+  {
+    "id": 3533254,
+    "municipio": "Novais"
+  },
+  {
+    "id": 3533304,
+    "municipio": "Nova Luzitânia"
+  },
+  {
+    "id": 3533403,
+    "municipio": "Nova Odessa"
+  },
+  {
+    "id": 3533502,
+    "municipio": "Novo Horizonte"
+  },
+  {
+    "id": 3533601,
+    "municipio": "Nuporanga"
+  },
+  {
+    "id": 3533700,
+    "municipio": "Ocauçu"
+  },
+  {
+    "id": 3533809,
+    "municipio": "Óleo"
+  },
+  {
+    "id": 3533908,
+    "municipio": "Olímpia"
+  },
+  {
+    "id": 3534005,
+    "municipio": "Onda Verde"
+  },
+  {
+    "id": 3534104,
+    "municipio": "Oriente"
+  },
+  {
+    "id": 3534203,
+    "municipio": "Orindiúva"
+  },
+  {
+    "id": 3534302,
+    "municipio": "Orlândia"
+  },
+  {
+    "id": 3534401,
+    "municipio": "Osasco"
+  },
+  {
+    "id": 3534500,
+    "municipio": "Oscar Bressane"
+  },
+  {
+    "id": 3534609,
+    "municipio": "Osvaldo Cruz"
+  },
+  {
+    "id": 3534708,
+    "municipio": "Ourinhos"
+  },
+  {
+    "id": 3534757,
+    "municipio": "Ouroeste"
+  },
+  {
+    "id": 3534807,
+    "municipio": "Ouro Verde"
+  },
+  {
+    "id": 3534906,
+    "municipio": "Pacaembu"
+  },
+  {
+    "id": 3535002,
+    "municipio": "Palestina"
+  },
+  {
+    "id": 3535101,
+    "municipio": "Palmares Paulista"
+  },
+  {
+    "id": 3535200,
+    "municipio": "Palmeira d'Oeste"
+  },
+  {
+    "id": 3535309,
+    "municipio": "Palmital"
+  },
+  {
+    "id": 3535408,
+    "municipio": "Panorama"
+  },
+  {
+    "id": 3535507,
+    "municipio": "Paraguaçu Paulista"
+  },
+  {
+    "id": 3535606,
+    "municipio": "Paraibuna"
+  },
+  {
+    "id": 3535705,
+    "municipio": "Paraíso"
+  },
+  {
+    "id": 3535804,
+    "municipio": "Paranapanema"
+  },
+  {
+    "id": 3535903,
+    "municipio": "Paranapuã"
+  },
+  {
+    "id": 3536000,
+    "municipio": "Parapuã"
+  },
+  {
+    "id": 3536109,
+    "municipio": "Pardinho"
+  },
+  {
+    "id": 3536208,
+    "municipio": "Pariquera-Açu"
+  },
+  {
+    "id": 3536257,
+    "municipio": "Parisi"
+  },
+  {
+    "id": 3536307,
+    "municipio": "Patrocínio Paulista"
+  },
+  {
+    "id": 3536406,
+    "municipio": "Paulicéia"
+  },
+  {
+    "id": 3536505,
+    "municipio": "Paulínia"
+  },
+  {
+    "id": 3536570,
+    "municipio": "Paulistânia"
+  },
+  {
+    "id": 3536604,
+    "municipio": "Paulo de Faria"
+  },
+  {
+    "id": 3536703,
+    "municipio": "Pederneiras"
+  },
+  {
+    "id": 3536802,
+    "municipio": "Pedra Bela"
+  },
+  {
+    "id": 3536901,
+    "municipio": "Pedranópolis"
+  },
+  {
+    "id": 3537008,
+    "municipio": "Pedregulho"
+  },
+  {
+    "id": 3537107,
+    "municipio": "Pedreira"
+  },
+  {
+    "id": 3537156,
+    "municipio": "Pedrinhas Paulista"
+  },
+  {
+    "id": 3537206,
+    "municipio": "Pedro de Toledo"
+  },
+  {
+    "id": 3537305,
+    "municipio": "Penápolis"
+  },
+  {
+    "id": 3537404,
+    "municipio": "Pereira Barreto"
+  },
+  {
+    "id": 3537503,
+    "municipio": "Pereiras"
+  },
+  {
+    "id": 3537602,
+    "municipio": "Peruíbe"
+  },
+  {
+    "id": 3537701,
+    "municipio": "Piacatu"
+  },
+  {
+    "id": 3537800,
+    "municipio": "Piedade"
+  },
+  {
+    "id": 3537909,
+    "municipio": "Pilar do Sul"
+  },
+  {
+    "id": 3538006,
+    "municipio": "Pindamonhangaba"
+  },
+  {
+    "id": 3538105,
+    "municipio": "Pindorama"
+  },
+  {
+    "id": 3538204,
+    "municipio": "Pinhalzinho"
+  },
+  {
+    "id": 3538303,
+    "municipio": "Piquerobi"
+  },
+  {
+    "id": 3538501,
+    "municipio": "Piquete"
+  },
+  {
+    "id": 3538600,
+    "municipio": "Piracaia"
+  },
+  {
+    "id": 3538709,
+    "municipio": "Piracicaba"
+  },
+  {
+    "id": 3538808,
+    "municipio": "Piraju"
+  },
+  {
+    "id": 3538907,
+    "municipio": "Pirajuí"
+  },
+  {
+    "id": 3539004,
+    "municipio": "Pirangi"
+  },
+  {
+    "id": 3539103,
+    "municipio": "Pirapora do Bom Jesus"
+  },
+  {
+    "id": 3539202,
+    "municipio": "Pirapozinho"
+  },
+  {
+    "id": 3539301,
+    "municipio": "Pirassununga"
+  },
+  {
+    "id": 3539400,
+    "municipio": "Piratininga"
+  },
+  {
+    "id": 3539509,
+    "municipio": "Pitangueiras"
+  },
+  {
+    "id": 3539608,
+    "municipio": "Planalto"
+  },
+  {
+    "id": 3539707,
+    "municipio": "Platina"
+  },
+  {
+    "id": 3539806,
+    "municipio": "Poá"
+  },
+  {
+    "id": 3539905,
+    "municipio": "Poloni"
+  },
+  {
+    "id": 3540002,
+    "municipio": "Pompéia"
+  },
+  {
+    "id": 3540101,
+    "municipio": "Pongaí"
+  },
+  {
+    "id": 3540200,
+    "municipio": "Pontal"
+  },
+  {
+    "id": 3540259,
+    "municipio": "Pontalinda"
+  },
+  {
+    "id": 3540309,
+    "municipio": "Pontes Gestal"
+  },
+  {
+    "id": 3540408,
+    "municipio": "Populina"
+  },
+  {
+    "id": 3540507,
+    "municipio": "Porangaba"
+  },
+  {
+    "id": 3540606,
+    "municipio": "Porto Feliz"
+  },
+  {
+    "id": 3540705,
+    "municipio": "Porto Ferreira"
+  },
+  {
+    "id": 3540754,
+    "municipio": "Potim"
+  },
+  {
+    "id": 3540804,
+    "municipio": "Potirendaba"
+  },
+  {
+    "id": 3540853,
+    "municipio": "Pracinha"
+  },
+  {
+    "id": 3540903,
+    "municipio": "Pradópolis"
+  },
+  {
+    "id": 3541000,
+    "municipio": "Praia Grande"
+  },
+  {
+    "id": 3541059,
+    "municipio": "Pratânia"
+  },
+  {
+    "id": 3541109,
+    "municipio": "Presidente Alves"
+  },
+  {
+    "id": 3541208,
+    "municipio": "Presidente Bernardes"
+  },
+  {
+    "id": 3541307,
+    "municipio": "Presidente Epitácio"
+  },
+  {
+    "id": 3541406,
+    "municipio": "Presidente Prudente"
+  },
+  {
+    "id": 3541505,
+    "municipio": "Presidente Venceslau"
+  },
+  {
+    "id": 3541604,
+    "municipio": "Promissão"
+  },
+  {
+    "id": 3541653,
+    "municipio": "Quadra"
+  },
+  {
+    "id": 3541703,
+    "municipio": "Quatá"
+  },
+  {
+    "id": 3541802,
+    "municipio": "Queiroz"
+  },
+  {
+    "id": 3541901,
+    "municipio": "Queluz"
+  },
+  {
+    "id": 3542008,
+    "municipio": "Quintana"
+  },
+  {
+    "id": 3542107,
+    "municipio": "Rafard"
+  },
+  {
+    "id": 3542206,
+    "municipio": "Rancharia"
+  },
+  {
+    "id": 3542305,
+    "municipio": "Redenção da Serra"
+  },
+  {
+    "id": 3542404,
+    "municipio": "Regente Feijó"
+  },
+  {
+    "id": 3542503,
+    "municipio": "Reginópolis"
+  },
+  {
+    "id": 3542602,
+    "municipio": "Registro"
+  },
+  {
+    "id": 3542701,
+    "municipio": "Restinga"
+  },
+  {
+    "id": 3542800,
+    "municipio": "Ribeira"
+  },
+  {
+    "id": 3542909,
+    "municipio": "Ribeirão Bonito"
+  },
+  {
+    "id": 3543006,
+    "municipio": "Ribeirão Branco"
+  },
+  {
+    "id": 3543105,
+    "municipio": "Ribeirão Corrente"
+  },
+  {
+    "id": 3543204,
+    "municipio": "Ribeirão do Sul"
+  },
+  {
+    "id": 3543238,
+    "municipio": "Ribeirão dos Índios"
+  },
+  {
+    "id": 3543253,
+    "municipio": "Ribeirão Grande"
+  },
+  {
+    "id": 3543303,
+    "municipio": "Ribeirão Pires"
+  },
+  {
+    "id": 3543402,
+    "municipio": "Ribeirão Preto"
+  },
+  {
+    "id": 3543501,
+    "municipio": "Riversul"
+  },
+  {
+    "id": 3543600,
+    "municipio": "Rifaina"
+  },
+  {
+    "id": 3543709,
+    "municipio": "Rincão"
+  },
+  {
+    "id": 3543808,
+    "municipio": "Rinópolis"
+  },
+  {
+    "id": 3543907,
+    "municipio": "Rio Claro"
+  },
+  {
+    "id": 3544004,
+    "municipio": "Rio das Pedras"
+  },
+  {
+    "id": 3544103,
+    "municipio": "Rio Grande da Serra"
+  },
+  {
+    "id": 3544202,
+    "municipio": "Riolândia"
+  },
+  {
+    "id": 3544251,
+    "municipio": "Rosana"
+  },
+  {
+    "id": 3544301,
+    "municipio": "Roseira"
+  },
+  {
+    "id": 3544400,
+    "municipio": "Rubiácea"
+  },
+  {
+    "id": 3544509,
+    "municipio": "Rubinéia"
+  },
+  {
+    "id": 3544608,
+    "municipio": "Sabino"
+  },
+  {
+    "id": 3544707,
+    "municipio": "Sagres"
+  },
+  {
+    "id": 3544806,
+    "municipio": "Sales"
+  },
+  {
+    "id": 3544905,
+    "municipio": "Sales Oliveira"
+  },
+  {
+    "id": 3545001,
+    "municipio": "Salesópolis"
+  },
+  {
+    "id": 3545100,
+    "municipio": "Salmourão"
+  },
+  {
+    "id": 3545159,
+    "municipio": "Saltinho"
+  },
+  {
+    "id": 3545209,
+    "municipio": "Salto"
+  },
+  {
+    "id": 3545308,
+    "municipio": "Salto de Pirapora"
+  },
+  {
+    "id": 3545407,
+    "municipio": "Salto Grande"
+  },
+  {
+    "id": 3545506,
+    "municipio": "Sandovalina"
+  },
+  {
+    "id": 3545605,
+    "municipio": "Santa Adélia"
+  },
+  {
+    "id": 3545704,
+    "municipio": "Santa Albertina"
+  },
+  {
+    "id": 3545803,
+    "municipio": "Santa Bárbara d'Oeste"
+  },
+  {
+    "id": 3546009,
+    "municipio": "Santa Branca"
+  },
+  {
+    "id": 3546108,
+    "municipio": "Santa Clara d'Oeste"
+  },
+  {
+    "id": 3546207,
+    "municipio": "Santa Cruz da Conceição"
+  },
+  {
+    "id": 3546256,
+    "municipio": "Santa Cruz da Esperança"
+  },
+  {
+    "id": 3546306,
+    "municipio": "Santa Cruz das Palmeiras"
+  },
+  {
+    "id": 3546405,
+    "municipio": "Santa Cruz do Rio Pardo"
+  },
+  {
+    "id": 3546504,
+    "municipio": "Santa Ernestina"
+  },
+  {
+    "id": 3546603,
+    "municipio": "Santa Fé do Sul"
+  },
+  {
+    "id": 3546702,
+    "municipio": "Santa Gertrudes"
+  },
+  {
+    "id": 3546801,
+    "municipio": "Santa Isabel"
+  },
+  {
+    "id": 3546900,
+    "municipio": "Santa Lúcia"
+  },
+  {
+    "id": 3547007,
+    "municipio": "Santa Maria da Serra"
+  },
+  {
+    "id": 3547106,
+    "municipio": "Santa Mercedes"
+  },
+  {
+    "id": 3547205,
+    "municipio": "Santana da Ponte Pensa"
+  },
+  {
+    "id": 3547304,
+    "municipio": "Santana de Parnaíba"
+  },
+  {
+    "id": 3547403,
+    "municipio": "Santa Rita d'Oeste"
+  },
+  {
+    "id": 3547502,
+    "municipio": "Santa Rita do Passa Quatro"
+  },
+  {
+    "id": 3547601,
+    "municipio": "Santa Rosa de Viterbo"
+  },
+  {
+    "id": 3547650,
+    "municipio": "Santa Salete"
+  },
+  {
+    "id": 3547700,
+    "municipio": "Santo Anastácio"
+  },
+  {
+    "id": 3547809,
+    "municipio": "Santo André"
+  },
+  {
+    "id": 3547908,
+    "municipio": "Santo Antônio da Alegria"
+  },
+  {
+    "id": 3548005,
+    "municipio": "Santo Antônio de Posse"
+  },
+  {
+    "id": 3548054,
+    "municipio": "Santo Antônio do Aracanguá"
+  },
+  {
+    "id": 3548104,
+    "municipio": "Santo Antônio do Jardim"
+  },
+  {
+    "id": 3548203,
+    "municipio": "Santo Antônio do Pinhal"
+  },
+  {
+    "id": 3548302,
+    "municipio": "Santo Expedito"
+  },
+  {
+    "id": 3548401,
+    "municipio": "Santópolis do Aguapeí"
+  },
+  {
+    "id": 3548500,
+    "municipio": "Santos"
+  },
+  {
+    "id": 3548609,
+    "municipio": "São Bento do Sapucaí"
+  },
+  {
+    "id": 3548708,
+    "municipio": "São Bernardo do Campo"
+  },
+  {
+    "id": 3548807,
+    "municipio": "São Caetano do Sul"
+  },
+  {
+    "id": 3548906,
+    "municipio": "São Carlos"
+  },
+  {
+    "id": 3549003,
+    "municipio": "São Francisco"
+  },
+  {
+    "id": 3549102,
+    "municipio": "São João da Boa Vista"
+  },
+  {
+    "id": 3549201,
+    "municipio": "São João das Duas Pontes"
+  },
+  {
+    "id": 3549250,
+    "municipio": "São João de Iracema"
+  },
+  {
+    "id": 3549300,
+    "municipio": "São João do Pau d'Alho"
+  },
+  {
+    "id": 3549409,
+    "municipio": "São Joaquim da Barra"
+  },
+  {
+    "id": 3549508,
+    "municipio": "São José da Bela Vista"
+  },
+  {
+    "id": 3549607,
+    "municipio": "São José do Barreiro"
+  },
+  {
+    "id": 3549706,
+    "municipio": "São José do Rio Pardo"
+  },
+  {
+    "id": 3549805,
+    "municipio": "São José do Rio Preto"
+  },
+  {
+    "id": 3549904,
+    "municipio": "São José dos Campos"
+  },
+  {
+    "id": 3549953,
+    "municipio": "São Lourenço da Serra"
+  },
+  {
+    "id": 3550001,
+    "municipio": "São Luís do Paraitinga"
+  },
+  {
+    "id": 3550100,
+    "municipio": "São Manuel"
+  },
+  {
+    "id": 3550209,
+    "municipio": "São Miguel Arcanjo"
+  },
+  {
+    "id": 3550308,
+    "municipio": "São Paulo"
+  },
+  {
+    "id": 3550407,
+    "municipio": "São Pedro"
+  },
+  {
+    "id": 3550506,
+    "municipio": "São Pedro do Turvo"
+  },
+  {
+    "id": 3550605,
+    "municipio": "São Roque"
+  },
+  {
+    "id": 3550704,
+    "municipio": "São Sebastião"
+  },
+  {
+    "id": 3550803,
+    "municipio": "São Sebastião da Grama"
+  },
+  {
+    "id": 3550902,
+    "municipio": "São Simão"
+  },
+  {
+    "id": 3551009,
+    "municipio": "São Vicente"
+  },
+  {
+    "id": 3551108,
+    "municipio": "Sarapuí"
+  },
+  {
+    "id": 3551207,
+    "municipio": "Sarutaiá"
+  },
+  {
+    "id": 3551306,
+    "municipio": "Sebastianópolis do Sul"
+  },
+  {
+    "id": 3551405,
+    "municipio": "Serra Azul"
+  },
+  {
+    "id": 3551504,
+    "municipio": "Serrana"
+  },
+  {
+    "id": 3551603,
+    "municipio": "Serra Negra"
+  },
+  {
+    "id": 3551702,
+    "municipio": "Sertãozinho"
+  },
+  {
+    "id": 3551801,
+    "municipio": "Sete Barras"
+  },
+  {
+    "id": 3551900,
+    "municipio": "Severínia"
+  },
+  {
+    "id": 3552007,
+    "municipio": "Silveiras"
+  },
+  {
+    "id": 3552106,
+    "municipio": "Socorro"
+  },
+  {
+    "id": 3552205,
+    "municipio": "Sorocaba"
+  },
+  {
+    "id": 3552304,
+    "municipio": "Sud Mennucci"
+  },
+  {
+    "id": 3552403,
+    "municipio": "Sumaré"
+  },
+  {
+    "id": 3552502,
+    "municipio": "Suzano"
+  },
+  {
+    "id": 3552551,
+    "municipio": "Suzanápolis"
+  },
+  {
+    "id": 3552601,
+    "municipio": "Tabapuã"
+  },
+  {
+    "id": 3552700,
+    "municipio": "Tabatinga"
+  },
+  {
+    "id": 3552809,
+    "municipio": "Taboão da Serra"
+  },
+  {
+    "id": 3552908,
+    "municipio": "Taciba"
+  },
+  {
+    "id": 3553005,
+    "municipio": "Taguaí"
+  },
+  {
+    "id": 3553104,
+    "municipio": "Taiaçu"
+  },
+  {
+    "id": 3553203,
+    "municipio": "Taiúva"
+  },
+  {
+    "id": 3553302,
+    "municipio": "Tambaú"
+  },
+  {
+    "id": 3553401,
+    "municipio": "Tanabi"
+  },
+  {
+    "id": 3553500,
+    "municipio": "Tapiraí"
+  },
+  {
+    "id": 3553609,
+    "municipio": "Tapiratiba"
+  },
+  {
+    "id": 3553658,
+    "municipio": "Taquaral"
+  },
+  {
+    "id": 3553708,
+    "municipio": "Taquaritinga"
+  },
+  {
+    "id": 3553807,
+    "municipio": "Taquarituba"
+  },
+  {
+    "id": 3553856,
+    "municipio": "Taquarivaí"
+  },
+  {
+    "id": 3553906,
+    "municipio": "Tarabai"
+  },
+  {
+    "id": 3553955,
+    "municipio": "Tarumã"
+  },
+  {
+    "id": 3554003,
+    "municipio": "Tatuí"
+  },
+  {
+    "id": 3554102,
+    "municipio": "Taubaté"
+  },
+  {
+    "id": 3554201,
+    "municipio": "Tejupá"
+  },
+  {
+    "id": 3554300,
+    "municipio": "Teodoro Sampaio"
+  },
+  {
+    "id": 3554409,
+    "municipio": "Terra Roxa"
+  },
+  {
+    "id": 3554508,
+    "municipio": "Tietê"
+  },
+  {
+    "id": 3554607,
+    "municipio": "Timburi"
+  },
+  {
+    "id": 3554656,
+    "municipio": "Torre de Pedra"
+  },
+  {
+    "id": 3554706,
+    "municipio": "Torrinha"
+  },
+  {
+    "id": 3554755,
+    "municipio": "Trabiju"
+  },
+  {
+    "id": 3554805,
+    "municipio": "Tremembé"
+  },
+  {
+    "id": 3554904,
+    "municipio": "Três Fronteiras"
+  },
+  {
+    "id": 3554953,
+    "municipio": "Tuiuti"
+  },
+  {
+    "id": 3555000,
+    "municipio": "Tupã"
+  },
+  {
+    "id": 3555109,
+    "municipio": "Tupi Paulista"
+  },
+  {
+    "id": 3555208,
+    "municipio": "Turiúba"
+  },
+  {
+    "id": 3555307,
+    "municipio": "Turmalina"
+  },
+  {
+    "id": 3555356,
+    "municipio": "Ubarana"
+  },
+  {
+    "id": 3555406,
+    "municipio": "Ubatuba"
+  },
+  {
+    "id": 3555505,
+    "municipio": "Ubirajara"
+  },
+  {
+    "id": 3555604,
+    "municipio": "Uchoa"
+  },
+  {
+    "id": 3555703,
+    "municipio": "União Paulista"
+  },
+  {
+    "id": 3555802,
+    "municipio": "Urânia"
+  },
+  {
+    "id": 3555901,
+    "municipio": "Uru"
+  },
+  {
+    "id": 3556008,
+    "municipio": "Urupês"
+  },
+  {
+    "id": 3556107,
+    "municipio": "Valentim Gentil"
+  },
+  {
+    "id": 3556206,
+    "municipio": "Valinhos"
+  },
+  {
+    "id": 3556305,
+    "municipio": "Valparaíso"
+  },
+  {
+    "id": 3556354,
+    "municipio": "Vargem"
+  },
+  {
+    "id": 3556404,
+    "municipio": "Vargem Grande do Sul"
+  },
+  {
+    "id": 3556453,
+    "municipio": "Vargem Grande Paulista"
+  },
+  {
+    "id": 3556503,
+    "municipio": "Várzea Paulista"
+  },
+  {
+    "id": 3556602,
+    "municipio": "Vera Cruz"
+  },
+  {
+    "id": 3556701,
+    "municipio": "Vinhedo"
+  },
+  {
+    "id": 3556800,
+    "municipio": "Viradouro"
+  },
+  {
+    "id": 3556909,
+    "municipio": "Vista Alegre do Alto"
+  },
+  {
+    "id": 3556958,
+    "municipio": "Vitória Brasil"
+  },
+  {
+    "id": 3557006,
+    "municipio": "Votorantim"
+  },
+  {
+    "id": 3557105,
+    "municipio": "Votuporanga"
+  },
+  {
+    "id": 3557154,
+    "municipio": "Zacarias"
+  },
+  {
+    "id": 3557204,
+    "municipio": "Chavantes"
+  },
+  {
+    "id": 3557303,
+    "municipio": "Estiva Gerbi"
+  }
+]

@@ -1,0 +1,570 @@
+[
+  {
+    "id": 5100102,
+    "municipio": "Acorizal"
+  },
+  {
+    "id": 5100151,
+    "municipio": "Boa Esperança do Norte"
+  },
+  {
+    "id": 5100201,
+    "municipio": "Água Boa"
+  },
+  {
+    "id": 5100250,
+    "municipio": "Alta Floresta"
+  },
+  {
+    "id": 5100300,
+    "municipio": "Alto Araguaia"
+  },
+  {
+    "id": 5100359,
+    "municipio": "Alto Boa Vista"
+  },
+  {
+    "id": 5100409,
+    "municipio": "Alto Garças"
+  },
+  {
+    "id": 5100508,
+    "municipio": "Alto Paraguai"
+  },
+  {
+    "id": 5100607,
+    "municipio": "Alto Taquari"
+  },
+  {
+    "id": 5100805,
+    "municipio": "Apiacás"
+  },
+  {
+    "id": 5101001,
+    "municipio": "Araguaiana"
+  },
+  {
+    "id": 5101209,
+    "municipio": "Araguainha"
+  },
+  {
+    "id": 5101258,
+    "municipio": "Araputanga"
+  },
+  {
+    "id": 5101308,
+    "municipio": "Arenápolis"
+  },
+  {
+    "id": 5101407,
+    "municipio": "Aripuanã"
+  },
+  {
+    "id": 5101605,
+    "municipio": "Barão de Melgaço"
+  },
+  {
+    "id": 5101704,
+    "municipio": "Barra do Bugres"
+  },
+  {
+    "id": 5101803,
+    "municipio": "Barra do Garças"
+  },
+  {
+    "id": 5101852,
+    "municipio": "Bom Jesus do Araguaia"
+  },
+  {
+    "id": 5101902,
+    "municipio": "Brasnorte"
+  },
+  {
+    "id": 5102504,
+    "municipio": "Cáceres"
+  },
+  {
+    "id": 5102603,
+    "municipio": "Campinápolis"
+  },
+  {
+    "id": 5102637,
+    "municipio": "Campo Novo do Parecis"
+  },
+  {
+    "id": 5102678,
+    "municipio": "Campo Verde"
+  },
+  {
+    "id": 5102686,
+    "municipio": "Campos de Júlio"
+  },
+  {
+    "id": 5102694,
+    "municipio": "Canabrava do Norte"
+  },
+  {
+    "id": 5102702,
+    "municipio": "Canarana"
+  },
+  {
+    "id": 5102793,
+    "municipio": "Carlinda"
+  },
+  {
+    "id": 5102850,
+    "municipio": "Castanheira"
+  },
+  {
+    "id": 5103007,
+    "municipio": "Chapada dos Guimarães"
+  },
+  {
+    "id": 5103056,
+    "municipio": "Cláudia"
+  },
+  {
+    "id": 5103106,
+    "municipio": "Cocalinho"
+  },
+  {
+    "id": 5103205,
+    "municipio": "Colíder"
+  },
+  {
+    "id": 5103254,
+    "municipio": "Colniza"
+  },
+  {
+    "id": 5103304,
+    "municipio": "Comodoro"
+  },
+  {
+    "id": 5103353,
+    "municipio": "Confresa"
+  },
+  {
+    "id": 5103361,
+    "municipio": "Conquista D'Oeste"
+  },
+  {
+    "id": 5103379,
+    "municipio": "Cotriguaçu"
+  },
+  {
+    "id": 5103403,
+    "municipio": "Cuiabá"
+  },
+  {
+    "id": 5103437,
+    "municipio": "Curvelândia"
+  },
+  {
+    "id": 5103452,
+    "municipio": "Denise"
+  },
+  {
+    "id": 5103502,
+    "municipio": "Diamantino"
+  },
+  {
+    "id": 5103601,
+    "municipio": "Dom Aquino"
+  },
+  {
+    "id": 5103700,
+    "municipio": "Feliz Natal"
+  },
+  {
+    "id": 5103809,
+    "municipio": "Figueirópolis D'Oeste"
+  },
+  {
+    "id": 5103858,
+    "municipio": "Gaúcha do Norte"
+  },
+  {
+    "id": 5103908,
+    "municipio": "General Carneiro"
+  },
+  {
+    "id": 5103957,
+    "municipio": "Glória D'Oeste"
+  },
+  {
+    "id": 5104104,
+    "municipio": "Guarantã do Norte"
+  },
+  {
+    "id": 5104203,
+    "municipio": "Guiratinga"
+  },
+  {
+    "id": 5104500,
+    "municipio": "Indiavaí"
+  },
+  {
+    "id": 5104526,
+    "municipio": "Ipiranga do Norte"
+  },
+  {
+    "id": 5104542,
+    "municipio": "Itanhangá"
+  },
+  {
+    "id": 5104559,
+    "municipio": "Itaúba"
+  },
+  {
+    "id": 5104609,
+    "municipio": "Itiquira"
+  },
+  {
+    "id": 5104807,
+    "municipio": "Jaciara"
+  },
+  {
+    "id": 5104906,
+    "municipio": "Jangada"
+  },
+  {
+    "id": 5105002,
+    "municipio": "Jauru"
+  },
+  {
+    "id": 5105101,
+    "municipio": "Juara"
+  },
+  {
+    "id": 5105150,
+    "municipio": "Juína"
+  },
+  {
+    "id": 5105176,
+    "municipio": "Juruena"
+  },
+  {
+    "id": 5105200,
+    "municipio": "Juscimeira"
+  },
+  {
+    "id": 5105234,
+    "municipio": "Lambari D'Oeste"
+  },
+  {
+    "id": 5105259,
+    "municipio": "Lucas do Rio Verde"
+  },
+  {
+    "id": 5105309,
+    "municipio": "Luciara"
+  },
+  {
+    "id": 5105507,
+    "municipio": "Vila Bela da Santíssima Trindade"
+  },
+  {
+    "id": 5105580,
+    "municipio": "Marcelândia"
+  },
+  {
+    "id": 5105606,
+    "municipio": "Matupá"
+  },
+  {
+    "id": 5105622,
+    "municipio": "Mirassol d'Oeste"
+  },
+  {
+    "id": 5105903,
+    "municipio": "Nobres"
+  },
+  {
+    "id": 5106000,
+    "municipio": "Nortelândia"
+  },
+  {
+    "id": 5106109,
+    "municipio": "Nossa Senhora do Livramento"
+  },
+  {
+    "id": 5106158,
+    "municipio": "Nova Bandeirantes"
+  },
+  {
+    "id": 5106174,
+    "municipio": "Nova Nazaré"
+  },
+  {
+    "id": 5106182,
+    "municipio": "Nova Lacerda"
+  },
+  {
+    "id": 5106190,
+    "municipio": "Nova Santa Helena"
+  },
+  {
+    "id": 5106208,
+    "municipio": "Nova Brasilândia"
+  },
+  {
+    "id": 5106216,
+    "municipio": "Nova Canaã do Norte"
+  },
+  {
+    "id": 5106224,
+    "municipio": "Nova Mutum"
+  },
+  {
+    "id": 5106232,
+    "municipio": "Nova Olímpia"
+  },
+  {
+    "id": 5106240,
+    "municipio": "Nova Ubiratã"
+  },
+  {
+    "id": 5106257,
+    "municipio": "Nova Xavantina"
+  },
+  {
+    "id": 5106265,
+    "municipio": "Novo Mundo"
+  },
+  {
+    "id": 5106273,
+    "municipio": "Novo Horizonte do Norte"
+  },
+  {
+    "id": 5106281,
+    "municipio": "Novo São Joaquim"
+  },
+  {
+    "id": 5106299,
+    "municipio": "Paranaíta"
+  },
+  {
+    "id": 5106307,
+    "municipio": "Paranatinga"
+  },
+  {
+    "id": 5106315,
+    "municipio": "Novo Santo Antônio"
+  },
+  {
+    "id": 5106372,
+    "municipio": "Pedra Preta"
+  },
+  {
+    "id": 5106422,
+    "municipio": "Peixoto de Azevedo"
+  },
+  {
+    "id": 5106455,
+    "municipio": "Planalto da Serra"
+  },
+  {
+    "id": 5106505,
+    "municipio": "Poconé"
+  },
+  {
+    "id": 5106653,
+    "municipio": "Pontal do Araguaia"
+  },
+  {
+    "id": 5106703,
+    "municipio": "Ponte Branca"
+  },
+  {
+    "id": 5106752,
+    "municipio": "Pontes e Lacerda"
+  },
+  {
+    "id": 5106778,
+    "municipio": "Porto Alegre do Norte"
+  },
+  {
+    "id": 5106802,
+    "municipio": "Porto dos Gaúchos"
+  },
+  {
+    "id": 5106828,
+    "municipio": "Porto Esperidião"
+  },
+  {
+    "id": 5106851,
+    "municipio": "Porto Estrela"
+  },
+  {
+    "id": 5107008,
+    "municipio": "Poxoréu"
+  },
+  {
+    "id": 5107040,
+    "municipio": "Primavera do Leste"
+  },
+  {
+    "id": 5107065,
+    "municipio": "Querência"
+  },
+  {
+    "id": 5107107,
+    "municipio": "São José dos Quatro Marcos"
+  },
+  {
+    "id": 5107156,
+    "municipio": "Reserva do Cabaçal"
+  },
+  {
+    "id": 5107180,
+    "municipio": "Ribeirão Cascalheira"
+  },
+  {
+    "id": 5107198,
+    "municipio": "Ribeirãozinho"
+  },
+  {
+    "id": 5107206,
+    "municipio": "Rio Branco"
+  },
+  {
+    "id": 5107248,
+    "municipio": "Santa Carmem"
+  },
+  {
+    "id": 5107263,
+    "municipio": "Santo Afonso"
+  },
+  {
+    "id": 5107297,
+    "municipio": "São José do Povo"
+  },
+  {
+    "id": 5107305,
+    "municipio": "São José do Rio Claro"
+  },
+  {
+    "id": 5107354,
+    "municipio": "São José do Xingu"
+  },
+  {
+    "id": 5107404,
+    "municipio": "São Pedro da Cipa"
+  },
+  {
+    "id": 5107578,
+    "municipio": "Rondolândia"
+  },
+  {
+    "id": 5107602,
+    "municipio": "Rondonópolis"
+  },
+  {
+    "id": 5107701,
+    "municipio": "Rosário Oeste"
+  },
+  {
+    "id": 5107743,
+    "municipio": "Santa Cruz do Xingu"
+  },
+  {
+    "id": 5107750,
+    "municipio": "Salto do Céu"
+  },
+  {
+    "id": 5107768,
+    "municipio": "Santa Rita do Trivelato"
+  },
+  {
+    "id": 5107776,
+    "municipio": "Santa Terezinha"
+  },
+  {
+    "id": 5107792,
+    "municipio": "Santo Antônio do Leste"
+  },
+  {
+    "id": 5107800,
+    "municipio": "Santo Antônio de Leverger"
+  },
+  {
+    "id": 5107859,
+    "municipio": "São Félix do Araguaia"
+  },
+  {
+    "id": 5107875,
+    "municipio": "Sapezal"
+  },
+  {
+    "id": 5107883,
+    "municipio": "Serra Nova Dourada"
+  },
+  {
+    "id": 5107909,
+    "municipio": "Sinop"
+  },
+  {
+    "id": 5107925,
+    "municipio": "Sorriso"
+  },
+  {
+    "id": 5107941,
+    "municipio": "Tabaporã"
+  },
+  {
+    "id": 5107958,
+    "municipio": "Tangará da Serra"
+  },
+  {
+    "id": 5108006,
+    "municipio": "Tapurah"
+  },
+  {
+    "id": 5108055,
+    "municipio": "Terra Nova do Norte"
+  },
+  {
+    "id": 5108105,
+    "municipio": "Tesouro"
+  },
+  {
+    "id": 5108204,
+    "municipio": "Torixoréu"
+  },
+  {
+    "id": 5108303,
+    "municipio": "União do Sul"
+  },
+  {
+    "id": 5108352,
+    "municipio": "Vale de São Domingos"
+  },
+  {
+    "id": 5108402,
+    "municipio": "Várzea Grande"
+  },
+  {
+    "id": 5108501,
+    "municipio": "Vera"
+  },
+  {
+    "id": 5108600,
+    "municipio": "Vila Rica"
+  },
+  {
+    "id": 5108808,
+    "municipio": "Nova Guarita"
+  },
+  {
+    "id": 5108857,
+    "municipio": "Nova Marilândia"
+  },
+  {
+    "id": 5108907,
+    "municipio": "Nova Maringá"
+  },
+  {
+    "id": 5108956,
+    "municipio": "Nova Monte Verde"
+  }
+]

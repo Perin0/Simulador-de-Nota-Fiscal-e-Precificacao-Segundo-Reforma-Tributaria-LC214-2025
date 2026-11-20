@@ -1,0 +1,91 @@
+<section class="page-heading">
+    <div>
+        <p class="eyebrow">Emissão assistida</p>
+        <h1>Simulador de nota fiscal</h1>
+        <p>Monte a operação e valide CBS, IBS e Imposto Seletivo antes de emitir o documento.</p>
+    </div><button class="primary" type="button" (click)="simulate()" [disabled]="state.loading()">{{ state.loading() ?
+        'Calculando…' : 'Simular tributação' }}</button>
+</section>
+@if (erro) { <div class="alert" role="alert">{{ erro }}<button type="button" (click)="erro=''"
+        aria-label="Fechar alerta">×</button></div> }
+<div class="content-grid">
+    <section class="card operation">
+        <div class="card-title">
+            <div>
+                <h2>Dados da operação</h2>
+                <p>Os valores abaixo serão enviados ao motor oficial RTC.</p>
+            </div><label>Documento<select [formControl]="form.controls.tpDoc">
+                    <option value="55">NF-e (modelo 55)</option>
+                    <option value="65">NFC-e (modelo 65)</option>
+                </select></label>
+        </div>
+        <form [formGroup]="form">
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Classificação fiscal</th>
+                            <th>Quantidade</th>
+                            <th>Valor unitário</th>
+                            <th>Total</th>
+                            <th aria-label="Ações"></th>
+                        </tr>
+                    </thead>
+                    <tbody formArrayName="itens">@for (item of itens.controls; track $index; let i=$index) { <tr
+                            [formGroupName]="i">
+                            <td><input formControlName="descricao" aria-label="Descrição do item {{i+1}}"><small>Item
+                                    {{i+1}}</small></td>
+                            <td><input formControlName="cClassTrib"
+                                    aria-label="Classificação tributária do item {{i+1}}">
+                                <div class="rate"><label>IBS<input type="number" step=".01"
+                                            formControlName="pIbs"></label><label>CBS<input type="number" step=".01"
+                                            formControlName="pCbs"></label></div>
+                            </td>
+                            <td><input type="number" min=".0001" step=".01" formControlName="quantidade"
+                                    aria-label="Quantidade"></td>
+                            <td><input type="number" min=".01" step=".01" formControlName="valor"
+                                    aria-label="Valor unitário"></td>
+                            <td class="money">{{ (item.controls.quantidade.value * item.controls.valor.value) |
+                                currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</td>
+                            <td><button class="icon-button" type="button" (click)="remove(i)"
+                                    [disabled]="itens.length === 1" aria-label="Remover item {{i+1}}">×</button></td>
+                        </tr>@if(result(i); as calc){<tr class="result-row">
+                            <td colspan="6"><span class="status"
+                                    [class.warning]="calc.estadoItem.includes('INCONSISTENCIA')"
+                                    [class.success]="calc.estadoItem.includes('CALCUL')">{{status(calc)}}</span>@if(calc.tribCalc){<span>CBS:
+                                    <strong>{{calc.tribCalc.vCBSSN ?? 0 |
+                                        currency:'BRL':'symbol':'1.2-2':'pt-BR'}}</strong></span><span>IBS:
+                                    <strong>{{calc.tribCalc.vIBSSN ?? 0 |
+                                        currency:'BRL':'symbol':'1.2-2':'pt-BR'}}</strong></span>}@if(calc.erros?.length){<button
+                                    class="link" type="button" (click)="motivo(calc)">Ver motivo</button>}</td>
+                        </tr>}}</tbody>
+                </table>
+            </div>
+        </form><button class="secondary add" type="button" (click)="add()">+ Adicionar item</button>
+    </section>
+    <aside class="summary">
+        <div class="summary-top">
+            <p>Resumo tributário</p><span>Atualizado ao simular</span>
+        </div>
+        <div class="grand"><span>Valor da nota</span><strong>{{ valorNota() | currency:'BRL':'symbol':'1.2-2':'pt-BR'
+                }}</strong></div>
+        <dl>
+            <div>
+                <dt>CBS · União</dt>
+                <dd>{{ state.total()?.vCBSSNtot ?? 0 | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</dd>
+            </div>
+            <div>
+                <dt>IBS · Estado e município</dt>
+                <dd>{{ state.total()?.vIBSSNtot ?? 0 | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</dd>
+            </div>
+            <div>
+                <dt>Imposto Seletivo</dt>
+                <dd>{{ state.total()?.totalIs ?? 0 | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</dd>
+            </div>
+        </dl>
+        <div class="effective"><span>Carga efetiva real</span><strong>{{ valorNota() ? ((state.total()?.totalTributos ??
+                0) / valorNota() * 100 | number:'1.2-2') : '0,00' }}%</strong></div>
+        <p class="summary-foot">A carga considera somente itens calculados com sucesso.</p>
+    </aside>
+</div>

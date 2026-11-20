@@ -1,0 +1,406 @@
+[
+  {
+    "id": 2700102,
+    "municipio": "Água Branca"
+  },
+  {
+    "id": 2700201,
+    "municipio": "Anadia"
+  },
+  {
+    "id": 2700300,
+    "municipio": "Arapiraca"
+  },
+  {
+    "id": 2700409,
+    "municipio": "Atalaia"
+  },
+  {
+    "id": 2700508,
+    "municipio": "Barra de Santo Antônio"
+  },
+  {
+    "id": 2700607,
+    "municipio": "Barra de São Miguel"
+  },
+  {
+    "id": 2700706,
+    "municipio": "Batalha"
+  },
+  {
+    "id": 2700805,
+    "municipio": "Belém"
+  },
+  {
+    "id": 2700904,
+    "municipio": "Belo Monte"
+  },
+  {
+    "id": 2701001,
+    "municipio": "Boca da Mata"
+  },
+  {
+    "id": 2701100,
+    "municipio": "Branquinha"
+  },
+  {
+    "id": 2701209,
+    "municipio": "Cacimbinhas"
+  },
+  {
+    "id": 2701308,
+    "municipio": "Cajueiro"
+  },
+  {
+    "id": 2701357,
+    "municipio": "Campestre"
+  },
+  {
+    "id": 2701407,
+    "municipio": "Campo Alegre"
+  },
+  {
+    "id": 2701506,
+    "municipio": "Campo Grande"
+  },
+  {
+    "id": 2701605,
+    "municipio": "Canapi"
+  },
+  {
+    "id": 2701704,
+    "municipio": "Capela"
+  },
+  {
+    "id": 2701803,
+    "municipio": "Carneiros"
+  },
+  {
+    "id": 2701902,
+    "municipio": "Chã Preta"
+  },
+  {
+    "id": 2702009,
+    "municipio": "Coité do Nóia"
+  },
+  {
+    "id": 2702108,
+    "municipio": "Colônia Leopoldina"
+  },
+  {
+    "id": 2702207,
+    "municipio": "Coqueiro Seco"
+  },
+  {
+    "id": 2702306,
+    "municipio": "Coruripe"
+  },
+  {
+    "id": 2702355,
+    "municipio": "Craíbas"
+  },
+  {
+    "id": 2702405,
+    "municipio": "Delmiro Gouveia"
+  },
+  {
+    "id": 2702504,
+    "municipio": "Dois Riachos"
+  },
+  {
+    "id": 2702553,
+    "municipio": "Estrela de Alagoas"
+  },
+  {
+    "id": 2702603,
+    "municipio": "Feira Grande"
+  },
+  {
+    "id": 2702702,
+    "municipio": "Feliz Deserto"
+  },
+  {
+    "id": 2702801,
+    "municipio": "Flexeiras"
+  },
+  {
+    "id": 2702900,
+    "municipio": "Girau do Ponciano"
+  },
+  {
+    "id": 2703007,
+    "municipio": "Ibateguara"
+  },
+  {
+    "id": 2703106,
+    "municipio": "Igaci"
+  },
+  {
+    "id": 2703205,
+    "municipio": "Igreja Nova"
+  },
+  {
+    "id": 2703304,
+    "municipio": "Inhapi"
+  },
+  {
+    "id": 2703403,
+    "municipio": "Jacaré dos Homens"
+  },
+  {
+    "id": 2703502,
+    "municipio": "Jacuípe"
+  },
+  {
+    "id": 2703601,
+    "municipio": "Japaratinga"
+  },
+  {
+    "id": 2703700,
+    "municipio": "Jaramataia"
+  },
+  {
+    "id": 2703759,
+    "municipio": "Jequiá da Praia"
+  },
+  {
+    "id": 2703809,
+    "municipio": "Joaquim Gomes"
+  },
+  {
+    "id": 2703908,
+    "municipio": "Jundiá"
+  },
+  {
+    "id": 2704005,
+    "municipio": "Junqueiro"
+  },
+  {
+    "id": 2704104,
+    "municipio": "Lagoa da Canoa"
+  },
+  {
+    "id": 2704203,
+    "municipio": "Limoeiro de Anadia"
+  },
+  {
+    "id": 2704302,
+    "municipio": "Maceió"
+  },
+  {
+    "id": 2704401,
+    "municipio": "Major Isidoro"
+  },
+  {
+    "id": 2704500,
+    "municipio": "Mar Vermelho"
+  },
+  {
+    "id": 2704609,
+    "municipio": "Maragogi"
+  },
+  {
+    "id": 2704708,
+    "municipio": "Maravilha"
+  },
+  {
+    "id": 2704807,
+    "municipio": "Marechal Deodoro"
+  },
+  {
+    "id": 2704906,
+    "municipio": "Mata Grande"
+  },
+  {
+    "id": 2705002,
+    "municipio": "Matriz de Camaragibe"
+  },
+  {
+    "id": 2705101,
+    "municipio": "Messias"
+  },
+  {
+    "id": 2705200,
+    "municipio": "Minador do Negrão"
+  },
+  {
+    "id": 2705309,
+    "municipio": "Monteirópolis"
+  },
+  {
+    "id": 2705408,
+    "municipio": "Murici"
+  },
+  {
+    "id": 2705507,
+    "municipio": "Novo Lino"
+  },
+  {
+    "id": 2705606,
+    "municipio": "Olho d'Água das Flores"
+  },
+  {
+    "id": 2705705,
+    "municipio": "Olho d'Água do Casado"
+  },
+  {
+    "id": 2705804,
+    "municipio": "Olho d'Água Grande"
+  },
+  {
+    "id": 2705903,
+    "municipio": "Olivença"
+  },
+  {
+    "id": 2706000,
+    "municipio": "Ouro Branco"
+  },
+  {
+    "id": 2706109,
+    "municipio": "Palestina"
+  },
+  {
+    "id": 2706208,
+    "municipio": "Palmeira dos Índios"
+  },
+  {
+    "id": 2706307,
+    "municipio": "Pão de Açúcar"
+  },
+  {
+    "id": 2706406,
+    "municipio": "Pariconha"
+  },
+  {
+    "id": 2706422,
+    "municipio": "Paripueira"
+  },
+  {
+    "id": 2706448,
+    "municipio": "Passo de Camaragibe"
+  },
+  {
+    "id": 2706505,
+    "municipio": "Paulo Jacinto"
+  },
+  {
+    "id": 2706604,
+    "municipio": "Penedo"
+  },
+  {
+    "id": 2706703,
+    "municipio": "Piaçabuçu"
+  },
+  {
+    "id": 2706802,
+    "municipio": "Pilar"
+  },
+  {
+    "id": 2706901,
+    "municipio": "Pindoba"
+  },
+  {
+    "id": 2707008,
+    "municipio": "Piranhas"
+  },
+  {
+    "id": 2707107,
+    "municipio": "Poço das Trincheiras"
+  },
+  {
+    "id": 2707206,
+    "municipio": "Porto Calvo"
+  },
+  {
+    "id": 2707305,
+    "municipio": "Porto de Pedras"
+  },
+  {
+    "id": 2707404,
+    "municipio": "Porto Real do Colégio"
+  },
+  {
+    "id": 2707503,
+    "municipio": "Quebrangulo"
+  },
+  {
+    "id": 2707602,
+    "municipio": "Rio Largo"
+  },
+  {
+    "id": 2707701,
+    "municipio": "Roteiro"
+  },
+  {
+    "id": 2707800,
+    "municipio": "Santa Luzia do Norte"
+  },
+  {
+    "id": 2707909,
+    "municipio": "Santana do Ipanema"
+  },
+  {
+    "id": 2708006,
+    "municipio": "Santana do Mundaú"
+  },
+  {
+    "id": 2708105,
+    "municipio": "São Brás"
+  },
+  {
+    "id": 2708204,
+    "municipio": "São José da Laje"
+  },
+  {
+    "id": 2708303,
+    "municipio": "São José da Tapera"
+  },
+  {
+    "id": 2708402,
+    "municipio": "São Luís do Quitunde"
+  },
+  {
+    "id": 2708501,
+    "municipio": "São Miguel dos Campos"
+  },
+  {
+    "id": 2708600,
+    "municipio": "São Miguel dos Milagres"
+  },
+  {
+    "id": 2708709,
+    "municipio": "São Sebastião"
+  },
+  {
+    "id": 2708808,
+    "municipio": "Senador Rui Palmeira"
+  },
+  {
+    "id": 2708907,
+    "municipio": "Tanque d'Arca"
+  },
+  {
+    "id": 2709004,
+    "municipio": "Taquarana"
+  },
+  {
+    "id": 2709103,
+    "municipio": "Teotônio Vilela"
+  },
+  {
+    "id": 2709152,
+    "municipio": "Traipu"
+  },
+  {
+    "id": 2709202,
+    "municipio": "União dos Palmares"
+  },
+  {
+    "id": 2709301,
+    "municipio": "Viçosa"
+  },
+  {
+    "id": 2709400,
+    "municipio": "São José da Laje"
+  }
+]

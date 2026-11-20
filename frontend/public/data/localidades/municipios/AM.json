@@ -1,0 +1,250 @@
+[
+  {
+    "id": 1300029,
+    "municipio": "Alvarães"
+  },
+  {
+    "id": 1300060,
+    "municipio": "Amaturá"
+  },
+  {
+    "id": 1300086,
+    "municipio": "Anamã"
+  },
+  {
+    "id": 1300102,
+    "municipio": "Anori"
+  },
+  {
+    "id": 1300144,
+    "municipio": "Apuí"
+  },
+  {
+    "id": 1300201,
+    "municipio": "Atalaia do Norte"
+  },
+  {
+    "id": 1300300,
+    "municipio": "Autazes"
+  },
+  {
+    "id": 1300409,
+    "municipio": "Barcelos"
+  },
+  {
+    "id": 1300508,
+    "municipio": "Barreirinha"
+  },
+  {
+    "id": 1300607,
+    "municipio": "Benjamin Constant"
+  },
+  {
+    "id": 1300631,
+    "municipio": "Beruri"
+  },
+  {
+    "id": 1300680,
+    "municipio": "Boa Vista do Ramos"
+  },
+  {
+    "id": 1300706,
+    "municipio": "Boca do Acre"
+  },
+  {
+    "id": 1300805,
+    "municipio": "Borba"
+  },
+  {
+    "id": 1300839,
+    "municipio": "Caapiranga"
+  },
+  {
+    "id": 1300904,
+    "municipio": "Canutama"
+  },
+  {
+    "id": 1301001,
+    "municipio": "Carauari"
+  },
+  {
+    "id": 1301100,
+    "municipio": "Careiro"
+  },
+  {
+    "id": 1301159,
+    "municipio": "Careiro da Várzea"
+  },
+  {
+    "id": 1301209,
+    "municipio": "Coari"
+  },
+  {
+    "id": 1301308,
+    "municipio": "Codajás"
+  },
+  {
+    "id": 1301407,
+    "municipio": "Eirunepé"
+  },
+  {
+    "id": 1301506,
+    "municipio": "Envira"
+  },
+  {
+    "id": 1301605,
+    "municipio": "Fonte Boa"
+  },
+  {
+    "id": 1301654,
+    "municipio": "Guajará"
+  },
+  {
+    "id": 1301704,
+    "municipio": "Humaitá"
+  },
+  {
+    "id": 1301803,
+    "municipio": "Ipixuna"
+  },
+  {
+    "id": 1301852,
+    "municipio": "Iranduba"
+  },
+  {
+    "id": 1301902,
+    "municipio": "Itacoatiara"
+  },
+  {
+    "id": 1301951,
+    "municipio": "Itamarati"
+  },
+  {
+    "id": 1302009,
+    "municipio": "Itapiranga"
+  },
+  {
+    "id": 1302108,
+    "municipio": "Japurá"
+  },
+  {
+    "id": 1302207,
+    "municipio": "Juruá"
+  },
+  {
+    "id": 1302306,
+    "municipio": "Jutaí"
+  },
+  {
+    "id": 1302405,
+    "municipio": "Lábrea"
+  },
+  {
+    "id": 1302504,
+    "municipio": "Manacapuru"
+  },
+  {
+    "id": 1302553,
+    "municipio": "Manaquiri"
+  },
+  {
+    "id": 1302603,
+    "municipio": "Manaus"
+  },
+  {
+    "id": 1302702,
+    "municipio": "Manicoré"
+  },
+  {
+    "id": 1302801,
+    "municipio": "Maraã"
+  },
+  {
+    "id": 1302900,
+    "municipio": "Maués"
+  },
+  {
+    "id": 1303007,
+    "municipio": "Nhamundá"
+  },
+  {
+    "id": 1303106,
+    "municipio": "Nova Olinda do Norte"
+  },
+  {
+    "id": 1303205,
+    "municipio": "Novo Airão"
+  },
+  {
+    "id": 1303304,
+    "municipio": "Novo Aripuanã"
+  },
+  {
+    "id": 1303403,
+    "municipio": "Parintins"
+  },
+  {
+    "id": 1303502,
+    "municipio": "Pauini"
+  },
+  {
+    "id": 1303536,
+    "municipio": "Presidente Figueiredo"
+  },
+  {
+    "id": 1303569,
+    "municipio": "Rio Preto da Eva"
+  },
+  {
+    "id": 1303601,
+    "municipio": "Santa Isabel do Rio Negro"
+  },
+  {
+    "id": 1303700,
+    "municipio": "Santo Antônio do Içá"
+  },
+  {
+    "id": 1303809,
+    "municipio": "São Gabriel da Cachoeira"
+  },
+  {
+    "id": 1303908,
+    "municipio": "São Paulo de Olivença"
+  },
+  {
+    "id": 1303957,
+    "municipio": "São Sebastião do Uatumã"
+  },
+  {
+    "id": 1304005,
+    "municipio": "Silves"
+  },
+  {
+    "id": 1304062,
+    "municipio": "Tabatinga"
+  },
+  {
+    "id": 1304104,
+    "municipio": "Tapauá"
+  },
+  {
+    "id": 1304203,
+    "municipio": "Tefé"
+  },
+  {
+    "id": 1304237,
+    "municipio": "Tonantins"
+  },
+  {
+    "id": 1304260,
+    "municipio": "Uarini"
+  },
+  {
+    "id": 1304302,
+    "municipio": "Urucará"
+  },
+  {
+    "id": 1304401,
+    "municipio": "Urucurituba"
+  }
+]

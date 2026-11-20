@@ -1,0 +1,370 @@
+[
+  {
+    "id": 3300100,
+    "municipio": "Angra dos Reis"
+  },
+  {
+    "id": 3300159,
+    "municipio": "Aperibé"
+  },
+  {
+    "id": 3300209,
+    "municipio": "Araruama"
+  },
+  {
+    "id": 3300225,
+    "municipio": "Areal"
+  },
+  {
+    "id": 3300233,
+    "municipio": "Armação dos Búzios"
+  },
+  {
+    "id": 3300258,
+    "municipio": "Arraial do Cabo"
+  },
+  {
+    "id": 3300308,
+    "municipio": "Barra do Piraí"
+  },
+  {
+    "id": 3300407,
+    "municipio": "Barra Mansa"
+  },
+  {
+    "id": 3300456,
+    "municipio": "Belford Roxo"
+  },
+  {
+    "id": 3300506,
+    "municipio": "Bom Jardim"
+  },
+  {
+    "id": 3300605,
+    "municipio": "Bom Jesus do Itabapoana"
+  },
+  {
+    "id": 3300704,
+    "municipio": "Cabo Frio"
+  },
+  {
+    "id": 3300803,
+    "municipio": "Cachoeiras de Macacu"
+  },
+  {
+    "id": 3300902,
+    "municipio": "Cambuci"
+  },
+  {
+    "id": 3300936,
+    "municipio": "Carapebus"
+  },
+  {
+    "id": 3300951,
+    "municipio": "Comendador Levy Gasparian"
+  },
+  {
+    "id": 3301009,
+    "municipio": "Campos dos Goytacazes"
+  },
+  {
+    "id": 3301108,
+    "municipio": "Cantagalo"
+  },
+  {
+    "id": 3301157,
+    "municipio": "Cardoso Moreira"
+  },
+  {
+    "id": 3301207,
+    "municipio": "Carmo"
+  },
+  {
+    "id": 3301306,
+    "municipio": "Casimiro de Abreu"
+  },
+  {
+    "id": 3301405,
+    "municipio": "Conceição de Macabu"
+  },
+  {
+    "id": 3301504,
+    "municipio": "Cordeiro"
+  },
+  {
+    "id": 3301603,
+    "municipio": "Duas Barras"
+  },
+  {
+    "id": 3301702,
+    "municipio": "Duque de Caxias"
+  },
+  {
+    "id": 3301801,
+    "municipio": "Engenheiro Paulo de Frontin"
+  },
+  {
+    "id": 3301850,
+    "municipio": "Guapimirim"
+  },
+  {
+    "id": 3301876,
+    "municipio": "Iguaba Grande"
+  },
+  {
+    "id": 3301900,
+    "municipio": "Itaboraí"
+  },
+  {
+    "id": 3302007,
+    "municipio": "Itaguaí"
+  },
+  {
+    "id": 3302056,
+    "municipio": "Italva"
+  },
+  {
+    "id": 3302106,
+    "municipio": "Itaocara"
+  },
+  {
+    "id": 3302205,
+    "municipio": "Itaperuna"
+  },
+  {
+    "id": 3302254,
+    "municipio": "Itatiaia"
+  },
+  {
+    "id": 3302270,
+    "municipio": "Japeri"
+  },
+  {
+    "id": 3302304,
+    "municipio": "Laje do Muriaé"
+  },
+  {
+    "id": 3302403,
+    "municipio": "Macaé"
+  },
+  {
+    "id": 3302452,
+    "municipio": "Macuco"
+  },
+  {
+    "id": 3302502,
+    "municipio": "Magé"
+  },
+  {
+    "id": 3302601,
+    "municipio": "Mangaratiba"
+  },
+  {
+    "id": 3302700,
+    "municipio": "Maricá"
+  },
+  {
+    "id": 3302809,
+    "municipio": "Mendes"
+  },
+  {
+    "id": 3302858,
+    "municipio": "Mesquita"
+  },
+  {
+    "id": 3302908,
+    "municipio": "Miguel Pereira"
+  },
+  {
+    "id": 3303005,
+    "municipio": "Miracema"
+  },
+  {
+    "id": 3303104,
+    "municipio": "Natividade"
+  },
+  {
+    "id": 3303203,
+    "municipio": "Nilópolis"
+  },
+  {
+    "id": 3303302,
+    "municipio": "Niterói"
+  },
+  {
+    "id": 3303401,
+    "municipio": "Nova Friburgo"
+  },
+  {
+    "id": 3303500,
+    "municipio": "Nova Iguaçu"
+  },
+  {
+    "id": 3303609,
+    "municipio": "Paracambi"
+  },
+  {
+    "id": 3303708,
+    "municipio": "Paraíba do Sul"
+  },
+  {
+    "id": 3303807,
+    "municipio": "Paraty"
+  },
+  {
+    "id": 3303856,
+    "municipio": "Paty do Alferes"
+  },
+  {
+    "id": 3303906,
+    "municipio": "Petrópolis"
+  },
+  {
+    "id": 3303955,
+    "municipio": "Pinheiral"
+  },
+  {
+    "id": 3304003,
+    "municipio": "Piraí"
+  },
+  {
+    "id": 3304102,
+    "municipio": "Porciúncula"
+  },
+  {
+    "id": 3304110,
+    "municipio": "Porto Real"
+  },
+  {
+    "id": 3304128,
+    "municipio": "Quatis"
+  },
+  {
+    "id": 3304144,
+    "municipio": "Queimados"
+  },
+  {
+    "id": 3304151,
+    "municipio": "Quissamã"
+  },
+  {
+    "id": 3304201,
+    "municipio": "Resende"
+  },
+  {
+    "id": 3304300,
+    "municipio": "Rio Bonito"
+  },
+  {
+    "id": 3304409,
+    "municipio": "Rio Claro"
+  },
+  {
+    "id": 3304508,
+    "municipio": "Rio das Flores"
+  },
+  {
+    "id": 3304524,
+    "municipio": "Rio das Ostras"
+  },
+  {
+    "id": 3304557,
+    "municipio": "Rio de Janeiro"
+  },
+  {
+    "id": 3304607,
+    "municipio": "Santa Maria Madalena"
+  },
+  {
+    "id": 3304706,
+    "municipio": "Santo Antônio de Pádua"
+  },
+  {
+    "id": 3304755,
+    "municipio": "São Francisco de Itabapoana"
+  },
+  {
+    "id": 3304805,
+    "municipio": "São Fidélis"
+  },
+  {
+    "id": 3304904,
+    "municipio": "São Gonçalo"
+  },
+  {
+    "id": 3305000,
+    "municipio": "São João da Barra"
+  },
+  {
+    "id": 3305109,
+    "municipio": "São João de Meriti"
+  },
+  {
+    "id": 3305133,
+    "municipio": "São José de Ubá"
+  },
+  {
+    "id": 3305158,
+    "municipio": "São José do Vale do Rio Preto"
+  },
+  {
+    "id": 3305208,
+    "municipio": "São Pedro da Aldeia"
+  },
+  {
+    "id": 3305307,
+    "municipio": "São Sebastião do Alto"
+  },
+  {
+    "id": 3305406,
+    "municipio": "Sapucaia"
+  },
+  {
+    "id": 3305505,
+    "municipio": "Saquarema"
+  },
+  {
+    "id": 3305554,
+    "municipio": "Seropédica"
+  },
+  {
+    "id": 3305604,
+    "municipio": "Silva Jardim"
+  },
+  {
+    "id": 3305703,
+    "municipio": "Sumidouro"
+  },
+  {
+    "id": 3305752,
+    "municipio": "Tanguá"
+  },
+  {
+    "id": 3305802,
+    "municipio": "Teresópolis"
+  },
+  {
+    "id": 3305901,
+    "municipio": "Trajano de Moraes"
+  },
+  {
+    "id": 3306008,
+    "municipio": "Três Rios"
+  },
+  {
+    "id": 3306107,
+    "municipio": "Valença"
+  },
+  {
+    "id": 3306156,
+    "municipio": "Varre-Sai"
+  },
+  {
+    "id": 3306206,
+    "municipio": "Vassouras"
+  },
+  {
+    "id": 3306305,
+    "municipio": "Volta Redonda"
+  }
+]

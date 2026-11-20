@@ -1,0 +1,578 @@
+[
+  {
+    "id": 1500107,
+    "municipio": "Abaetetuba"
+  },
+  {
+    "id": 1500131,
+    "municipio": "Abel Figueiredo"
+  },
+  {
+    "id": 1500206,
+    "municipio": "Acará"
+  },
+  {
+    "id": 1500305,
+    "municipio": "Afuá"
+  },
+  {
+    "id": 1500347,
+    "municipio": "Água Azul do Norte"
+  },
+  {
+    "id": 1500404,
+    "municipio": "Alenquer"
+  },
+  {
+    "id": 1500503,
+    "municipio": "Almeirim"
+  },
+  {
+    "id": 1500602,
+    "municipio": "Altamira"
+  },
+  {
+    "id": 1500701,
+    "municipio": "Anajás"
+  },
+  {
+    "id": 1500800,
+    "municipio": "Ananindeua"
+  },
+  {
+    "id": 1500859,
+    "municipio": "Anapu"
+  },
+  {
+    "id": 1500909,
+    "municipio": "Augusto Corrêa"
+  },
+  {
+    "id": 1500958,
+    "municipio": "Aurora do Pará"
+  },
+  {
+    "id": 1501006,
+    "municipio": "Aveiro"
+  },
+  {
+    "id": 1501105,
+    "municipio": "Bagre"
+  },
+  {
+    "id": 1501204,
+    "municipio": "Baião"
+  },
+  {
+    "id": 1501253,
+    "municipio": "Bannach"
+  },
+  {
+    "id": 1501303,
+    "municipio": "Barcarena"
+  },
+  {
+    "id": 1501402,
+    "municipio": "Belém"
+  },
+  {
+    "id": 1501451,
+    "municipio": "Belterra"
+  },
+  {
+    "id": 1501501,
+    "municipio": "Benevides"
+  },
+  {
+    "id": 1501576,
+    "municipio": "Bom Jesus do Tocantins"
+  },
+  {
+    "id": 1501600,
+    "municipio": "Bonito"
+  },
+  {
+    "id": 1501709,
+    "municipio": "Bragança"
+  },
+  {
+    "id": 1501725,
+    "municipio": "Brasil Novo"
+  },
+  {
+    "id": 1501758,
+    "municipio": "Brejo Grande do Araguaia"
+  },
+  {
+    "id": 1501782,
+    "municipio": "Breu Branco"
+  },
+  {
+    "id": 1501808,
+    "municipio": "Breves"
+  },
+  {
+    "id": 1501907,
+    "municipio": "Bujaru"
+  },
+  {
+    "id": 1502004,
+    "municipio": "Cachoeira do Arari"
+  },
+  {
+    "id": 1501956,
+    "municipio": "Cachoeira do Piriá"
+  },
+  {
+    "id": 1502103,
+    "municipio": "Cametá"
+  },
+  {
+    "id": 1502152,
+    "municipio": "Canaã dos Carajás"
+  },
+  {
+    "id": 1502202,
+    "municipio": "Capanema"
+  },
+  {
+    "id": 1502301,
+    "municipio": "Capitão Poço"
+  },
+  {
+    "id": 1502400,
+    "municipio": "Castanhal"
+  },
+  {
+    "id": 1502509,
+    "municipio": "Chaves"
+  },
+  {
+    "id": 1502608,
+    "municipio": "Colares"
+  },
+  {
+    "id": 1502707,
+    "municipio": "Conceição do Araguaia"
+  },
+  {
+    "id": 1502756,
+    "municipio": "Concórdia do Pará"
+  },
+  {
+    "id": 1502764,
+    "municipio": "Cumaru do Norte"
+  },
+  {
+    "id": 1502772,
+    "municipio": "Curionópolis"
+  },
+  {
+    "id": 1502806,
+    "municipio": "Curralinho"
+  },
+  {
+    "id": 1502855,
+    "municipio": "Curuá"
+  },
+  {
+    "id": 1502905,
+    "municipio": "Curuçá"
+  },
+  {
+    "id": 1502939,
+    "municipio": "Dom Eliseu"
+  },
+  {
+    "id": 1502954,
+    "municipio": "Eldorado do Carajás"
+  },
+  {
+    "id": 1503002,
+    "municipio": "Faro"
+  },
+  {
+    "id": 1503044,
+    "municipio": "Floresta do Araguaia"
+  },
+  {
+    "id": 1503077,
+    "municipio": "Garrafão do Norte"
+  },
+  {
+    "id": 1503093,
+    "municipio": "Goianésia do Pará"
+  },
+  {
+    "id": 1503101,
+    "municipio": "Gurupá"
+  },
+  {
+    "id": 1503200,
+    "municipio": "Igarapé-Açu"
+  },
+  {
+    "id": 1503309,
+    "municipio": "Igarapé-Miri"
+  },
+  {
+    "id": 1503408,
+    "municipio": "Inhangapi"
+  },
+  {
+    "id": 1503457,
+    "municipio": "Ipixuna do Pará"
+  },
+  {
+    "id": 1503507,
+    "municipio": "Irituia"
+  },
+  {
+    "id": 1503606,
+    "municipio": "Itaituba"
+  },
+  {
+    "id": 1503705,
+    "municipio": "Itupiranga"
+  },
+  {
+    "id": 1503754,
+    "municipio": "Jacareacanga"
+  },
+  {
+    "id": 1503804,
+    "municipio": "Jacundá"
+  },
+  {
+    "id": 1503903,
+    "municipio": "Juruti"
+  },
+  {
+    "id": 1504000,
+    "municipio": "Limoeiro do Ajuru"
+  },
+  {
+    "id": 1504059,
+    "municipio": "Mãe do Rio"
+  },
+  {
+    "id": 1504109,
+    "municipio": "Magalhães Barata"
+  },
+  {
+    "id": 1504208,
+    "municipio": "Marabá"
+  },
+  {
+    "id": 1504307,
+    "municipio": "Maracanã"
+  },
+  {
+    "id": 1504406,
+    "municipio": "Marapanim"
+  },
+  {
+    "id": 1504422,
+    "municipio": "Marituba"
+  },
+  {
+    "id": 1504455,
+    "municipio": "Medicilândia"
+  },
+  {
+    "id": 1504505,
+    "municipio": "Melgaço"
+  },
+  {
+    "id": 1504604,
+    "municipio": "Mocajuba"
+  },
+  {
+    "id": 1504703,
+    "municipio": "Moju"
+  },
+  {
+    "id": 1504752,
+    "municipio": "Mojuí dos Campos"
+  },
+  {
+    "id": 1504802,
+    "municipio": "Monte Alegre"
+  },
+  {
+    "id": 1504901,
+    "municipio": "Muaná"
+  },
+  {
+    "id": 1504950,
+    "municipio": "Nova Esperança do Piriá"
+  },
+  {
+    "id": 1504976,
+    "municipio": "Nova Ipixuna"
+  },
+  {
+    "id": 1505007,
+    "municipio": "Nova Timboteua"
+  },
+  {
+    "id": 1505031,
+    "municipio": "Novo Progresso"
+  },
+  {
+    "id": 1505064,
+    "municipio": "Novo Repartimento"
+  },
+  {
+    "id": 1505106,
+    "municipio": "Óbidos"
+  },
+  {
+    "id": 1505205,
+    "municipio": "Oeiras do Pará"
+  },
+  {
+    "id": 1505304,
+    "municipio": "Oriximiná"
+  },
+  {
+    "id": 1505403,
+    "municipio": "Ourém"
+  },
+  {
+    "id": 1505437,
+    "municipio": "Ourilândia do Norte"
+  },
+  {
+    "id": 1505486,
+    "municipio": "Pacajá"
+  },
+  {
+    "id": 1505494,
+    "municipio": "Palestina do Pará"
+  },
+  {
+    "id": 1505502,
+    "municipio": "Paragominas"
+  },
+  {
+    "id": 1505536,
+    "municipio": "Parauapebas"
+  },
+  {
+    "id": 1505551,
+    "municipio": "Pau D'Arco"
+  },
+  {
+    "id": 1505601,
+    "municipio": "Peixe-Boi"
+  },
+  {
+    "id": 1505635,
+    "municipio": "Piçarra"
+  },
+  {
+    "id": 1505650,
+    "municipio": "Placas"
+  },
+  {
+    "id": 1505700,
+    "municipio": "Ponta de Pedras"
+  },
+  {
+    "id": 1505809,
+    "municipio": "Portel"
+  },
+  {
+    "id": 1505908,
+    "municipio": "Porto de Moz"
+  },
+  {
+    "id": 1506005,
+    "municipio": "Prainha"
+  },
+  {
+    "id": 1506104,
+    "municipio": "Primavera"
+  },
+  {
+    "id": 1506112,
+    "municipio": "Quatipuru"
+  },
+  {
+    "id": 1506138,
+    "municipio": "Redenção"
+  },
+  {
+    "id": 1506161,
+    "municipio": "Rio Maria"
+  },
+  {
+    "id": 1506187,
+    "municipio": "Rondon do Pará"
+  },
+  {
+    "id": 1506195,
+    "municipio": "Rurópolis"
+  },
+  {
+    "id": 1506203,
+    "municipio": "Salinópolis"
+  },
+  {
+    "id": 1506302,
+    "municipio": "Salvaterra"
+  },
+  {
+    "id": 1506351,
+    "municipio": "Santa Bárbara do Pará"
+  },
+  {
+    "id": 1506401,
+    "municipio": "Santa Cruz do Arari"
+  },
+  {
+    "id": 1506500,
+    "municipio": "Santa Izabel do Pará"
+  },
+  {
+    "id": 1506559,
+    "municipio": "Santa Luzia do Pará"
+  },
+  {
+    "id": 1506583,
+    "municipio": "Santa Maria das Barreiras"
+  },
+  {
+    "id": 1506609,
+    "municipio": "Santa Maria do Pará"
+  },
+  {
+    "id": 1506708,
+    "municipio": "Santana do Araguaia"
+  },
+  {
+    "id": 1506807,
+    "municipio": "Santarém"
+  },
+  {
+    "id": 1506906,
+    "municipio": "Santarém Novo"
+  },
+  {
+    "id": 1507003,
+    "municipio": "Santo Antônio do Tauá"
+  },
+  {
+    "id": 1507102,
+    "municipio": "São Caetano de Odivelas"
+  },
+  {
+    "id": 1507151,
+    "municipio": "São Domingos do Araguaia"
+  },
+  {
+    "id": 1507201,
+    "municipio": "São Domingos do Capim"
+  },
+  {
+    "id": 1507300,
+    "municipio": "São Félix do Xingu"
+  },
+  {
+    "id": 1507409,
+    "municipio": "São Francisco do Pará"
+  },
+  {
+    "id": 1507458,
+    "municipio": "São Geraldo do Araguaia"
+  },
+  {
+    "id": 1507466,
+    "municipio": "São João da Ponta"
+  },
+  {
+    "id": 1507474,
+    "municipio": "São João de Pirabas"
+  },
+  {
+    "id": 1507508,
+    "municipio": "São João do Araguaia"
+  },
+  {
+    "id": 1507607,
+    "municipio": "São Miguel do Guamá"
+  },
+  {
+    "id": 1507706,
+    "municipio": "São Sebastião da Boa Vista"
+  },
+  {
+    "id": 1507755,
+    "municipio": "Sapucaia"
+  },
+  {
+    "id": 1507805,
+    "municipio": "Senador José Porfírio"
+  },
+  {
+    "id": 1507904,
+    "municipio": "Soure"
+  },
+  {
+    "id": 1507953,
+    "municipio": "Tailândia"
+  },
+  {
+    "id": 1507961,
+    "municipio": "Terra Alta"
+  },
+  {
+    "id": 1507979,
+    "municipio": "Terra Santa"
+  },
+  {
+    "id": 1508001,
+    "municipio": "Tomé-Açu"
+  },
+  {
+    "id": 1508035,
+    "municipio": "Tracuateua"
+  },
+  {
+    "id": 1508050,
+    "municipio": "Trairão"
+  },
+  {
+    "id": 1508084,
+    "municipio": "Tucumã"
+  },
+  {
+    "id": 1508100,
+    "municipio": "Tucuruí"
+  },
+  {
+    "id": 1508126,
+    "municipio": "Ulianópolis"
+  },
+  {
+    "id": 1508159,
+    "municipio": "Uruará"
+  },
+  {
+    "id": 1508209,
+    "municipio": "Vigia"
+  },
+  {
+    "id": 1508308,
+    "municipio": "Viseu"
+  },
+  {
+    "id": 1508357,
+    "municipio": "Vitória do Xingu"
+  },
+  {
+    "id": 1508407,
+    "municipio": "Xinguara"
+  }
+]
